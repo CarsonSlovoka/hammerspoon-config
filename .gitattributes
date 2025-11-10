@@ -1,0 +1,4 @@
+# ~/.gitconfig
+# [diff "file"]
+#    textconv = sh -c 'ls -lh $0 & file $0'
+*.icns diff=file
