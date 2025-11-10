@@ -24,6 +24,11 @@ local fuzzelList = {
   { text = "Kitty",   path = "/Applications/kitty.app" },
   { text = "Safari",  path = "/Applications/Safari.app" },
   {
+    text = "google sheet",
+    cmdName = "open browser",
+    kargs = { url = "https://docs.google.com/spreadsheets" }
+  },
+  {
     text = hs.styledtext.new(
       "Possibility",
       {
@@ -60,8 +65,14 @@ local cmdTable = {
   end,
   ["show clock"] = function()
     spoon.AClock:toggleShow()
+  end,
+  ["open browser"] = function(kargs)
+    -- local cmd = "firefox --window --new-tab " .. kargs.url -- ❌ 需要絕對路
+    local cmd = "/opt/homebrew/bin/firefox --window --new-tab " .. kargs.url
+    os.execute(cmd)
+    -- hs.task.new("/bin/bash", nil, { "-c", cmd }):start()
+    -- hs.osascript.applescript(string.format('do shell script "%s"', cmd))
   end
-
 }
 
 local function completionFn(choice)
@@ -69,7 +80,7 @@ local function completionFn(choice)
   if choice.cmdName then
     local cmdFunc = cmdTable[choice.cmdName]
     if cmdFunc then
-      cmdFunc()
+      cmdFunc(choice.kargs)
     end
     return
   end
@@ -78,7 +89,6 @@ end
 
 
 hs.hotkey.bind({ "cmd" }, ";", function()
-  -- hs.alert.show("cmd-:")
   local chooser = hs.chooser.new(completionFn)
   chooser:choices(fuzzelList)
   chooser:show()
