@@ -19,13 +19,15 @@ hs.loadSpoon("AClock")
 --   hs.reload()
 -- end)
 
+local cmdInfo = require("cmdInfo")
+
 local fuzzelList = {
   { text = "Firefox", subText = "This is the subtext of the first choice", path = "/Applications/Firefox.app" },
   { text = "Kitty",   path = "/Applications/kitty.app" },
   { text = "Safari",  path = "/Applications/Safari.app" },
   {
     text = "google sheet",
-    cmdName = "open browser",
+    cmdName = cmdInfo.name.openBrowser,
     kargs = { url = "https://docs.google.com/spreadsheets" }
   },
   {
@@ -43,42 +45,22 @@ local fuzzelList = {
   {
     text = "hammerspoon reload",
     -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數
-    cmdName = "hammerspoon reload"
+    cmdName = cmdInfo.name.hammerspoonReload,
   },
   {
     text = "list hs.image",
-    cmdName = "list hs.image"
+    cmdName = cmdInfo.name.listHsImage,
   },
   {
     text = "show clock",
-    cmdName = "show clock"
+    cmdName = cmdInfo.name.showClock,
   }
-}
-
-local cmdTable = {
-  ["hammerspoon reload"] = function()
-    hs.reload()
-  end,
-  ["list hs.image"] = function()
-    print(hs.image.systemImageNames)
-    -- local searchIcon = hs.image.imageFromName("NSSearchFieldTemplate") -- 載入搜尋圖示
-  end,
-  ["show clock"] = function()
-    spoon.AClock:toggleShow()
-  end,
-  ["open browser"] = function(kargs)
-    -- local cmd = "firefox --window --new-tab " .. kargs.url -- ❌ 需要絕對路
-    local cmd = "/opt/homebrew/bin/firefox --window --new-tab " .. kargs.url
-    os.execute(cmd)
-    -- hs.task.new("/bin/bash", nil, { "-c", cmd }):start()
-    -- hs.osascript.applescript(string.format('do shell script "%s"', cmd))
-  end
 }
 
 local function completionFn(choice)
   if not choice then return end
   if choice.cmdName then
-    local cmdFunc = cmdTable[choice.cmdName]
+    local cmdFunc = cmdInfo.cmdTable[choice.cmdName]
     if cmdFunc then
       cmdFunc(choice.kargs)
     end
