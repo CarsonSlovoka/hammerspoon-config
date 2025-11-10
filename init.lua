@@ -1,4 +1,5 @@
 hs = hs -- 減少未定義的警告
+spoon = spoon
 
 local hammerspoon_config_dir = os.getenv("HOME") .. '/.hammerspoon/'
 package.path = package.path ..
@@ -10,6 +11,7 @@ local test = require("test")
 test.test()
 
 hs.loadSpoon("Dock")
+hs.loadSpoon("AClock")
 -- 如此在它的終端機，可以直接使用
 -- spoon.Dock.hideDock()
 
@@ -41,6 +43,10 @@ local fuzzelList = {
   {
     text = "list hs.image",
     cmdName = "list hs.image"
+  },
+  {
+    text = "show clock",
+    cmdName = "show clock"
   }
 }
 
@@ -51,7 +57,11 @@ local cmdTable = {
   ["list hs.image"] = function()
     print(hs.image.systemImageNames)
     -- local searchIcon = hs.image.imageFromName("NSSearchFieldTemplate") -- 載入搜尋圖示
+  end,
+  ["show clock"] = function()
+    spoon.AClock:toggleShow()
   end
+
 }
 
 local function completionFn(choice)
