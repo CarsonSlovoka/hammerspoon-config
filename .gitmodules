@@ -1,0 +1,7 @@
+# git submodule sync
+# git submodule update --init --recursive
+
+[submodule "Spoons"]
+    path = Hammerspoon/Spoons/
+    url = https://github.com/Hammerspoon/Spoons.git
+
