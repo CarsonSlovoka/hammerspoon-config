@@ -61,6 +61,7 @@ local fuzzelList = {
   },
   {
     text = "google sheet",
+    subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
     kargs = { url = "https://docs.google.com/spreadsheets" }
   },
