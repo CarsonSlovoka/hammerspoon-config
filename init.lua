@@ -22,15 +22,21 @@ hs.loadSpoon("AClock")
 
 local cmdInfo = require("cmdInfo")
 
+local imageFromPath = utils.image.fromPath
+
 local fuzzelList = {
   {
     text = "Firefox",
     subText = "This is the subtext of the first choice",
     path = "/Applications/Firefox.app",
-    image = utils.image.getImage("firefox.icns"),
+    image = imageFromPath("firefox.icns"),
     -- image = hs.image.imageFromPath(utils.image.getImage("firefox.svg")), -- ❌ 不能給svg
   },
-  { text = "Kitty",      path = "/Applications/kitty.app" },
+  {
+    text = "Kitty",
+    path = "/Applications/kitty.app",
+    image = imageFromPath("kitty.icns")
+  },
   { text = "Safari",     path = "/Applications/Safari.app" },
   { text = "LmStudio",   path = "/Applications/LM Studio.app/" },
   { text = "Calendar",   path = "/System/Applications/Calendar.app/" },

@@ -4,7 +4,7 @@ local M = {}
 
 ---@param imgName string
 ---@return Image
-function M.getImage(imgName)
+function M.fromPath(imgName)
   return hs.image.imageFromPath(os.getenv("HOME") .. '/.hammerspoon/assets/img/' .. imgName)
 end
 

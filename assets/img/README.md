@@ -20,6 +20,7 @@ mv -v ~/Downloads/*.icns .
 
 ```sh
 wget https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/721c5a9/Papirus/64x64/apps/firefox.svg
+wget https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/721c5a9/Papirus/64x64/apps/kitty.svg
 ```
 
 # icns 相關腳本參考
