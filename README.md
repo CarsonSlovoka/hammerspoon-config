@@ -26,6 +26,10 @@
     └── AClock.spoon
 ```
 
+## icons
+
+參考[assets/img/README.md](assets/img/README.md)
+
 ## [官方的plugin](https://github.com/Hammerspoon/Spoons)
 
 
