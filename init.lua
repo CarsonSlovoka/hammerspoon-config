@@ -7,9 +7,9 @@ package.path = package.path ..
 -- hs.alert.show(package.path)
 -- print(package.path)
 
-local test = require("test")
+-- local test = require("test")
 local utils = require("utils.utils")
-test.test()
+-- test.test()
 
 hs.loadSpoon("Dock")
 hs.loadSpoon("AClock")
@@ -65,17 +65,17 @@ local fuzzelList = {
     cmdName = cmdInfo.name.openBrowser,
     kargs = { url = "https://docs.google.com/spreadsheets" }
   },
-  {
-    text = hs.styledtext.new(
-      "Possibility",
-      {
-        font = { size = 30 },
-        color = hs.drawing.color.definedCollections.hammerspoon.green
-      }
-    ),
-    subText = "What a lot of choosing there is going on here!",
-    image = hs.image.imageFromName("NSComputer"),
-  },
+  -- {
+  --   text = hs.styledtext.new(
+  --     "Possibility",
+  --     {
+  --       font = { size = 30 },
+  --       color = hs.drawing.color.definedCollections.hammerspoon.green
+  --     }
+  --   ),
+  --   subText = "What a lot of choosing there is going on here!",
+  --   image = hs.image.imageFromName("NSComputer"),
+  -- },
 
   {
     text = "hammerspoon reload",
