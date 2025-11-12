@@ -146,9 +146,60 @@ end)
 
 -- 取得目前聚焦視窗並切換焦點
 local function focus(direction)
+  -- https://www.hammerspoon.org/docs/hs.window.html#focusWindowEast
   local win = hs.window.focusedWindow()
   if win then
     win["focusWindow" .. direction](win)
+  end
+end
+
+-- ❌ 以下這種是錯的，不會改成視窗的位置和大小, 要靠setFrame來處理
+-- local function move(direction)
+--   local win = hs.window.focusedWindow()
+--   if win then
+--     win["moveOneScreen" .. direction](win)
+--   end
+-- end
+
+local function move(direction)
+  -- https://www.hammerspoon.org/docs/hs.window.html#setFrame
+
+  local win = hs.window.focusedWindow()
+  if win then
+    local screens = hs.screen.allScreens()
+    if #screens > 1 then
+      -- 多螢幕：移動到相鄰螢幕 (未測試)
+      win["moveOneScreen" .. direction]() -- 修正：不傳多餘參數
+    else
+      -- 單螢幕：模擬移動（推到畫面邊緣半屏）
+      local f = win:frame()
+      local screen = win:screen()
+      local max = screen:fullFrame() -- 用 fullFrame 忽略 Dock/Menu bar
+      local halfW, halfH = max.w / 2, max.h / 2
+
+      if direction == "West" then -- 左半
+        f.x = max.x
+        f.y = max.y
+        f.w = halfW
+        f.h = max.h
+      elseif direction == "East" then -- 右半
+        f.x = max.x + halfW
+        f.y = max.y
+        f.w = halfW
+        f.h = max.h
+      elseif direction == "North" then -- 上半
+        f.x = max.x
+        f.y = max.y
+        f.w = max.w
+        f.h = halfH
+      elseif direction == "South" then -- 下半
+        f.x = max.x
+        f.y = max.y + halfH
+        f.w = max.w
+        f.h = halfH
+      end
+      win:setFrame(f, 0) -- 立即設定（無動畫）
+    end
   end
 end
 
@@ -182,6 +233,42 @@ end)
 hs.hotkey.bind({ "cmd" }, "j", function()
   focus("South")
 end)
+
+
+--
+
+-- https://www.hammerspoon.org/docs/hs.hotkey.html#assignable
+hs.hotkey.bind({ "cmd", "shift" }, "left", function()
+  move("West")
+end)
+hs.hotkey.bind({ "cmd", "shift" }, "h", function()
+  move("West")
+end)
+
+
+hs.hotkey.bind({ "cmd", "shift" }, "right", function()
+  move("East")
+end)
+hs.hotkey.bind({ "cmd", "shift" }, "l", function()
+  move("East")
+end)
+
+
+hs.hotkey.bind({ "cmd", "shift" }, "up", function()
+  move("North")
+end)
+hs.hotkey.bind({ "cmd", "shift" }, "k", function()
+  move("North")
+end)
+
+
+hs.hotkey.bind({ "cmd", "shift" }, "down", function()
+  move("South")
+end)
+hs.hotkey.bind({ "cmd", "shift" }, "j", function()
+  move("South")
+end)
+
 
 -- 雖然系統預設的熱鍵就是如此，但是有的應用程式，例如: lmstudio 它也會有熱鍵，因此用hammerspoon可以覆寫
 hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
