@@ -102,6 +102,8 @@ local fuzzelList = {
   }
 }
 
+hs.window.animationDuration = 0
+
 local function completionFn(choice)
   if not choice then return end
   if choice.cmdName then
@@ -111,7 +113,23 @@ local function completionFn(choice)
     end
     return
   end
+
+  local win = hs.window.focusedWindow()
+  if win:isFullScreen() then
+    -- 全螢幕下如果沒退出，無法直接換到其它的視窗
+    win:setFullscreen(false)
+  end
   hs.application.launchOrFocus(choice.path)
+
+  -- 加在這裡不好，不一定都是想fullscreen, 有可能用到layout
+  -- -- hs.window.focusedWindow():setFullscreen(false) -- 前面的視窗如果還是全螢幕，下一個視窗無法被切換過去
+  -- -- hs.window.focusedWindow():sendToBack()
+  -- -- hs.window.focusedWindow():setFullscreen(true)
+  -- hs.timer.doAfter(0.4, function()
+  --   -- 時間等一下，效果似乎會比較好，不然可能無法立即切成全螢幕
+  --   -- Caution: 如果中途重載，或者發現都一直無法換成全螢幕（此時用按鍵用全螢幕也是異常），要將該app整個關閉，再次啟動會正常
+  --   hs.window.focusedWindow():setFullscreen(true)
+  -- end)
 end
 
 
