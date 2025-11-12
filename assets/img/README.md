@@ -8,14 +8,16 @@
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
 - [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
 - [google-sheet](https://macosicons.com/#/?icon=65Z2u8izcQ)
+- [calculator](https://macosicons.com/#/?icon=JdrgercRpq)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
 
 
 ```sh
+output=calculator.icns
 mv -v ~/Downloads/*.icns .
-icnsKeep $(ls -t1 *.icns | head -n 1) google-sheet.icns "32@2x"
+icnsKeep $(ls -t1 *.icns | head -n 1) $output "32@2x"
 ```
 
 

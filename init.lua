@@ -60,6 +60,7 @@ local fuzzelList = {
     text = "Calculator",
     subText = "launchOrFocus",
     path = "/System/Applications/Calculator.app",
+    image = imageFromPath("calculator.icns")
   },
   {
     text = "google sheet",
