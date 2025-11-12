@@ -139,4 +139,9 @@ hs.hotkey.bind({ "cmd" }, ";", function()
   chooser:show()
 end)
 
+-- 系統預設的熱鍵就是如此，而如果做成cmd+f，會和瀏覽器的搜尋有衝突
+-- hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
+--   hs.window.focusedWindow():setFullscreen(true)
+-- end)
+
 hs.alert.show("config loaded")
