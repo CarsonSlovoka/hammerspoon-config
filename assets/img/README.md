@@ -10,6 +10,7 @@
 - [google-sheet](https://macosicons.com/#/?icon=65Z2u8izcQ)
 - [calculator](https://macosicons.com/#/?icon=JdrgercRpq)
 - [download-folder](https://macosicons.com/#/?icon=rfI5pVAFTB)
+- [discord](https://macosicons.com/#/?icon=ExKVJjQHK6)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
