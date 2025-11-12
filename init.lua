@@ -27,20 +27,38 @@ local imageFromPath = utils.image.fromPath
 local fuzzelList = {
   {
     text = "Firefox",
-    subText = "This is the subtext of the first choice",
+    subText = "launchOrFocus",
     path = "/Applications/Firefox.app",
     image = imageFromPath("firefox.icns"),
     -- image = hs.image.imageFromPath(utils.image.getImage("firefox.svg")), -- ❌ 不能給svg
   },
   {
     text = "Kitty",
+    subText = "launchOrFocus",
     path = "/Applications/kitty.app",
     image = imageFromPath("kitty.icns")
   },
-  { text = "Safari",     path = "/Applications/Safari.app",           image = imageFromPath("safari.icns") },
-  { text = "LmStudio",   path = "/Applications/LM Studio.app/" },
-  { text = "Calendar",   path = "/System/Applications/Calendar.app/" },
-  { text = "Calculator", path = "/System/Applications/Calculator.app" },
+  {
+    text = "Safari",
+    subText = "launchOrFocus",
+    path = "/Applications/Safari.app",
+    image = imageFromPath("safari.icns")
+  },
+  {
+    text = "LmStudio",
+    subText = "launchOrFocus",
+    path = "/Applications/LM Studio.app/"
+  },
+  {
+    text = "Calendar",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Calendar.app/"
+  },
+  {
+    text = "Calculator",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Calculator.app"
+  },
   {
     text = "google sheet",
     cmdName = cmdInfo.name.openBrowser,
