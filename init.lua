@@ -80,7 +80,12 @@ local fuzzelList = {
   --   subText = "What a lot of choosing there is going on here!",
   --   image = hs.image.imageFromName("NSComputer"),
   -- },
-
+  {
+    text = "~/Downloads",
+    subText = cmdInfo.name.openDir,
+    cmdName = cmdInfo.name.openDir,
+    kargs = { path = "~/Downloads" },
+  },
   {
     text = "hammerspoon reload",
     -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數

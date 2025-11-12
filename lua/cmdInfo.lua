@@ -3,6 +3,7 @@ local name = {
   listHsImage = "list hs.image",
   showClock = "show clock",
   openBrowser = "open browser",
+  openDir = "open dir",
 }
 
 local cmdTable = {
@@ -22,7 +23,10 @@ local cmdTable = {
     os.execute(cmd)
     -- hs.task.new("/bin/bash", nil, { "-c", cmd }):start()
     -- hs.osascript.applescript(string.format('do shell script "%s"', cmd))
-  end
+  end,
+  [name.openDir] = function(kargs)
+    os.execute("open " .. kargs.path)
+  end,
 }
 
 return {
