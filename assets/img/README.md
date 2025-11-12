@@ -6,6 +6,7 @@
 - [_Numbers__Dark_.icns](https://macosicons.com/#/?icon=DQxCTfUmPP)
 - [Safari](https://macosicons.com/#/?icon=nWnpPG0KU9)
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
+- [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

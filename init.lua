@@ -53,18 +53,19 @@ local fuzzelList = {
   {
     text = "Calendar",
     subText = "launchOrFocus",
-    path = "/System/Applications/Calendar.app/"
+    path = "/System/Applications/Calendar.app/",
+    image = imageFromPath("calendar.icns")
   },
   {
     text = "Calculator",
     subText = "launchOrFocus",
-    path = "/System/Applications/Calculator.app"
+    path = "/System/Applications/Calculator.app",
   },
   {
     text = "google sheet",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
-    kargs = { url = "https://docs.google.com/spreadsheets" }
+    kargs = { url = "https://docs.google.com/spreadsheets" },
   },
   -- {
   --   text = hs.styledtext.new(
