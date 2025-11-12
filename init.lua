@@ -8,6 +8,7 @@ package.path = package.path ..
 -- print(package.path)
 
 local test = require("test")
+local utils = require("utils.utils")
 test.test()
 
 hs.loadSpoon("Dock")
@@ -22,9 +23,18 @@ hs.loadSpoon("AClock")
 local cmdInfo = require("cmdInfo")
 
 local fuzzelList = {
-  { text = "Firefox", subText = "This is the subtext of the first choice", path = "/Applications/Firefox.app" },
-  { text = "Kitty",   path = "/Applications/kitty.app" },
-  { text = "Safari",  path = "/Applications/Safari.app" },
+  {
+    text = "Firefox",
+    subText = "This is the subtext of the first choice",
+    path = "/Applications/Firefox.app",
+    image = hs.image.imageFromPath(utils.image.getImage("firefox.icns")),
+    -- image = hs.image.imageFromPath(utils.image.getImage("firefox.svg")), -- ❌ 不能給svg
+  },
+  { text = "Kitty",      path = "/Applications/kitty.app" },
+  { text = "Safari",     path = "/Applications/Safari.app" },
+  { text = "LmStudio",   path = "/Applications/LM Studio.app/" },
+  { text = "Calendar",   path = "/System/Applications/Calendar.app/" },
+  { text = "Calculator", path = "/System/Applications/Calculator.app" },
   {
     text = "google sheet",
     cmdName = cmdInfo.name.openBrowser,
