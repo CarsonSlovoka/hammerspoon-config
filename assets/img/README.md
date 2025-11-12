@@ -4,6 +4,7 @@
 
 - [Firefox__Liquid_Glass_.icns](https://macosicons.com/#/?icon=uQ840QiA7p)
 - [_Numbers__Dark_.icns](https://macosicons.com/#/?icon=DQxCTfUmPP)
+- [Safari](https://macosicons.com/#/?icon=nWnpPG0KU9)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
@@ -32,7 +33,8 @@ _svg2icns my.svg
 svg2icns -r --no-normal my.svg 32 # 這可以做到64x64, 一般的不能直接放64, 因為呎吋只有16/32/128/256/512 用64正常的iconutil會沒辦法生成，只能依靠retina
 
 # 只要部份的png
-icnsKeep input.icns output.icns "32.png"
+icnsKeep input.icns output.icns "32.png"  # 用這個就差不多了
+# icnsKeep input.icns output.icns "32@2x"
 
 # 查看原icns的資料
 iconutil -c iconset source.icns -o temp.iconset

@@ -37,7 +37,7 @@ local fuzzelList = {
     path = "/Applications/kitty.app",
     image = imageFromPath("kitty.icns")
   },
-  { text = "Safari",     path = "/Applications/Safari.app" },
+  { text = "Safari",     path = "/Applications/Safari.app",           image = imageFromPath("safari.icns") },
   { text = "LmStudio",   path = "/Applications/LM Studio.app/" },
   { text = "Calendar",   path = "/System/Applications/Calendar.app/" },
   { text = "Calculator", path = "/System/Applications/Calculator.app" },
