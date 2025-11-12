@@ -47,7 +47,8 @@ local fuzzelList = {
   {
     text = "LmStudio",
     subText = "launchOrFocus",
-    path = "/Applications/LM Studio.app/"
+    path = "/Applications/LM Studio.app/",
+    image = imageFromPath("lmstudio.icns")
   },
   {
     text = "Calendar",
