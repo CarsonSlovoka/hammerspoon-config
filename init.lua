@@ -99,6 +99,10 @@ local fuzzelList = {
   {
     text = "show clock",
     cmdName = cmdInfo.name.showClock,
+  },
+  {
+    text = "layout left: kitty, right: firefox",
+    cmdName = cmdInfo.name.layoutLeftKittyRightFirefox,
   }
 }
 
@@ -189,7 +193,5 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
   end
 end)
 
-
--- end)
 
 hs.alert.show("config loaded")
