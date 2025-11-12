@@ -66,6 +66,7 @@ local fuzzelList = {
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
     kargs = { url = "https://docs.google.com/spreadsheets" },
+    image = imageFromPath("google-sheet.icns")
   },
   -- {
   --   text = hs.styledtext.new(
