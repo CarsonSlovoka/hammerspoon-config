@@ -179,9 +179,17 @@ hs.hotkey.bind({ "cmd" }, "j", function()
   focus("South")
 end)
 
--- 系統預設的熱鍵就是如此，而如果做成cmd+f，會和瀏覽器的搜尋有衝突
--- hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
---   hs.window.focusedWindow():setFullscreen(true)
+-- 雖然系統預設的熱鍵就是如此，但是有的應用程式，例如: lmstudio 它也會有熱鍵，因此用hammerspoon可以覆寫
+hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
+  local win = hs.window.focusedWindow()
+  if win:isFullScreen() then
+    win:setFullscreen(false)
+  else
+    win:setFullscreen(true)
+  end
+end)
+
+
 -- end)
 
 hs.alert.show("config loaded")
