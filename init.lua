@@ -139,6 +139,46 @@ hs.hotkey.bind({ "cmd" }, ";", function()
   chooser:show()
 end)
 
+
+-- 取得目前聚焦視窗並切換焦點
+local function focus(direction)
+  local win = hs.window.focusedWindow()
+  if win then
+    win["focusWindow" .. direction](win)
+  end
+end
+
+hs.hotkey.bind({ "cmd" }, "left", function()
+  focus("West")
+end)
+hs.hotkey.bind({ "cmd" }, "h", function()
+  focus("West")
+end)
+
+
+hs.hotkey.bind({ "cmd" }, "right", function()
+  focus("East")
+end)
+hs.hotkey.bind({ "cmd" }, "l", function()
+  focus("East")
+end)
+
+
+hs.hotkey.bind({ "cmd" }, "up", function()
+  focus("North")
+end)
+hs.hotkey.bind({ "cmd" }, "k", function()
+  focus("North")
+end)
+
+
+hs.hotkey.bind({ "cmd" }, "down", function()
+  focus("South")
+end)
+hs.hotkey.bind({ "cmd" }, "j", function()
+  focus("South")
+end)
+
 -- 系統預設的熱鍵就是如此，而如果做成cmd+f，會和瀏覽器的搜尋有衝突
 -- hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
 --   hs.window.focusedWindow():setFullscreen(true)
