@@ -85,6 +85,7 @@ local fuzzelList = {
     subText = cmdInfo.name.openDir,
     cmdName = cmdInfo.name.openDir,
     kargs = { path = "~/Downloads" },
+    image = imageFromPath("download-folder.icns"),
   },
   {
     text = "hammerspoon reload",
