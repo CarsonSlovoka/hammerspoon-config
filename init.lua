@@ -108,6 +108,13 @@ local fuzzelList = {
     image = imageFromPath("g-drive.icns")
   },
   {
+    text = "g-news",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://news.google.com/" },
+    image = imageFromPath("g-news.icns")
+  },
+  {
     text = "google translate",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
