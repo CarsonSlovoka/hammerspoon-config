@@ -1,7 +1,7 @@
 -- Tip: 如以下路徑加入: /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ 即可偵測到相關的定義
 --   https://github.com/CarsonSlovoka/nvim/commit/9c603a8074
--- hs = hs -- 減少未定義的警告
--- spoon = spoon
+hs = hs -- 減少未定義的警告
+spoon = spoon
 
 local hammerspoon_config_dir = os.getenv("HOME") .. '/.hammerspoon/'
 package.path = package.path ..
@@ -392,4 +392,5 @@ spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
 end)
 
 
+-- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
