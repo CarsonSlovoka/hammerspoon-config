@@ -20,6 +20,7 @@
 - [download-folder](https://macosicons.com/#/?icon=rfI5pVAFTB)
 - [discord](https://macosicons.com/#/?icon=ExKVJjQHK6)
 - [github](https://macosicons.com/#/?icon=CFPA2eHxxP)
+- [notion](https://macosicons.com/#/?icon=uToySGMoFX)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

@@ -149,6 +149,13 @@ local fuzzelList = {
     kargs = { url = "https://photos.google.com/" },
     image = imageFromPath("g-photo.icns")
   },
+  {
+    text = "notion",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://www.notion.so/" },
+    image = imageFromPath("notion.icns")
+  },
   -- {
   --   text = hs.styledtext.new(
   --     "Possibility",
