@@ -8,6 +8,7 @@
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
 - [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
 - [google-sheet](https://macosicons.com/#/?icon=65Z2u8izcQ)
+- [google-translate](https://macosicons.com/#/?icon=edTOLBtgP1)
 - [calculator](https://macosicons.com/#/?icon=JdrgercRpq)
 - [download-folder](https://macosicons.com/#/?icon=rfI5pVAFTB)
 - [discord](https://macosicons.com/#/?icon=ExKVJjQHK6)
@@ -17,12 +18,16 @@
 
 
 ```sh
-output=download-folder.icns
-input=$(ls -t1 ~/Downloads/*.icns | head -n 1)
-# mv -v ~/Downloads/*.icns .
-# icnsKeep $(ls -t1 *.icns | head -n 1) $output "32@2x"
-icnsKeep $input $output "32@2x"
-rm -v $input
+mv-here() {
+  output=$1
+  input=$(ls -t1 ~/Downloads/*.icns | head -n 1)
+  # mv -v ~/Downloads/*.icns .
+  # icnsKeep $(ls -t1 *.icns | head -n 1) $output "32@2x"
+  icnsKeep $input $output.icns "32@2x"
+  rm -v $input
+  open -a Preview $output.icns
+}
+# mv-here gmail
 ```
 
 

@@ -93,6 +93,13 @@ local fuzzelList = {
     kargs = { url = "https://docs.google.com/spreadsheets" },
     image = imageFromPath("google-sheet.icns")
   },
+  {
+    text = "google translate",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://translate.google.com" },
+    image = imageFromPath("google-translate.icns")
+  },
   -- {
   --   text = hs.styledtext.new(
   --     "Possibility",
