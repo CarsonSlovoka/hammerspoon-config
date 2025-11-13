@@ -8,6 +8,7 @@
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
 - [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
 - [google-sheet](https://macosicons.com/#/?icon=65Z2u8izcQ)
+- [google-photo](https://macosicons.com/#/?icon=dD4BZRp1WU)
 - [gmail](https://macosicons.com/#/?icon=67XOgIJbPf)
 - [google-translate](https://macosicons.com/#/?icon=edTOLBtgP1)
 - [calculator](https://macosicons.com/#/?icon=JdrgercRpq)

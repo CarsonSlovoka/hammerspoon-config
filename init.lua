@@ -107,6 +107,13 @@ local fuzzelList = {
     kargs = { url = "https://translate.google.com" },
     image = imageFromPath("google-translate.icns")
   },
+  {
+    text = "g-photo",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://photos.google.com/" },
+    image = imageFromPath("g-photo.icns")
+  },
   -- {
   --   text = hs.styledtext.new(
   --     "Possibility",
