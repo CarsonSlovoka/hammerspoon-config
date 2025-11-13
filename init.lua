@@ -108,6 +108,13 @@ local fuzzelList = {
     image = imageFromPath("google-sheet.icns")
   },
   {
+    text = "g-map",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://www.google.com/maps" },
+    image = imageFromPath("g-map.icns")
+  },
+  {
     text = "g-drive",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
