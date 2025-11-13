@@ -45,6 +45,9 @@ mkdir -pv ~/.hammerspoon/Spoons/
 ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/AClock.spoon ~/.hammerspoon/Spoons/AClock.spoon
 ```
 
+> [!IMPORTANT]
+> 請執行[init_plugin.sh](init_plugin.sh)來載入使用到的插件
+
 
 ### ~~各別導入~~
 

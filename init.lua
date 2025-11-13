@@ -13,6 +13,9 @@ local utils = require("utils.utils")
 
 hs.loadSpoon("Dock")
 hs.loadSpoon("AClock")
+hs.loadSpoon("LeftRightHotkey")
+spoon.LeftRightHotkey:start()
+
 -- 如此在它的終端機，可以直接使用
 -- spoon.Dock.hideDock()
 
@@ -287,5 +290,10 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
   end
 end)
 
+
+spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
+  local win = hs.window.focusedWindow()
+  win:maximize()
+end)
 
 hs.alert.show("config loaded")
