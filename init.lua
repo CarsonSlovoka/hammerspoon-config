@@ -87,6 +87,13 @@ local fuzzelList = {
     image = imageFromPath("discord.icns")
   },
   {
+    text = "gmail",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://mail.google.com/mail" },
+    image = imageFromPath("gmail.icns")
+  },
+  {
     text = "google sheet",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
