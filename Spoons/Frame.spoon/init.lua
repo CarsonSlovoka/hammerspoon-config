@@ -65,17 +65,18 @@ function M:setup(mods, key, opt)
   --- 讓repeatfn等同pressedfn
   --- https://www.hammerspoon.org/docs/hs.hotkey.modal.html#bind
   local function bind(the_mods, the_key, message, pressedfn, releasedfn, repeatfn)
+    -- message = VERBOSE and (message or nil) or nil
     resizeMode:bind(
       the_mods, the_key,
       message or nil, -- 如果為nil按鍵觸發不會有任何的提示, 如果非nil, 出現的提示前綴還會新增上觸發按鍵
       pressedfn,
       releasedfn or nil,
-      repeatfn or pressedfn -- repeatfn
+      repeatfn or pressedfn -- repeatfn -- Warn: 目前當message為nil時，repeatfn會沒有作用
     )
   end
 
   -- 在模式中绑定 h/j/k/l 键进行 resize
-  bind({}, 'h', '', function()
+  bind({}, 'h', 'Shrink width', function()
     resizeWindow(-RESIZE_STEP, 0)
   end)
 
