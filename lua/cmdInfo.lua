@@ -6,6 +6,7 @@ local name = {
   openDir = "open dir",
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
   showGrid = "show grid",
+  fullscreenAllWindow = "fullscreenAllWindow",
 }
 
 local cmdTable = {
@@ -63,6 +64,16 @@ local cmdTable = {
     -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/grid.lua
     -- hs.grid.set(hs.window.focusedWindow(), '4,0 4x2') -- 如果整個的grid是8x2, 則4,0 4x2 就是移動到4,0的位置，然後它的大小有4x2那麼大，因此就是佔滿整個右
   end,
+
+  [name.fullscreenAllWindow] = function()
+    -- hs.grid.getGrid(hs.screen.mainScreen()) -- hs.geometry.size(3,3)
+    -- hs.grid.getGridFrame(hs.screen.mainScreen()) -- hs.geometry.rect(0.0,31.0,1920.0,1049.0)
+    local mainScreen = hs.screen.mainScreen()
+    local grid = hs.grid.getGrid(mainScreen)
+    for i, win in ipairs(hs.window:allWindows()) do
+      hs.grid.set(win, string.format('0,0 %sx%s', grid.w, grid.h))
+    end
+  end
 }
 
 return {

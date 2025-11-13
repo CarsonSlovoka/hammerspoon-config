@@ -22,6 +22,7 @@
 - [github](https://macosicons.com/#/?icon=CFPA2eHxxP)
 - [notion](https://macosicons.com/#/?icon=uToySGMoFX)
 - [grid](https://macosicons.com/#/?icon=CIJrGAtVsf)
+- [fullscreen](https://macosicons.com/#/?icon=giXPb4jZpD)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

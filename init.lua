@@ -204,6 +204,12 @@ local fuzzelList = {
     cmdName = cmdInfo.name.showGrid,
     image = imageFromPath("grid.icns"),
   },
+  {
+    text = "fullscreen all window",
+    cmdName = cmdInfo.name.fullscreenAllWindow,
+    image = imageFromPath("fullscreen.icns"),
+  },
+  {
     text = "list hs.image",
     cmdName = cmdInfo.name.listHsImage,
   },
