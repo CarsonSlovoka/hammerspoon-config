@@ -80,6 +80,13 @@ local fuzzelList = {
     image = imageFromPath("calculator.icns")
   },
   {
+    text = "github",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://github.com/" },
+    image = imageFromPath("github.icns")
+  },
+  {
     text = "discord",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
