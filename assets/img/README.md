@@ -34,7 +34,10 @@ mv-here() {
   # icnsKeep $(ls -t1 *.icns | head -n 1) $output "32@2x"
   icnsKeep $input $output.icns "32@2x"
   rm -v $input
-  open -a Preview $output.icns
+  # open -a Preview $output.icns # 看選可以在一開下載完的時候看
+
+  # 用alert查看size可以更清楚
+  hs -c "local f=io.popen(\"ls -lh $(realpath $output.icns)\"); local out=f:read('*a'); f:close(); hs.alert.show(out, 5)"
 }
 # mv-here gmail
 ```
