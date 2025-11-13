@@ -5,6 +5,7 @@ local name = {
   openBrowser = "open browser",
   openDir = "open dir",
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
+  showGrid = "show grid",
 }
 
 local cmdTable = {
@@ -54,6 +55,13 @@ local cmdTable = {
     end
 
     hs.layout.apply(splitLayout)
+  end,
+  [name.showGrid] = function()
+    -- hs.grid.setMargins(hs.geometry.size(0, 0))
+    -- hs.grid.setGrid('8x2') -- 預設是3x3, 可以不設定直接用 hs.grid.show() 就可曉得了, 也可以`hs.grid.getGrid(hs.screen.mainScreen())`來得知
+    hs.grid.show()
+    -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/grid.lua
+    -- hs.grid.set(hs.window.focusedWindow(), '4,0 4x2') -- 如果整個的grid是8x2, 則4,0 4x2 就是移動到4,0的位置，然後它的大小有4x2那麼大，因此就是佔滿整個右
   end,
 }
 

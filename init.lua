@@ -200,6 +200,10 @@ local fuzzelList = {
     image = imageFromPath("macosicons.com.icns")
   },
   {
+    text = "show grid",
+    cmdName = cmdInfo.name.showGrid,
+    image = imageFromPath("grid.icns"),
+  },
     text = "list hs.image",
     cmdName = cmdInfo.name.listHsImage,
   },
