@@ -292,8 +292,18 @@ end)
 
 
 spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
+  -- 以下沒用
+  -- local frontmostApp = hs.window.focusedWindow():application()
+  -- if frontmostApp:name() == "Firefox" then
+  --   hs.eventtap.keyStroke({ "cmd" }, "f", 0)
+  -- end
+
+  -- 如果在鍵盤只有一個cmd鍵，就只能放棄在firefox中用cmd+f來搜尋
+  -- Tip: 但可以在非文字欄位中按下 / 如此可以啟動快速搜尋
+  --  此時是否區分大小寫，仍然要在cmd+f設定才可以，可以用 Edit > Find 中也可以用UI的方式開啟cmd+f的視窗
   local win = hs.window.focusedWindow()
   win:maximize()
 end)
+
 
 hs.alert.show("config loaded")
