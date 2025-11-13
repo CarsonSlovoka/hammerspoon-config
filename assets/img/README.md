@@ -7,6 +7,7 @@
 - [Safari](https://macosicons.com/#/?icon=nWnpPG0KU9)
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
 - [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
+- [g-drive](https://macosicons.com/#/?icon=j3TY8BvylR)
 - [google-sheet](https://macosicons.com/#/?icon=65Z2u8izcQ)
 - [google-photo](https://macosicons.com/#/?icon=dD4BZRp1WU)
 - [gmail](https://macosicons.com/#/?icon=67XOgIJbPf)

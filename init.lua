@@ -101,6 +101,13 @@ local fuzzelList = {
     image = imageFromPath("google-sheet.icns")
   },
   {
+    text = "g-drive",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://drive.google.com/drive/home" },
+    image = imageFromPath("g-drive.icns")
+  },
+  {
     text = "google translate",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
