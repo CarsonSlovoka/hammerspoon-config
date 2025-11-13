@@ -62,55 +62,66 @@ function M:setup(mods, key, opt)
     resizeMode:exit()
   end)
 
+  --- 讓repeatfn等同pressedfn
+  --- https://www.hammerspoon.org/docs/hs.hotkey.modal.html#bind
+  local function bind(the_mods, the_key, message, pressedfn, releasedfn, repeatfn)
+    resizeMode:bind(
+      the_mods, the_key,
+      message or nil, -- 如果為nil按鍵觸發不會有任何的提示, 如果非nil, 出現的提示前綴還會新增上觸發按鍵
+      pressedfn,
+      releasedfn or nil,
+      repeatfn or pressedfn -- repeatfn
+    )
+  end
+
   -- 在模式中绑定 h/j/k/l 键进行 resize
-  -- resizeMode:bind({}, 'key', 'description', function() end) -- 其中description會在觸發的時候顯示
-  resizeMode:bind({}, 'h', 'Shrink width', function()
+  bind({}, 'h', '', function()
     resizeWindow(-RESIZE_STEP, 0)
   end)
 
-  resizeMode:bind({}, 'j', 'Grow height', function()
+  bind({}, 'j', 'Grow height', function()
     resizeWindow(0, RESIZE_STEP)
   end)
 
-  resizeMode:bind({}, 'k', 'Shrink height', function()
+  bind({}, 'k', 'Shrink height', function()
     resizeWindow(0, -RESIZE_STEP)
   end)
 
-  resizeMode:bind({}, 'l', 'Grow width', function()
+  bind({}, 'l', 'Grow width', function()
     resizeWindow(RESIZE_STEP, 0)
   end)
 
   -- 可选: 绑定箭头键作为备选（如果不喜欢 hjkl）
-  resizeMode:bind({}, 'left', 'Shrink width (arrow)', function()
+  bind({}, 'left', 'Shrink width (arrow)', function()
     resizeWindow(-RESIZE_STEP, 0)
   end)
 
-  resizeMode:bind({}, 'down', 'Grow height (arrow)', function()
+  bind({}, 'down', 'Grow height (arrow)', function()
     resizeWindow(0, RESIZE_STEP)
   end)
 
-  resizeMode:bind({}, 'up', 'Shrink height (arrow)', function()
+  bind({}, 'up', 'Shrink height (arrow)', function()
     resizeWindow(0, -RESIZE_STEP)
   end)
 
-  resizeMode:bind({}, 'right', 'Grow width (arrow)', function()
+  bind({}, 'right', 'Grow width (arrow)', function()
     resizeWindow(RESIZE_STEP, 0)
   end)
 
 
   --- move ---
   local mod_move = { 'cmd', 'shift' }
-  resizeMode:bind(mod_move, 'h', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
-  resizeMode:bind(mod_move, 'left', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
+  bind(mod_move, 'h', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
+  bind(mod_move, 'left', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
 
-  resizeMode:bind(mod_move, 'j', 'move down', function() moveWindow(0, MOVE_STEP) end)
-  resizeMode:bind(mod_move, 'down', 'move down', function() moveWindow(0, MOVE_STEP) end)
+  bind(mod_move, 'j', 'move down', function() moveWindow(0, MOVE_STEP) end)
+  bind(mod_move, 'down', 'move down', function() moveWindow(0, MOVE_STEP) end)
 
-  resizeMode:bind(mod_move, 'k', 'move up', function() moveWindow(0, -MOVE_STEP) end)
-  resizeMode:bind(mod_move, 'up', 'move up', function() moveWindow(0, -MOVE_STEP) end)
+  bind(mod_move, 'k', 'move up', function() moveWindow(0, -MOVE_STEP) end)
+  bind(mod_move, 'up', 'move up', function() moveWindow(0, -MOVE_STEP) end)
 
-  resizeMode:bind(mod_move, 'l', 'move right', function() moveWindow(MOVE_STEP, 0) end)
-  resizeMode:bind(mod_move, 'right', 'move right', function() moveWindow(MOVE_STEP, 0) end)
+  bind(mod_move, 'l', 'move right', function() moveWindow(MOVE_STEP, 0) end)
+  bind(mod_move, 'right', 'move right', function() moveWindow(MOVE_STEP, 0) end)
 end
 
 return M
