@@ -166,6 +166,13 @@ local fuzzelList = {
     cmdName = cmdInfo.name.hammerspoonReload,
   },
   {
+    text = "find icons",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://macosicons.com" },
+    image = imageFromPath("macosicons.com.icns")
+  },
+  {
     text = "list hs.image",
     cmdName = cmdInfo.name.listHsImage,
   },

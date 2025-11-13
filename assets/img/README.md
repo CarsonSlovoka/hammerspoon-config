@@ -2,6 +2,7 @@
 
 ## [macosicons.com](https://macosicons.com)
 
+- [macosicons](https://macosicons.com/#/?icon=ty9191FNEX)
 - [Firefox__Liquid_Glass_.icns](https://macosicons.com/#/?icon=uQ840QiA7p)
 - [_Numbers__Dark_.icns](https://macosicons.com/#/?icon=DQxCTfUmPP)
 - [Safari](https://macosicons.com/#/?icon=nWnpPG0KU9)
