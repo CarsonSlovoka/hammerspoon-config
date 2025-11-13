@@ -1,7 +1,11 @@
---- 此插件希望做到像sway的效果: `bindsym $mod+r mode "resize"`
+--- 此插件希望做到像sway的效果:
+--- `bindsym $mod+r mode "resize"`
+--- `bindsym $mod+Shift+Left move left`
+
 
 local M = {
-  resize_step = 50
+  resize_step = 50,
+  move_step = 50,
 }
 
 -- 辅助函数: 调整窗口 frame
@@ -16,8 +20,19 @@ local function resizeWindow(dx, dy)
   win:setFrame(f)
 end
 
+-- 移動窗口 frame（新增）
+local function moveWindow(dx, dy)
+  local win = hs.window.focusedWindow()
+  if not win then return end
+  local f = win:frame()
+  f.x = f.x + dx
+  f.y = f.y + dy
+  win:setFrame(f)
+end
+
 ---@class ResizeOption
 ---@field resize_step number?
+---@field move_step number?
 
 ---@param mods table  {"cmd"}
 ---@param key string "r"
@@ -25,6 +40,7 @@ end
 function M:setup(mods, key, opt)
   opt = opt or {}
   RESIZE_STEP = opt.resize_step or M.resize_step
+  MOVE_STEP = opt.move_step or M.move_step
 
   -- 觸發鍵
   -- local resizeMode = hs.hotkey.modal.new({ 'cmd' }, 'r')
@@ -80,6 +96,21 @@ function M:setup(mods, key, opt)
   resizeMode:bind({}, 'right', 'Grow width (arrow)', function()
     resizeWindow(RESIZE_STEP, 0)
   end)
+
+
+  --- move ---
+  local mod_move = { 'cmd', 'shift' }
+  resizeMode:bind(mod_move, 'h', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
+  resizeMode:bind(mod_move, 'left', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
+
+  resizeMode:bind(mod_move, 'j', 'move down', function() moveWindow(0, MOVE_STEP) end)
+  resizeMode:bind(mod_move, 'down', 'move down', function() moveWindow(0, MOVE_STEP) end)
+
+  resizeMode:bind(mod_move, 'k', 'move up', function() moveWindow(0, -MOVE_STEP) end)
+  resizeMode:bind(mod_move, 'up', 'move up', function() moveWindow(0, -MOVE_STEP) end)
+
+  resizeMode:bind(mod_move, 'l', 'move right', function() moveWindow(MOVE_STEP, 0) end)
+  resizeMode:bind(mod_move, 'right', 'move right', function() moveWindow(MOVE_STEP, 0) end)
 end
 
 return M

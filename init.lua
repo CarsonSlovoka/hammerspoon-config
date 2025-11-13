@@ -22,7 +22,13 @@ for _, plugin in ipairs({
 end
 
 spoon.LeftRightHotkey:start()
-spoon.Frame:setup({ "cmd" }, "r", { resize_step = 100 })
+spoon.Frame:setup(
+  { "cmd" }, "r",
+  {
+    resize_step = 100,
+    move_step = 200
+  }
+)
 
 -- 如此在它的終端機，可以直接使用
 -- spoon.Dock.hideDock()
