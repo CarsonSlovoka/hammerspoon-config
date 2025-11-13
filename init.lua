@@ -13,6 +13,17 @@ package.path = package.path ..
 local utils = require("utils.utils")
 -- test.test()
 
+-- https://www.hammerspoon.org/docs/hs.ipc.html#cliInstall
+-- hs -c "hs.alert.show('Hello from nvim')"
+-- Err: can't access Hammerspoon message port Hammerspoon; is it running with the ipc module loaded?
+hs.ipc.cliInstall() -- 要安裝ipc才不會有以上錯誤 -- 當註解掉後，重新啟用, 再使用hs -c還是會遇到, 因此這不是一次性設定, 需寫在init.lua
+-- ls -lh /opt/homebrew/bin/hs
+-- /opt/homebrew/bin/hs -> /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs
+-- hs.ipc.cliInstall("/usr/local/bin") 做類似以下的事情
+-- ln -s "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc/bin/hs" "/usr/local/bin/hs"
+-- Tip: 跳轉到ipc.lua中找到cliInstall就會曉得它做的事情 /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc.lua
+
+
 for _, plugin in ipairs({
   "Dock",
   "AClock",
