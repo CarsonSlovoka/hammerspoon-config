@@ -11,10 +11,18 @@ package.path = package.path ..
 local utils = require("utils.utils")
 -- test.test()
 
-hs.loadSpoon("Dock")
-hs.loadSpoon("AClock")
-hs.loadSpoon("LeftRightHotkey")
+for _, plugin in ipairs({
+  "Dock",
+  "AClock",
+  "LeftRightHotkey",
+  "Frame",
+}) do
+  -- Spoons/<plugin>.spoon
+  hs.loadSpoon(plugin)
+end
+
 spoon.LeftRightHotkey:start()
+spoon.Frame:setup({ "cmd" }, "r", { resize_step = 100 })
 
 -- 如此在它的終端機，可以直接使用
 -- spoon.Dock.hideDock()
