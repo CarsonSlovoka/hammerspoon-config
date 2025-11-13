@@ -4,8 +4,8 @@
 
 
 local M = {
-  resize_step = 50,
-  move_step = 50,
+  RESIZE_STEP = 50,
+  MOVE_STEP = 50,
 }
 
 -- 辅助函数: 调整窗口 frame
@@ -39,8 +39,8 @@ end
 ---@param opt ResizeOption?
 function M:setup(mods, key, opt)
   opt = opt or {}
-  RESIZE_STEP = opt.resize_step or M.resize_step
-  MOVE_STEP = opt.move_step or M.move_step
+  M.RESIZE_STEP = opt.resize_step or M.RESIZE_STEP
+  M.MOVE_STEP = opt.move_step or M.MOVE_STEP
 
   -- 觸發鍵
   -- local resizeMode = hs.hotkey.modal.new({ 'cmd' }, 'r')
@@ -77,52 +77,52 @@ function M:setup(mods, key, opt)
 
   -- 在模式中绑定 h/j/k/l 键进行 resize
   bind({}, 'h', 'Shrink width', function()
-    resizeWindow(-RESIZE_STEP, 0)
+    resizeWindow(-M.RESIZE_STEP, 0)
   end)
 
   bind({}, 'j', 'Grow height', function()
-    resizeWindow(0, RESIZE_STEP)
+    resizeWindow(0, M.RESIZE_STEP)
   end)
 
   bind({}, 'k', 'Shrink height', function()
-    resizeWindow(0, -RESIZE_STEP)
+    resizeWindow(0, -M.RESIZE_STEP)
   end)
 
   bind({}, 'l', 'Grow width', function()
-    resizeWindow(RESIZE_STEP, 0)
+    resizeWindow(M.RESIZE_STEP, 0)
   end)
 
   -- 可选: 绑定箭头键作为备选（如果不喜欢 hjkl）
   bind({}, 'left', 'Shrink width (arrow)', function()
-    resizeWindow(-RESIZE_STEP, 0)
+    resizeWindow(-M.RESIZE_STEP, 0)
   end)
 
   bind({}, 'down', 'Grow height (arrow)', function()
-    resizeWindow(0, RESIZE_STEP)
+    resizeWindow(0, M.RESIZE_STEP)
   end)
 
   bind({}, 'up', 'Shrink height (arrow)', function()
-    resizeWindow(0, -RESIZE_STEP)
+    resizeWindow(0, -M.RESIZE_STEP)
   end)
 
   bind({}, 'right', 'Grow width (arrow)', function()
-    resizeWindow(RESIZE_STEP, 0)
+    resizeWindow(M.RESIZE_STEP, 0)
   end)
 
 
   --- move ---
   local mod_move = { 'cmd', 'shift' }
-  bind(mod_move, 'h', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
-  bind(mod_move, 'left', 'move left', function() moveWindow(-MOVE_STEP, 0) end)
+  bind(mod_move, 'h', 'move left', function() moveWindow(-M.MOVE_STEP, 0) end)
+  bind(mod_move, 'left', 'move left', function() moveWindow(-M.MOVE_STEP, 0) end)
 
-  bind(mod_move, 'j', 'move down', function() moveWindow(0, MOVE_STEP) end)
-  bind(mod_move, 'down', 'move down', function() moveWindow(0, MOVE_STEP) end)
+  bind(mod_move, 'j', 'move down', function() moveWindow(0, M.MOVE_STEP) end)
+  bind(mod_move, 'down', 'move down', function() moveWindow(0, M.MOVE_STEP) end)
 
-  bind(mod_move, 'k', 'move up', function() moveWindow(0, -MOVE_STEP) end)
-  bind(mod_move, 'up', 'move up', function() moveWindow(0, -MOVE_STEP) end)
+  bind(mod_move, 'k', 'move up', function() moveWindow(0, -M.MOVE_STEP) end)
+  bind(mod_move, 'up', 'move up', function() moveWindow(0, -M.MOVE_STEP) end)
 
-  bind(mod_move, 'l', 'move right', function() moveWindow(MOVE_STEP, 0) end)
-  bind(mod_move, 'right', 'move right', function() moveWindow(MOVE_STEP, 0) end)
+  bind(mod_move, 'l', 'move right', function() moveWindow(M.MOVE_STEP, 0) end)
+  bind(mod_move, 'right', 'move right', function() moveWindow(M.MOVE_STEP, 0) end)
 end
 
 return M
