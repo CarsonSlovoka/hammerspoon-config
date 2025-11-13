@@ -108,6 +108,13 @@ local fuzzelList = {
     image = imageFromPath("google-sheet.icns")
   },
   {
+    text = "g-earth",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://earth.google.com/web/@23.95095877,124.13425799,-4075.36033555a,7328573.7277472d,35y,0h,0t" }, -- 如果只給到web, 會需要自己再點
+    image = imageFromPath("g-earth.icns")
+  },
+  {
     text = "g-map",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,

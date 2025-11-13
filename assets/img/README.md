@@ -13,6 +13,7 @@
 - [google-news](https://macosicons.com/#/?icon=HKi0shyo7O)
 - [google-photo](https://macosicons.com/#/?icon=dD4BZRp1WU)
 - [gmail](https://macosicons.com/#/?icon=67XOgIJbPf)
+- [g-earth](https://macosicons.com/#/?icon=FDgDTbM9lC)
 - [g-map](https://macosicons.com/#/?icon=9ondpQmLGX)
 - [google-translate](https://macosicons.com/#/?icon=edTOLBtgP1)
 - [calculator](https://macosicons.com/#/?icon=JdrgercRpq)
