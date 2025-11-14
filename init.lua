@@ -3,6 +3,7 @@
 hs = hs -- 減少未定義的警告
 spoon = spoon
 
+
 local hammerspoon_config_dir = os.getenv("HOME") .. '/.hammerspoon/'
 package.path = package.path ..
     ';' .. hammerspoon_config_dir .. 'lua/?.lua'
@@ -55,6 +56,12 @@ spoon.Frame:setup(
 local cmdInfo = require("cmdInfo")
 
 local imageFromPath = utils.image.fromPath
+
+local LayoutName = {
+  Code = "Code",
+  AskAI = "Ask AI",
+  CodeAndFirefox = "Code & Firefox",
+}
 
 local fuzzelList = {
   {
@@ -233,6 +240,24 @@ local fuzzelList = {
   {
     text = "show clock",
     cmdName = cmdInfo.name.showClock,
+  },
+  {
+    text = "layout: code",
+    subText = cmdInfo.name.selectLayout,
+    cmdName = cmdInfo.name.selectLayout,
+    kargs = { name = LayoutName.AskAI },
+  },
+  {
+    text = "layout: ask ai",
+    subText = cmdInfo.name.selectLayout,
+    cmdName = cmdInfo.name.selectLayout,
+    kargs = { name = LayoutName.AskAI },
+  },
+  {
+    text = "layout: code and firefox",
+    subText = cmdInfo.name.selectLayout,
+    cmdName = cmdInfo.name.selectLayout,
+    kargs = { name = LayoutName.CodeAndFirefox },
   },
   {
     text = "layout left: kitty, right: firefox",
@@ -468,7 +493,7 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
 hs.grid.setGrid('8x2')
 -- Spoons/Layout.spoon/init.lua
 spoon.Layout:defineLayout(
-  "Cmd",
+  LayoutName.Code,
   { "cmd" }, "1",
   {
     { 'kitty', '0,0 8x2' },
@@ -476,7 +501,7 @@ spoon.Layout:defineLayout(
 )
 
 spoon.Layout:defineLayout(
-  "Ask AI",
+  LayoutName.AskAI,
   { "cmd" }, "2",
   {
     { 'kitty',     '0,0 4x2' },
@@ -487,7 +512,7 @@ spoon.Layout:defineLayout(
 )
 
 spoon.Layout:defineLayout(
-  "Code & Reference",
+  LayoutName.CodeAndFirefox,
   { "cmd" }, "5",
   {
     { 'kitty',   '0,0 4x2' },

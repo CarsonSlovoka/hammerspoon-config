@@ -5,6 +5,7 @@ local name = {
   openBrowser = "open browser",
   openDir = "open dir",
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
+  selectLayout = "select layout",
   showGrid = "show grid",
   fullscreenAllWindow = "fullscreenAllWindow",
   minimizeAllWindow = "minimizeAllWindow",
@@ -66,6 +67,11 @@ local cmdTable = {
     hs.grid.show()
     -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/grid.lua
     -- hs.grid.set(hs.window.focusedWindow(), '4,0 4x2') -- 如果整個的grid是8x2, 則4,0 4x2 就是移動到4,0的位置，然後它的大小有4x2那麼大，因此就是佔滿整個右
+  end,
+  [name.selectLayout] = function(kargs)
+    local name = kargs.name
+    -- ~/.Hammerspoon/Spoons/Layout.spoon/init.lua
+    spoon.Layout.layoutFuncMap[name]()
   end,
 
   [name.fullscreenAllWindow] = function()
