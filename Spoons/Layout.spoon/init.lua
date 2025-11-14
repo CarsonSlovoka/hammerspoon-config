@@ -1,5 +1,5 @@
 local M = {
-  layoutFuncMap = {}
+  layoutFuncMap = {} -- 此用處可參考: https://github.com/CarsonSlovoka/hammerspoon-config/commit/0f34ef09#diff-eaab8cac4014c5ebcb0e60cacb453a1fe5a00bcb5c7d26dd01e8891c967ffbecR71-R75
 }
 
 
