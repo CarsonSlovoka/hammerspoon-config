@@ -418,10 +418,40 @@ spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
   -- 如果在鍵盤只有一個cmd鍵，就只能放棄在firefox中用cmd+f來搜尋
   -- Tip: 但可以在非文字欄位中按下 / 如此可以啟動快速搜尋
   --  此時是否區分大小寫，仍然要在cmd+f設定才可以，可以用 Edit > Find 中也可以用UI的方式開啟cmd+f的視窗
+  -- 👆 已經有綁定了一個 rCtrl, f  觸發原本的cmd+f 所以不需要用以上的操作也可以
   local win = hs.window.focusedWindow()
   win:maximize()
 end)
 
+
+-- 👇 以下可行，但是沒有辦法缺分左右ctrl
+-- 將 Ctrl + key 轉成 Cmd + key（注意：會同時作用在左 Ctrl + 右 Ctrl）
+-- local tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(e)
+--   local flags = e:getFlags()
+--   -- 只在 ctrl 被按下 (不區分左右) 時介入
+--   if flags.ctrl and not flags.cmd and not flags.alt then
+--     local code = e:getKeyCode()
+--     -- 取得 key string (例如 "a", "1", "return"...)
+--     local keyStr = hs.keycodes.map[code]
+--     if keyStr == "f" then
+--       -- 送出 Cmd + key （down + up）
+--       hs.eventtap.event.newKeyEvent({ "cmd" }, keyStr, true):post()
+--       hs.eventtap.event.newKeyEvent({ "cmd" }, keyStr, false):post()
+--       return true -- 擋掉原本事件
+--     end
+--   end
+--   return false
+-- end)
+-- tap:start()
+
+spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程式，還是需要用cmd+f來搜尋，當將cmd+f設定為: `win:maximize()` 就要有其它代替搜尋的鍵，不然會很不方便
+  nil,                                       -- Caution: 這種改鍵不要設定成pressedfn, 要寫在releasedfn來觸發
+  function()
+    -- hs.eventtap.event.newKeyEvent({ "cmd" }, "f", true):post()  -- 按壓
+    -- hs.eventtap.event.newKeyEvent({ "cmd" }, "f", false):post() -- 彈起
+    hs.eventtap.keyStroke({ "cmd" }, "f") -- 等同按壓＋彈起. 同等以上兩步驟
+  end
+)
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
