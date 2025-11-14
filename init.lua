@@ -251,10 +251,12 @@ local function completionFn(choice)
     return
   end
 
-  local win = hs.window.focusedWindow()
-  if win:isFullScreen() then
-    -- 全螢幕下如果沒退出，無法直接換到其它的視窗
-    win:setFullscreen(false)
+  local win = hs.window.focusedWindow() -- Warn: 最小化的時候，此時win會沒有
+  if win then
+    if win:isFullScreen() then
+      -- 全螢幕下如果沒退出，無法直接換到其它的視窗
+      win:setFullscreen(false)
+    end
   end
   hs.application.launchOrFocus(choice.path)
 
