@@ -30,6 +30,7 @@ for _, plugin in ipairs({
   "LeftRightHotkey",
   "Frame",
   "Layout",
+  "Toggle",
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -427,8 +428,11 @@ spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
   -- Tip: 但可以在非文字欄位中按下 / 如此可以啟動快速搜尋
   --  此時是否區分大小寫，仍然要在cmd+f設定才可以，可以用 Edit > Find 中也可以用UI的方式開啟cmd+f的視窗
   -- 👆 已經有綁定了一個 rCtrl, f  觸發原本的cmd+f 所以不需要用以上的操作也可以
-  local win = hs.window.focusedWindow()
-  win:maximize()
+  -- local win = hs.window.focusedWindow()
+  -- win:maximize()
+
+  -- Spoons/Toggle.spoon/init.lua
+  spoon.Toggle.toggleMaximize()
 end)
 
 
