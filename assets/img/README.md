@@ -23,6 +23,7 @@
 - [notion](https://macosicons.com/#/?icon=uToySGMoFX)
 - [grid](https://macosicons.com/#/?icon=CIJrGAtVsf)
 - [fullscreen](https://macosicons.com/#/?icon=giXPb4jZpD)
+- [application-folder](https://macosicons.com/#/?icon=oZUJAfWaA6)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

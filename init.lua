@@ -210,6 +210,11 @@ local fuzzelList = {
     image = imageFromPath("fullscreen.icns"),
   },
   {
+    text = "list running applications",
+    cmdName = cmdInfo.name.listRunningApplications,
+    image = imageFromPath("application-folder.icns"),
+  },
+  {
     text = "list hs.image",
     cmdName = cmdInfo.name.listHsImage,
   },

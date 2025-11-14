@@ -7,6 +7,7 @@ local name = {
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
   showGrid = "show grid",
   fullscreenAllWindow = "fullscreenAllWindow",
+  listRunningApplications = "runningApplications",
 }
 
 local cmdTable = {
@@ -73,6 +74,24 @@ local cmdTable = {
     for i, win in ipairs(hs.window:allWindows()) do
       hs.grid.set(win, string.format('0,0 %sx%s', grid.w, grid.h))
     end
+  end,
+  [name.listRunningApplications] = function()
+    local msg = ""
+    for _, app in ipairs(hs.application.runningApplications()) do
+      msg = msg .. "\n" .. string.format("%s | %s \n", app:name(), app:bundleID())
+    end
+
+    -- Tip: style, 在檔案: /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
+    --   搜尋: module.defaultStyle 可以看到預設的設定
+    local style = {
+      textSize = 12,
+      atScreenEdge = 1, -- 0: center (default); 1: top ; 2: bottom
+    }
+
+    -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
+    hs.alert.show(msg, style, hs.screen.mainScreen(), 5)
+    -- hs.alert.show(msg, 10)
+    print(msg) -- 在hammerspoon中查看會更好
   end
 }
 
