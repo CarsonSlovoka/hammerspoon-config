@@ -211,6 +211,11 @@ local fuzzelList = {
     image = imageFromPath("fullscreen.icns"),
   },
   {
+    text = "minmize all window",
+    cmdName = cmdInfo.name.minimizeAllWindow,
+    image = imageFromPath("empty.icns"),
+  },
+  {
     text = "list running applications",
     cmdName = cmdInfo.name.listRunningApplications,
     image = imageFromPath("application-folder.icns"),

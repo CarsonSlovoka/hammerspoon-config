@@ -26,6 +26,7 @@
 - [application-folder](https://macosicons.com/#/?icon=oZUJAfWaA6)
 - ~~[keyboard](https://macosicons.com/#/?icon=lP7OMP3NcX)~~ 還不錯，但是小圖不適合
 - [keyboard](https://macosicons.com/#/?icon=AGJbLmsrfq)
+- [empty](https://macosicons.com/#/?icon=IoyGl81rzE)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

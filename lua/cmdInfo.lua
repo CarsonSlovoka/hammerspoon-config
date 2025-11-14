@@ -7,6 +7,7 @@ local name = {
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
   showGrid = "show grid",
   fullscreenAllWindow = "fullscreenAllWindow",
+  minimizeAllWindow = "minimizeAllWindow",
   listRunningApplications = "runningApplications",
   whichKey = "whichKey",
 }
@@ -74,6 +75,11 @@ local cmdTable = {
     local grid = hs.grid.getGrid(mainScreen)
     for i, win in ipairs(hs.window:allWindows()) do
       hs.grid.set(win, string.format('0,0 %sx%s', grid.w, grid.h))
+    end
+  end,
+  [name.minimizeAllWindow] = function()
+    for _, win in ipairs(hs.window.allWindows()) do
+      win:minimize()
     end
   end,
   [name.listRunningApplications] = function()
