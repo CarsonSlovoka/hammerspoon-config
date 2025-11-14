@@ -29,6 +29,7 @@ for _, plugin in ipairs({
   "AClock",
   "LeftRightHotkey",
   "Frame",
+  "Layout",
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -452,6 +453,39 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
     hs.eventtap.keyStroke({ "cmd" }, "f") -- 等同按壓＋彈起. 同等以上兩步驟
   end
 )
+
+hs.grid.setGrid('8x2')
+-- Spoons/Layout.spoon/init.lua
+spoon.Layout:defineLayout(
+  "Cmd",
+  { "cmd" }, "1",
+  {
+    { 'kitty', '0,0 8x2' },
+  }
+)
+
+spoon.Layout:defineLayout(
+  "Ask AI",
+  { "cmd" }, "2",
+  {
+    { 'kitty',     '0,0 4x2' },
+    -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
+    { 'LM Studio', '4,0 4x1' },
+    { 'Firefox',   '4,1 4x1' },
+  }
+)
+
+spoon.Layout:defineLayout(
+  "Code & Reference",
+  { "cmd" }, "5",
+  {
+    { 'kitty',   '0,0 4x2' },
+    -- { 'Firefox', '4,0 4x2', false },
+    { 'Firefox', '4,0 4x2' },
+  }
+)
+
+
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
