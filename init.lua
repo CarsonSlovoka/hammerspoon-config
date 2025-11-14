@@ -215,6 +215,11 @@ local fuzzelList = {
     image = imageFromPath("application-folder.icns"),
   },
   {
+    text = "which key",
+    cmdName = cmdInfo.name.whichKey,
+    image = imageFromPath("keyboard.icns"),
+  },
+  {
     text = "list hs.image",
     cmdName = cmdInfo.name.listHsImage,
   },

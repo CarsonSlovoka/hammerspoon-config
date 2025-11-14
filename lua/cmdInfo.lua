@@ -8,6 +8,7 @@ local name = {
   showGrid = "show grid",
   fullscreenAllWindow = "fullscreenAllWindow",
   listRunningApplications = "runningApplications",
+  whichKey = "whichKey",
 }
 
 local cmdTable = {
@@ -92,6 +93,44 @@ local cmdTable = {
     hs.alert.show(msg, style, hs.screen.mainScreen(), 5)
     -- hs.alert.show(msg, 10)
     print(msg) -- 在hammerspoon中查看會更好
+  end,
+
+  [name.whichKey] = function()
+    hs.alert.show("press `Esc` key to stop", { atScreenEdge = 1 }, nil, 5)
+
+    local keyEvent = hs.eventtap.new(
+      {
+        -- 要監聽的類型
+        hs.eventtap.event.types.keyDown,
+        -- hs.eventtap.event.types.keyUp
+      },
+      function(e)
+        local code = e:getKeyCode()
+        -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/keycodes.lua
+        local keyStr = hs.keycodes.map[code]
+        -- local isDown = (e:getType() == hs.eventtap.event.types.keyDown) -- 如果只有監聽keyDown而已，就不需要多此一舉, 這都是true
+        local msg = string.format(
+          "key code: %s \n" ..
+          "key name: %s",
+          code, keyStr
+        )
+        print(msg)
+        hs.alert.show(msg)
+        return false -- false繼續原本的動作, true會阻檔原本的動作
+      end
+    )
+    keyEvent:start()
+
+    local bindKey = {}
+    -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/hotkey.lua
+    -- 綁定一個暫時的esc鍵，來取消監看
+    bindKey.esc = hs.hotkey.bind({ "" }, "escape", function()
+      keyEvent:stop()
+      bindKey.esc:delete() -- 刪除此esc綁定鍵
+      hs.alert.show("stop watch")
+    end)
+
+    -- hs.timer.doAfter(5, function() end)
   end
 }
 
