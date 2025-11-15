@@ -493,44 +493,30 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
 
 hs.grid.setGrid('8x2')
 -- Spoons/Layout.spoon/init.lua
-spoon.Layout:defineLayout(
-  LayoutName.Code,
-  { "cmd" }, "1",
-  {
-    { 'kitty', '0,0 8x2' },
-  }
-)
+spoon.Layout:add(LayoutName.Code, {
+  { 'kitty', '0,0 8x2' },
+})
+hs.hotkey.bind({ "cmd" }, "1", spoon.Layout.layoutFuncMap[LayoutName.Code])
 
-spoon.Layout:defineLayout(
-  LayoutName.AskAI,
-  { "cmd" }, "2",
-  {
-    { 'kitty',     '0,0 4x2' },
-    -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
-    { 'LM Studio', '4,0 4x1' },
-    { 'Firefox',   '4,1 4x1' },
-  }
-)
+spoon.Layout:add(LayoutName.AskAI, {
+  { 'kitty',     '0,0 4x2' },
+  -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
+  { 'LM Studio', '4,0 4x1' },
+  { 'Firefox',   '4,1 4x1' },
+})
+hs.hotkey.bind({ "cmd" }, "2", spoon.Layout.layoutFuncMap[LayoutName.AskAI])
 
-spoon.Layout:defineLayout(
-  LayoutName.CodeAndFirefox,
-  { "cmd" }, "5",
-  {
-    { 'kitty',   '0,0 4x2' },
-    -- { 'Firefox', '4,0 4x2', false },
-    { 'Firefox', '4,0 4x2' },
-  }
-)
+spoon.Layout:add(LayoutName.CodeAndFirefox, {
+  { 'kitty',   '0,0 4x2' },
+  -- { 'Firefox', '4,0 4x2', false },
+  { 'Firefox', '4,0 4x2' },
+})
+spoon.Layout:add(LayoutName.CodeAndPreview, {
+  { 'kitty',             '0,0 4x2' },
+  { 'com.apple.Preview', '4,0 4x2' },
+})
 
-spoon.Layout:defineLayout(
-  LayoutName.CodeAndPreview,
-  { "cmd" }, "9",
-  {
-    { 'kitty',             '0,0 4x2' },
-    { 'com.apple.Preview', '4,0 4x2' },
-  }
-)
-spoon.Layout:bindLayoutManager({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
+spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")

@@ -29,10 +29,8 @@ end
 
 
 ---@param name string
----@param mods table  {"cmd"}
----@param key string
 ---@param layouts table {{name, layout, lanuchOrFocus}, ...}
-function M:defineLayout(name, mods, key, layouts)
+function M:add(name, layouts)
   -- 使得如果不想要依靠bind來觸發，也有途徑來觸發
   M.layoutFuncMap[name] = function()
     -- 👇 用起來怪怪的🤔
@@ -61,16 +59,14 @@ function M:defineLayout(name, mods, key, layouts)
       end
     end
   end
-
-  hs.hotkey.bind(mods, key, M.layoutFuncMap[name])
 end
 
 --- 綁定一個layout熱鍵, 觸發後可再透過1 .. n 來切換layout, 如此可以節省全域的熱鍵綁定
-function M:bindLayoutManager(mods, key)
+function M:bind(mods, key)
   -- if #M.layoutFuncMap == 0 then -- map不能用這樣，得到的都會是nil
   if next(M.layoutFuncMap) == nil then
     hs.alert.show(
-    "⚠️ [Layout.spoon] bindLayoutManager will have no effect, please make sure bindLayoutManager is triggered after defineLayout is defined",
+      "⚠️ [Layout.spoon] `spoon.Layout:bind` will have no effect, please make sure bindLayoutManager is triggered after `spoon.Layout:add` is defined",
       10)
     return
   end
