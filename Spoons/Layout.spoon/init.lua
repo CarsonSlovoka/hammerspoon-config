@@ -54,7 +54,11 @@ function M:defineLayout(name, mods, key, layouts)
 
       if lanuchOrFocus then
         -- focusIfLaunched(appName)
-        hs.application.launchOrFocus(appName)
+        if not hs.application.launchOrFocus(appName) then
+          -- 如果打開失敗，嘗試將其視為bundleID, 以bundleID嘗試開啟
+          local bundleID = appName
+          hs.application.open(bundleID)
+        end
       end
     end
   end
