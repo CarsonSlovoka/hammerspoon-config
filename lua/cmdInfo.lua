@@ -69,9 +69,11 @@ local cmdTable = {
     -- hs.grid.set(hs.window.focusedWindow(), '4,0 4x2') -- 如果整個的grid是8x2, 則4,0 4x2 就是移動到4,0的位置，然後它的大小有4x2那麼大，因此就是佔滿整個右
   end,
   [name.selectLayout] = function(kargs)
-    local name = kargs.name
     -- ~/.Hammerspoon/Spoons/Layout.spoon/init.lua
-    spoon.Layout.layoutFuncMap[name]()
+    local layout = spoon.Layout:get(kargs.name)
+    if layout then
+      layout.func()
+    end
   end,
 
   [name.fullscreenAllWindow] = function()
