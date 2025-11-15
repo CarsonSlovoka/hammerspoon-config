@@ -61,6 +61,7 @@ local LayoutName = {
   Code = "Code",
   AskAI = "Ask AI",
   CodeAndFirefox = "Code & Firefox",
+  CodeAndPreview = "Preview",
 }
 
 local fuzzelList = {
@@ -521,7 +522,14 @@ spoon.Layout:defineLayout(
   }
 )
 
-
+spoon.Layout:defineLayout(
+  LayoutName.CodeAndPreview,
+  { "cmd" }, "9",
+  {
+    { 'kitty',             '0,0 4x2' },
+    { 'com.apple.Preview', '4,0 4x2' },
+  }
+)
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
