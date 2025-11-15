@@ -40,7 +40,6 @@ function M:defineLayout(name, mods, key, layouts)
     -- for _, win in ipairs(hs.window.allWindows()) do
     --   win:minimize()
     -- end
-
     hs.alert.show("Layout: " .. name)
     for _, obj in ipairs(layouts) do
       local appName = obj[1]
@@ -62,7 +61,63 @@ function M:defineLayout(name, mods, key, layouts)
       end
     end
   end
+
   hs.hotkey.bind(mods, key, M.layoutFuncMap[name])
+end
+
+--- 綁定一個layout熱鍵, 觸發後可再透過1 .. n 來切換layout, 如此可以節省全域的熱鍵綁定
+function M:bindLayoutManager(mods, key)
+  -- if #M.layoutFuncMap == 0 then -- map不能用這樣，得到的都會是nil
+  if next(M.layoutFuncMap) == nil then
+    hs.alert.show(
+    "⚠️ [Layout.spoon] bindLayoutManager will have no effect, please make sure bindLayoutManager is triggered after defineLayout is defined",
+      10)
+    return
+  end
+  local mKey = hs.hotkey.modal.new(mods, key)
+
+  function mKey:entered()
+    mKey.verbose = true -- 新增一個自定義的屬性
+
+    -- local style = {
+    --   textSize = 18,
+    --   atScreenEdge = 1, -- top
+    -- }
+    local msg = ""
+    local i = 1
+    for layoutName, layoutFunc in pairs(M.layoutFuncMap) do
+      msg = msg .. string.format("\n%d  %s", i, layoutName)
+      -- mKey:bind() -- 放在裡面不好，這等同於entered之後才會開始定義，可能會沒那麼即時能用
+
+      i = i + 1
+    end
+    -- hs.alert.show(msg, nil, nil, 10)
+    hs.alert.show(msg, 3)
+  end
+
+  local i = 1
+  for _, layoutFunc in pairs(M.layoutFuncMap) do
+    mKey:bind(
+      {}, tostring(i), -- mods, key
+      nil,             -- msg
+      function()
+        layoutFunc()
+        mKey.verbose = false
+        mKey:exit()
+      end
+    )
+    i = i + 1
+  end
+
+  function mKey:exited()
+    if mKey.verbose then
+      hs.alert.show("🔚 exit layout manager", 3.0)
+    end
+  end
+
+  mKey:bind({}, 'escape', function()
+    mKey:exit()
+  end)
 end
 
 return M

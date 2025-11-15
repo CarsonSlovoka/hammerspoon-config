@@ -530,6 +530,7 @@ spoon.Layout:defineLayout(
     { 'com.apple.Preview', '4,0 4x2' },
   }
 )
+spoon.Layout:bindLayoutManager({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
