@@ -61,7 +61,9 @@ local LayoutName = {
   Code = "Code",
   AskAI = "Ask AI",
   CodeAndFirefox = "Code & Firefox",
-  CodeAndPreview = "Preview",
+  CodeAndPreview = "Code & Preview",
+  Firefox = "Firefox",
+  LmStudio = "LmStudio",
 }
 
 local fuzzelList = {
@@ -496,29 +498,36 @@ hs.grid.setGrid('8x2')
 spoon.Layout:add(LayoutName.Code, "1", {
   { 'kitty', '0,0 8x2' },
 })
-hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
 
-spoon.Layout:add(LayoutName.AskAI, "5", {
+spoon.Layout:add(LayoutName.AskAI, nil, {
   { 'kitty',     '0,0 4x2' },
   -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
   { 'LM Studio', '4,0 4x1' },
   { 'Firefox',   '4,1 4x1' },
 })
-hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.AskAI).func)
 
 spoon.Layout:add(LayoutName.CodeAndFirefox, nil, {
   { 'kitty',   '0,0 4x2' },
   -- { 'Firefox', '4,0 4x2', false },
   { 'Firefox', '4,0 4x2' },
 })
-spoon.Layout:add(LayoutName.CodeAndPreview, nil, {
+spoon.Layout:add(LayoutName.CodeAndPreview, "p", {
   { 'kitty',             '0,0 4x2' },
   { 'com.apple.Preview', '4,0 4x2' },
 })
 
-spoon.Layout:add("firefox", "a", {
+spoon.Layout:add(LayoutName.Firefox, "f", {
   { 'Firefox', '0,0 8x2' },
 })
+
+spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
+  { 'ai.elementlabs.lmstudio', '0,0 8x2' },
+})
+
+
+hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Firefox).func)
+hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
+
 
 spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
