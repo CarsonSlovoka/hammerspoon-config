@@ -43,8 +43,14 @@ local M = {}
 hs.hotkey.bind({ "cmd" }, "Home", function()
   hs.eventtap.keyStroke({ "option" }, "up")
 end)
+hs.hotkey.bind({ "cmd", "shift" }, "Home", function()
+  hs.eventtap.keyStroke({ "option", "shift" }, "up")
+end)
 hs.hotkey.bind({ "cmd" }, "End", function()
   hs.eventtap.keyStroke({ "option" }, "down")
+end)
+hs.hotkey.bind({ "cmd", "shift" }, "End", function()
+  hs.eventtap.keyStroke({ "option", "shift" }, "down")
 end)
 
 
