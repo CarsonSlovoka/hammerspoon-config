@@ -3,8 +3,10 @@
 hs = hs -- 減少未定義的警告
 spoon = spoon
 
+local SOURCE_DIR = debug.getinfo(1).source:match("@?(.*/)")
 
-local hammerspoon_config_dir = os.getenv("HOME") .. '/.hammerspoon/'
+-- local hammerspoon_config_dir = os.getenv("HOME") .. '/.hammerspoon/'
+local hammerspoon_config_dir = SOURCE_DIR
 package.path = package.path ..
     ';' .. hammerspoon_config_dir .. 'lua/?.lua'
 -- hs.alert.show(package.path)
