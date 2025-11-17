@@ -486,6 +486,7 @@ end)
 -- end)
 -- tap:start()
 
+-- Spoons/LeftRightHotkey.spoon/init.lua
 spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程式，還是需要用cmd+f來搜尋，當將cmd+f設定為: `win:maximize()` 就要有其它代替搜尋的鍵，不然會很不方便
   nil,                                       -- Caution: 這種改鍵不要設定成pressedfn, 要寫在releasedfn來觸發
   function()
@@ -494,6 +495,12 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
     hs.eventtap.keyStroke({ "cmd" }, "f") -- 等同按壓＋彈起. 同等以上兩步驟
   end
 )
+-- spoon.LeftRightHotkey:bind({ "rAlt" }, "left",
+--   nil, -- pressedfn
+--   function()
+--     hs.eventtap.keyStroke({ "option" }, "left")
+--   end
+-- )
 
 hs.grid.setGrid('8x2')
 -- Spoons/Layout.spoon/init.lua
