@@ -198,6 +198,16 @@ local fuzzelList = {
     image = imageFromPath("notion.icns")
   },
   {
+    text = "grok",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://grok.com/",
+      windowName = { "Grok" },
+    },
+    image = imageFromPath("grok.icns")
+  },
+  {
     text = "chatgpt",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,

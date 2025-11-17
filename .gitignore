@@ -1,3 +1,6 @@
 .DS_Store
 Spoons/AClock.spoon
 Spoons/LeftRightHotkey.spoon
+
+# grok.icns目前與chatgpt.icns共用
+assets/img/grok.icns
