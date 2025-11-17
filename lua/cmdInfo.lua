@@ -13,6 +13,58 @@ local name = {
   whichKey = "whichKey",
 }
 
+local firefoxManager = {}
+
+---@param windowName table|string
+---@return boolean isFocus
+function firefoxManager.focusWindow(windowName)
+  -- 定義常見的 Firefox 窗口標題模式
+  local patterns = {
+    ["gmail"] = "Gmail",
+    ["discord"] = "Discord",
+    ["youtube"] = "YouTube",
+    ["github"] = "GitHub"
+  }
+
+  ---@type table
+  local windowNames
+  if type(windowName) == "string" then
+    windowNames = { windowName }
+  else
+    windowNames = windowName
+  end
+
+  -- 嘗試先找到現有的窗口
+  local existingWindow = nil
+
+
+  for _, win in ipairs(hs.window.allWindows()) do
+    if win:application():name() == "Firefox" then
+      local title = win:title() -- 等同在menu bar對Firefox右鍵所看到的名稱
+
+      for _, winName in ipairs(windowNames) do
+        local targetPattern = patterns[string.lower(winName)] or winName
+        if string.find(string.lower(title), string.lower(targetPattern)) then
+          existingWindow = win
+          break
+        end
+      end
+
+      if existingWindow then
+        break
+      end
+    end
+  end
+
+  if existingWindow then
+    existingWindow:focus()
+    -- print("Focused on existing Firefox window")
+    return true
+  else
+    return false
+  end
+end
+
 local cmdTable = {
   [name.hammerspoonReload] = function()
     hs.reload()
@@ -26,10 +78,23 @@ local cmdTable = {
   end,
   [name.openBrowser] = function(kargs)
     -- local cmd = "firefox --window --new-tab " .. kargs.url -- ❌ 需要絕對路
-    local cmd = "/opt/homebrew/bin/firefox --window --new-tab " .. kargs.url
-    os.execute(cmd)
-    -- hs.task.new("/bin/bash", nil, { "-c", cmd }):start()
-    -- hs.osascript.applescript(string.format('do shell script "%s"', cmd))
+    -- local cmd = "/opt/homebrew/bin/firefox --window --new-tab " .. kargs.url -- 可行但不是單獨的視窗
+    local cmd = "/opt/homebrew/bin/firefox --new-window " .. kargs.url .. " & "
+    -- Warn: 用--new-window必須在後面使用&不然會鎖住，等同hammerspoon需要等視窗關閉才可以再動作
+    if kargs.windowName == nil then
+      os.execute(cmd)
+      -- hs.task.new("/bin/bash", nil, { "-c", cmd }):start()
+      -- hs.osascript.applescript(string.format('do shell script "%s"', cmd))
+      return
+    end
+
+    if not firefoxManager.focusWindow(kargs.windowName) then
+      -- 失敗了話，就嘗試開新視窗後再試一次
+      os.execute(cmd)
+      hs.timer.doAfter(2, function()
+        firefoxManager.focusWindow(kargs.windowName)
+      end)
+    end
   end,
   [name.openDir] = function(kargs)
     os.execute("open " .. kargs.path)

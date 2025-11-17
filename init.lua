@@ -110,28 +110,40 @@ local fuzzelList = {
     text = "github",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
-    kargs = { url = "https://github.com/" },
+    kargs = {
+      url = "https://github.com/",
+      windowName = "GitHub",
+    },
     image = imageFromPath("github.icns")
   },
   {
     text = "discord",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
-    kargs = { url = "https://discord.com/channels/@me" },
+    kargs = {
+      url = "https://discord.com/channels/@me",
+      windowName = "Discord",
+    },
     image = imageFromPath("discord.icns")
   },
   {
     text = "gmail",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
-    kargs = { url = "https://mail.google.com/mail" },
+    kargs = {
+      url = "https://mail.google.com/mail",
+      windowName = "Gmail",
+    },
     image = imageFromPath("gmail.icns")
   },
   {
     text = "google sheet",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
-    kargs = { url = "https://docs.google.com/spreadsheets" },
+    kargs = {
+      url = "https://docs.google.com/spreadsheets",
+      windowName = { "Google Sheet", "Google 試算表" }
+    },
     image = imageFromPath("google-sheet.icns")
   },
   {
