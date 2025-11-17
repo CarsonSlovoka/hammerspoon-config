@@ -35,6 +35,7 @@ for _, plugin in ipairs({
   "Layout",
   "Toggle",
   "Window",
+  "HomeEnd",
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -482,27 +483,8 @@ spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
 end)
 
 
--- 👇 以下可行，但是沒有辦法缺分左右ctrl
--- 將 Ctrl + key 轉成 Cmd + key（注意：會同時作用在左 Ctrl + 右 Ctrl）
--- local tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(e)
---   local flags = e:getFlags()
---   -- 只在 ctrl 被按下 (不區分左右) 時介入
---   if flags.ctrl and not flags.cmd and not flags.alt then
---     local code = e:getKeyCode()
---     -- 取得 key string (例如 "a", "1", "return"...)
---     local keyStr = hs.keycodes.map[code]
---     if keyStr == "f" then
---       -- 送出 Cmd + key （down + up）
---       hs.eventtap.event.newKeyEvent({ "cmd" }, keyStr, true):post()
---       hs.eventtap.event.newKeyEvent({ "cmd" }, keyStr, false):post()
---       return true -- 擋掉原本事件
---     end
---   end
---   return false
--- end)
--- tap:start()
-
 -- Spoons/LeftRightHotkey.spoon/init.lua
+-- rAlt
 spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程式，還是需要用cmd+f來搜尋，當將cmd+f設定為: `win:maximize()` 就要有其它代替搜尋的鍵，不然會很不方便
   nil,                                       -- Caution: 這種改鍵不要設定成pressedfn, 要寫在releasedfn來觸發
   function()
@@ -511,12 +493,6 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
     hs.eventtap.keyStroke({ "cmd" }, "f") -- 等同按壓＋彈起. 同等以上兩步驟
   end
 )
--- spoon.LeftRightHotkey:bind({ "rAlt" }, "left",
---   nil, -- pressedfn
---   function()
---     hs.eventtap.keyStroke({ "option" }, "left")
---   end
--- )
 
 hs.grid.setGrid('8x2')
 -- Spoons/Layout.spoon/init.lua
