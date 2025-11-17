@@ -197,6 +197,16 @@ local fuzzelList = {
     kargs = { url = "https://www.notion.so/" },
     image = imageFromPath("notion.icns")
   },
+  {
+    text = "chatgpt",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://chatgpt.com/",
+      windowName = { "ChatGPT" },
+    },
+    image = imageFromPath("chatgpt.icns")
+  },
   -- {
   --   text = hs.styledtext.new(
   --     "Possibility",
