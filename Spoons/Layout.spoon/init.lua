@@ -72,13 +72,13 @@ function M:add(name, key, layouts)
       end
     end
   }
-  table.insert(M.layouts, item)
+  table.insert(self.layouts, item)
 end
 
 ---@param name string
 ---@return Item|nil
 function M:get(name)
-  for _, item in ipairs(M.layouts) do
+  for _, item in ipairs(self.layouts) do
     if item.name == name then
       return item
     end
@@ -89,7 +89,7 @@ end
 --- 綁定一個layout熱鍵, 觸發後可再透過1 .. n 來切換layout, 如此可以節省全域的熱鍵綁定
 function M:bind(mods, key)
   -- if next(M.layoutMap) == nil then -- 適用於map的判斷
-  if #M.layouts == 0 then
+  if #self.layouts == 0 then
     hs.alert.show(
       "⚠️ [Layout.spoon] `spoon.Layout:bind` will have no effect, please make sure bindLayoutManager is triggered after `spoon.Layout:add` is defined",
       10)
@@ -129,7 +129,7 @@ function M:bind(mods, key)
     end)
   end
 
-  for i, item in ipairs(M.layouts) do
+  for i, item in ipairs(self.layouts) do
     local hotkey = item.key
     local the_mods = {}
     if hotkey == nil then
