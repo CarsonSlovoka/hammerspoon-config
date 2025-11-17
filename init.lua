@@ -34,6 +34,7 @@ for _, plugin in ipairs({
   "Frame",
   "Layout",
   "Toggle",
+  "Window",
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -456,6 +457,9 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
   else
     win:setFullscreen(true)
   end
+end)
+hs.hotkey.bind({ "cmd" }, "F1", function()
+  spoon.Window.selectWindow()
 end)
 
 
