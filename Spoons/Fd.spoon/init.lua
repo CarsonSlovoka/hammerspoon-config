@@ -64,11 +64,15 @@ end
 --- 使用chooser來選擇想要的檔案, 可自定選擇後的動作
 ---@param completionFn function(selection)
 ---@param searchDirs table<string>
----@param fdArgs string|? fd args for example: -e mov -e mp4
-function M:chooser(completionFn, searchDirs, fdArgs)
+---@param fdArgs string? fd args for example: -e mov -e mp4
+---@param opt table?
+function M:chooser(completionFn, searchDirs, fdArgs, opt)
+  opt = opt or {}
   local chooser = hs.chooser.new(completionFn)     -- 自定義處理的函數
+  chooser:placeholderText(opt.placeholderText or "")
   chooser:choices(runFdSearch(searchDirs, fdArgs)) -- 執行fd取得相關的檔案路徑
   chooser:show()
+  chooser:delete()
 end
 
 return M
