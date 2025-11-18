@@ -321,6 +321,15 @@ local fuzzelList = {
     kargs = {
       exts = { "mov", "mp4" }
     }
+  },
+  {
+    text = "split video n=1",
+    subText = "將影片重新編碼, 並拆分成n份",
+    cmdName = cmdInfo.name.splitVideo,
+    kargs = {
+      exts = { "mov", "mp4" },
+      n = 1,
+    }
   }
 }
 

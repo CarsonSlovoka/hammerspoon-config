@@ -12,6 +12,7 @@ local name = {
   listRunningApplications = "runningApplications",
   whichKey = "whichKey",
   preview = "preview",
+  splitVideo = "splitVideo",
 }
 
 local firefoxManager = {}
@@ -226,6 +227,34 @@ local cmdTable = {
       end,
       searchDirs, -- { "~/Downloads/", "~/Desktop/" },
       exts        -- "-e mp4 -e mov"
+    )
+  end,
+  [name.splitVideo] = function(kargs)
+    local exts = ""
+    for _, ext in ipairs(kargs.exts) do
+      exts = exts .. " -e " .. ext
+    end
+
+    spoon.Fd:chooser(function(selection)
+        if selection then
+          local cmd = string.format(
+            "bash ~/sh/split_mp4.sh %s %d",
+            selection.fullpath, kargs.n
+          )
+          local ext = string.match(selection.fullpath, "%.([^.]+)$")
+          print(cmd)
+          -- hs.execute(cmd)
+          hs.execute(cmd, true)              -- 需要載入環境變數 -- hs.execute的工作目錄預設是 ~/.hammerspoon/
+          hs.execute("open ~/.hammerspoon/") -- 開啟產出的目錄
+          local output = hs.execute("ls -lht ~/.hammerspoon/*." .. ext)
+          hs.alert.show(output, 5)
+        end
+      end,
+      kargs.searchDirs or { "~/Downloads/", "~/Desktop/" },
+      exts, -- "-e mp4 -e mov"
+      {
+        placeholderText = "bash split_mp4.sh <filepath> 1"
+      }
     )
   end,
 }
