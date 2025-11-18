@@ -5,6 +5,7 @@
 - [macosicons](https://macosicons.com/#/?icon=ty9191FNEX)
 - [Firefox__Liquid_Glass_.icns](https://macosicons.com/#/?icon=uQ840QiA7p)
 - [_Numbers__Dark_.icns](https://macosicons.com/#/?icon=DQxCTfUmPP)
+- [numbers](https://macosicons.com/#/?icon=GQCI55Q1A7)
 - [Safari](https://macosicons.com/#/?icon=nWnpPG0KU9)
 - [lmstudio](https://macosicons.com/#/?icon=LygJuzb0fj)
 - [calendar](https://macosicons.com/#/?icon=aB61H9yTMc)
