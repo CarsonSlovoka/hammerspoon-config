@@ -28,6 +28,7 @@
 - [keyboard](https://macosicons.com/#/?icon=AGJbLmsrfq)
 - [empty](https://macosicons.com/#/?icon=IoyGl81rzE)
 - [chatgpt](https://macosicons.com/#/?icon=swGdDtCQEG)
+- [preview](https://macosicons.com/#/?icon=u4EIyEFto8)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

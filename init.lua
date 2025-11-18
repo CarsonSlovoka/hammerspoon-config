@@ -36,6 +36,7 @@ for _, plugin in ipairs({
   "Toggle",
   "Window",
   "HomeEnd",
+  "Fd",
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -301,6 +302,25 @@ local fuzzelList = {
   {
     text = "layout left: kitty, right: firefox",
     cmdName = cmdInfo.name.layoutLeftKittyRightFirefox,
+  },
+  {
+    text = "preview image",
+    subText = cmdInfo.name.preview,
+    cmdName = cmdInfo.name.preview,
+    image = imageFromPath("preview.icns"),
+    kargs = {
+      searchDirs = { "~/Downloads/", "~/Desktop/" },
+      exts = { "jpeg", "png", "webp" }
+    }
+  },
+  {
+    text = "preview video",
+    subText = cmdInfo.name.preview,
+    cmdName = cmdInfo.name.preview,
+    image = imageFromPath("preview.icns"),
+    kargs = {
+      exts = { "mov", "mp4" }
+    }
   }
 }
 

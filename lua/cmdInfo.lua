@@ -11,6 +11,7 @@ local name = {
   minimizeAllWindow = "minimizeAllWindow",
   listRunningApplications = "runningApplications",
   whichKey = "whichKey",
+  preview = "preview",
 }
 
 local firefoxManager = {}
@@ -210,7 +211,23 @@ local cmdTable = {
     end)
 
     -- hs.timer.doAfter(5, function() end)
-  end
+  end,
+  [name.preview] = function(kargs)
+    local searchDirs = { "~/Downloads/", "~/Desktop/" }
+    local exts = ""
+    for _, ext in ipairs(kargs.exts) do
+      exts = exts .. " -e " .. ext
+    end
+
+    spoon.Fd:chooser(function(selection)
+        if selection then
+          hs.execute('open "' .. selection.fullpath .. '"')
+        end
+      end,
+      searchDirs, -- { "~/Downloads/", "~/Desktop/" },
+      exts        -- "-e mp4 -e mov"
+    )
+  end,
 }
 
 return {
