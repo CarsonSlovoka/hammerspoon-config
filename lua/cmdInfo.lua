@@ -213,7 +213,7 @@ local cmdTable = {
     -- hs.timer.doAfter(5, function() end)
   end,
   [name.preview] = function(kargs)
-    local searchDirs = { "~/Downloads/", "~/Desktop/" }
+    local searchDirs = kargs.searchDirs or { "~/Downloads/", "~/Desktop/" }
     local exts = ""
     for _, ext in ipairs(kargs.exts) do
       exts = exts .. " -e " .. ext
