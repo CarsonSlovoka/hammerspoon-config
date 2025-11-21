@@ -110,6 +110,12 @@ local fuzzelList = {
     image = imageFromPath("calculator.icns")
   },
   {
+    text = "Notes",
+    subText = "launchOrFocus",
+    bundleID = "com.apple.Notes",
+    image = imageFromPath("note.icns")
+  },
+  {
     text = "github",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
@@ -352,7 +358,11 @@ local function completionFn(choice)
       win:setFullscreen(false)
     end
   end
-  hs.application.launchOrFocus(choice.path)
+  if choice.bundleID then
+    hs.application.open(choice.bundleID) -- Todo: 視窗如果沒有開啟，需要調用兩次
+  else
+    hs.application.launchOrFocus(choice.path)
+  end
 
   -- 加在這裡不好，不一定都是想fullscreen, 有可能用到layout
   -- -- hs.window.focusedWindow():setFullscreen(false) -- 前面的視窗如果還是全螢幕，下一個視窗無法被切換過去
