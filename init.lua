@@ -113,6 +113,8 @@ local fuzzelList = {
     text = "Notes",
     subText = "launchOrFocus",
     bundleID = "com.apple.Notes",
+    -- path = "/System/Applications/Notes.app",
+    -- Note: 首次不論是用application.{open, launchOrFocus} 的方式，可能都會需要等待一回，如果要聚焦可能都需要調用兩次
     image = imageFromPath("note.icns")
   },
   {
@@ -359,7 +361,7 @@ local function completionFn(choice)
     end
   end
   if choice.bundleID then
-    hs.application.open(choice.bundleID) -- Todo: 視窗如果沒有開啟，需要調用兩次
+    hs.application.open(choice.bundleID)
   else
     hs.application.launchOrFocus(choice.path)
   end
