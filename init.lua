@@ -118,6 +118,12 @@ local fuzzelList = {
     image = imageFromPath("note.icns")
   },
   {
+    text = "Hammerspoon",
+    subText = "launchOrFocus",
+    path = "/Applications/Hammerspoon.app",
+    image = imageFromPath("hammer.icns")
+  },
+  {
     text = "github",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
