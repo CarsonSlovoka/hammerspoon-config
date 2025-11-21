@@ -160,7 +160,7 @@ local cmdTable = {
   [name.listRunningApplications] = function()
     local msg = ""
     for _, app in ipairs(hs.application.runningApplications()) do
-      msg = msg .. "\n" .. string.format("%s | %s \n", app:name(), app:bundleID())
+      msg = msg .. "\n" .. string.format("%s | %s", app:name(), app:bundleID())
     end
 
     -- Tip: style, 在檔案: /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
@@ -171,9 +171,11 @@ local cmdTable = {
     }
 
     -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
-    hs.alert.show(msg, style, hs.screen.mainScreen(), 5)
+    -- hs.alert.show(msg, style, hs.screen.mainScreen(), 5)
     -- hs.alert.show(msg, 10)
-    print(msg) -- 在hammerspoon中查看會更好
+
+    print(msg) -- 在hammerspoon中查看
+    hs.application.launchOrFocus("/Applications/Hammerspoon.app")
   end,
 
   [name.whichKey] = function()
