@@ -374,7 +374,13 @@ local fuzzelList = {
       exts = { "mov", "mp4" },
       n = 1,
     }
-  }
+  },
+  {
+    text = "tips",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Tips.app",
+    image = utils.image.fromSystemApp("Tips.app")
+  },
 }
 
 hs.window.animationDuration = 0
