@@ -4,7 +4,7 @@ local name = {
   showClock = "show clock",
   openBrowser = "open browser",
   openDir = "open dir",
-  finderOpen = "tell application Finder open ...",
+  tellFinder = "tell application Finder ...",
   layoutLeftKittyRightFirefox = "layout {l: kitty, r: firefox}",
   selectLayout = "select layout",
   showGrid = "show grid",
@@ -102,13 +102,14 @@ local cmdTable = {
   [name.openDir] = function(kargs)
     os.execute("open " .. kargs.path)
   end,
-  [name.finderOpen] = function(kargs)
+  [name.tellFinder] = function(kargs)
     hs.osascript.applescript(string.format([[
         tell application "Finder"
             activate
-            open %s
+            -- open xxx
+            %s
         end tell
-    ]], kargs.name))
+    ]], kargs.cmd))
     -- hs.application.open("com.apple.finder") -- 可在apple script中用activate即可
   end,
   [name.layoutLeftKittyRightFirefox] = function()

@@ -397,9 +397,9 @@ local fuzzelList = {
   },
   {
     text = "open trash",
-    subText = cmdInfo.name.finderOpen,
-    cmdName = cmdInfo.name.finderOpen,
-    kargs = { name = "trash" },
+    subText = cmdInfo.name.tellFinder,
+    cmdName = cmdInfo.name.tellFinder,
+    kargs = { cmd = "open trash" },
     image = utils.image.fromDockApp("trashfull.png")
     -- image = utils.image.fromDockApp("trashfull2@2x.png")
   },
