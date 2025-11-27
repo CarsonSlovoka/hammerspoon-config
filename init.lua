@@ -124,6 +124,12 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/System/Applications/Freeform.app/Contents/Resources/AppIcon.icns")
   },
   {
+    text = "facetime",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Facetime.app",
+    image = hs.image.imageFromPath("/System/Applications/Facetime.app/Contents/Resources/AppIcon.icns")
+  },
+  {
     text = "Hammerspoon",
     subText = "launchOrFocus",
     path = "/Applications/Hammerspoon.app",
