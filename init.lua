@@ -142,6 +142,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Passwords.app")
   },
   {
+    text = "dictionary",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Dictionary.app/",
+    image = utils.image.fromSystemApp("Dictionary.app")
+  },
+  {
     text = "Hammerspoon",
     subText = "launchOrFocus",
     path = "/Applications/Hammerspoon.app",
