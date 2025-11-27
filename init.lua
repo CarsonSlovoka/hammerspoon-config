@@ -130,6 +130,12 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/System/Applications/Facetime.app/Contents/Resources/AppIcon.icns")
   },
   {
+    text = "image playground", -- 需要開啟Apple Intelligence
+    subText = "launchOrFocus",
+    path = "/System/Applications/Image Playground.app/",
+    image = hs.image.imageFromPath("/System/Applications/Image Playground.app/Contents/Resources/AppIcon.icns")
+  },
+  {
     text = "Hammerspoon",
     subText = "launchOrFocus",
     path = "/Applications/Hammerspoon.app",
