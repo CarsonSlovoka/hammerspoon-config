@@ -400,6 +400,8 @@ local fuzzelList = {
     subText = cmdInfo.name.finderOpen,
     cmdName = cmdInfo.name.finderOpen,
     kargs = { name = "trash" },
+    image = utils.image.fromDockApp("trashfull.png")
+    -- image = utils.image.fromDockApp("trashfull2@2x.png")
   },
 }
 
