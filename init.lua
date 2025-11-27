@@ -605,8 +605,9 @@ spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
 })
 
 
-hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Firefox).func)
 hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
+hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Firefox).func)
+hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 
 spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
