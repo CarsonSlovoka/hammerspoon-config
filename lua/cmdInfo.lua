@@ -2,6 +2,7 @@ local name = {
   hammerspoonReload = "hammerspoon reload",
   listHsImage = "list hs.image",
   showClock = "show clock",
+  runAppleScript = "run apple script",
   openBrowser = "open browser",
   openDir = "open dir",
   tellFinder = "tell application Finder ...",
@@ -111,6 +112,21 @@ local cmdTable = {
         end tell
     ]], kargs.cmd))
     -- hs.application.open("com.apple.finder") -- 可在apple script中用activate即可
+  end,
+  [name.runAppleScript] = function(kargs)
+    -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/osascript.lua
+    --- Returns:
+    ---  * A boolean value indicating whether the code succeeded or not
+    ---  * An object containing the parsed output that can be any type, or nil if unsuccessful
+    ---  * If the code succeeded, the raw output of the code string. If the code failed, a table containing an error dictionary
+    -- local ok, err, tableDesc = hs.osascript.applescript(kargs.script)
+    local ok = hs.osascript.applescript(kargs.script)
+    if ok and kargs.ok_msg then
+      hs.alert.show(kargs.ok_msg)
+    elseif kargs.err_msg then
+      hs.alert.show(kargs.err_msg or "")
+    end
+    -- hs.alert.show(kargs.test or "") -- 空訊息會有空的訊息框，還是看的到
   end,
   [name.layoutLeftKittyRightFirefox] = function()
     local splitLayout = {

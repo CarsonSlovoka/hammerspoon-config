@@ -400,8 +400,46 @@ local fuzzelList = {
     subText = cmdInfo.name.tellFinder,
     cmdName = cmdInfo.name.tellFinder,
     kargs = { cmd = "open trash" },
+    -- kargs = { cmd = "empty trash" }, -- 清理，但是沒有尋問框
     image = utils.image.fromDockApp("trashfull.png")
     -- image = utils.image.fromDockApp("trashfull2@2x.png")
+  },
+  {
+    text = "empty trash",
+    subText = cmdInfo.name.runAppleScript,
+    cmdName = cmdInfo.name.runAppleScript,
+    kargs = {
+      script = [[
+      -- Warn: 讓對話框一定置頂 (因為是依附在hammerspoon, 所以是要激活hammerspoon)
+      -- tell application "System Events" to activate
+      tell application "Hammerspoon" to activate
+
+      -- buttun的名稱使用buttons中的名稱
+      -- dialog如果有需要換行，可以使用\n
+      set theQuestion to display dialog "⚠️ Are you sure you want to permanently empty the trash?" ¬
+          buttons {"Cancel", "🗑️ Empty Trash"} ¬
+          default button "Cancel" ¬
+          cancel button "Cancel" ¬
+          with icon caution ¬
+          with title "Empty Trash"
+
+      if button returned of theQuestion is "🗑️ Empty Trash" then
+          tell application "Finder"
+              -- Warn: 如果垃圾筒已經是空的，是會回傳錯誤！
+              empty trash
+              -- display dialog "所有內容皆已清除!" -- dialog預設有"是, 否"所以用通知會比較好
+          end tell
+
+          -- 顯示通知 (會沒作用)
+          -- display notification "my message" with title "My Notification" subtitle "for test" sound name "Frog"
+      end if
+    ]],
+      ok_msg = os.date("%Y-%m-%d %H:%M:%S", os.time()) .. " Trash has been emptied",
+      err_msg = "Cancel"
+    },
+    -- osascript -e 'display dialog "Hello world" with title "AppleScript Demo"'
+    -- osascript -e 'display notification "my message" with title "My Notification" subtitle "for test" sound name "Frog"'
+    image = utils.image.fromDockApp("trashempty.png")
   },
 }
 
