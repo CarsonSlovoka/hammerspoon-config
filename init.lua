@@ -118,6 +118,12 @@ local fuzzelList = {
     image = imageFromPath("note.icns")
   },
   {
+    text = "freeform",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Freeform.app", -- 無邊記, 拿來當成小畫家放圖好用
+    image = imageFromPath("freeform.icns")
+  },
+  {
     text = "Hammerspoon",
     subText = "launchOrFocus",
     path = "/Applications/Hammerspoon.app",

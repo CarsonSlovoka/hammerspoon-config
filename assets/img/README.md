@@ -32,6 +32,7 @@
 - [preview](https://macosicons.com/#/?icon=u4EIyEFto8)
 - [note](https://macosicons.com/#/?icon=Tn8SuaHtAM)
 - [hammer](https://macosicons.com/#/?icon=x3sldgkYgZ)
+- [freeform](https://macosicons.com/#/?icon=hRIsBKF1LK)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
