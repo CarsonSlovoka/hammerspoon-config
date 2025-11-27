@@ -121,19 +121,19 @@ local fuzzelList = {
     text = "freeform",
     subText = "launchOrFocus",
     path = "/System/Applications/Freeform.app", -- 無邊記, 拿來當成小畫家放圖好用
-    image = hs.image.imageFromPath("/System/Applications/Freeform.app/Contents/Resources/AppIcon.icns")
+    image = utils.image.fromSystemApp("Freeform.app"),
   },
   {
     text = "facetime",
     subText = "launchOrFocus",
     path = "/System/Applications/Facetime.app",
-    image = hs.image.imageFromPath("/System/Applications/Facetime.app/Contents/Resources/AppIcon.icns")
+    image = utils.image.fromSystemApp("Facetime.app"),
   },
   {
     text = "image playground", -- 需要開啟Apple Intelligence
     subText = "launchOrFocus",
     path = "/System/Applications/Image Playground.app/",
-    image = hs.image.imageFromPath("/System/Applications/Image Playground.app/Contents/Resources/AppIcon.icns")
+    image = utils.image.fromSystemApp("Image Playground.app")
   },
   {
     text = "Hammerspoon",
