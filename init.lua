@@ -295,11 +295,6 @@ local fuzzelList = {
     image = imageFromPath("application-folder.icns"),
   },
   {
-    text = "hammerspoon reload",
-    -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數
-    cmdName = cmdInfo.name.hammerspoonReload,
-  },
-  {
     text = "find icons",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
@@ -440,6 +435,12 @@ local fuzzelList = {
     -- osascript -e 'display dialog "Hello world" with title "AppleScript Demo"'
     -- osascript -e 'display notification "my message" with title "My Notification" subtitle "for test" sound name "Frog"'
     image = utils.image.fromDockApp("trashempty.png")
+  },
+  {
+    -- Tip: 將reload放在最後一個，如此一開始直接往上找就可以找到此項目
+    text = "hammerspoon reload",
+    -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數
+    cmdName = cmdInfo.name.hammerspoonReload,
   },
 }
 
