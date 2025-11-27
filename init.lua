@@ -395,6 +395,12 @@ local fuzzelList = {
     path = "/System/Applications/Tips.app",
     image = utils.image.fromSystemApp("Tips.app")
   },
+  {
+    text = "open trash",
+    subText = cmdInfo.name.finderOpen,
+    cmdName = cmdInfo.name.finderOpen,
+    kargs = { name = "trash" },
+  },
 }
 
 hs.window.animationDuration = 0
