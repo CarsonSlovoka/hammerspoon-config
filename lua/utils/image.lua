@@ -10,6 +10,13 @@ end
 
 ---@param appName string
 ---@return Image|nil
+function M.fromApp(appName)
+  return hs.image.imageFromPath(string.format("/Applications/%s/Contents/Resources/AppIcon.icns", appName)) or
+      hs.image.imageFromPath(string.format("/Applications/%s/Contents/Resources/AppIconLoc.icns", appName))
+end
+
+---@param appName string
+---@return Image|nil
 function M.fromSystemApp(appName)
   return hs.image.imageFromPath(string.format("/System/Applications/%s/Contents/Resources/AppIcon.icns", appName)) or
       hs.image.imageFromPath(string.format("/System/Applications/%s/Contents/Resources/AppIconLoc.icns", appName)) -- 本地化的icns
