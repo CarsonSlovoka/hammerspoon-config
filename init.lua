@@ -385,6 +385,12 @@ local fuzzelList = {
     }
   },
   {
+    text = "font book",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Font Book.app",
+    image = hs.image.imageFromPath("/System/Applications/Font Book.app/Contents/Resources/fontbook.icns"),
+  },
+  {
     text = "printer",
     subText = "launchOrFocus",
     path = "/System/Applications/Utilities/Print Center.app",
