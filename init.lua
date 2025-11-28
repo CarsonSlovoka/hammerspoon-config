@@ -385,6 +385,12 @@ local fuzzelList = {
     }
   },
   {
+    text = "printer",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Utilities/Print Center.app",
+    image = utils.image.fromSystemApp("Utilities/Print Center.app")
+  },
+  {
     text = "tips",
     subText = "launchOrFocus",
     path = "/System/Applications/Tips.app",
