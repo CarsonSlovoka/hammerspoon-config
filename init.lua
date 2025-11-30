@@ -124,6 +124,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Freeform.app"),
   },
   {
+    text = "numbers",
+    subText = "launchOrFocus",
+    path = "/Applications/Numbers.app",
+    image = utils.image.fromApp("Numbers.app"),
+  },
+  {
     text = "pages",
     subText = "launchOrFocus",
     path = "/Applications/Pages.app",
