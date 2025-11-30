@@ -142,6 +142,12 @@ local fuzzelList = {
     image = utils.image.fromApp("Keynote.app"),
   },
   {
+    text = "textEdit",
+    subText = "launchOrFocus",
+    path = "/System/Applications/TextEdit.app",
+    image = utils.image.fromSystemApp("TextEdit.app"),
+  },
+  {
     text = "facetime",
     subText = "launchOrFocus",
     path = "/System/Applications/Facetime.app",
