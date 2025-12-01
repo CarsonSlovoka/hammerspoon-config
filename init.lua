@@ -428,6 +428,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Utilities/Print Center.app")
   },
   {
+    text = "flameshot",
+    subText = "launchOrFocus",
+    path = "/Applications/Flameshot.app",
+    image = hs.image.imageFromPath("/Applications/Flameshot.app/Contents/Resources/flameshot.icns")
+  },
+  {
     text = "tips",
     subText = "launchOrFocus",
     path = "/System/Applications/Tips.app",
