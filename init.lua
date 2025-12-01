@@ -416,6 +416,12 @@ local fuzzelList = {
     }
   },
   {
+    text = "photos",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Photos.app",
+    image = utils.image.fromSystemApp("Photos.app")
+  },
+  {
     text = "font book",
     subText = "launchOrFocus",
     path = "/System/Applications/Font Book.app",
