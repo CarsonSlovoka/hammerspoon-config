@@ -312,6 +312,12 @@ local fuzzelList = {
     image = imageFromPath("download-folder.icns"),
   },
   {
+    text = "monitor (bashtop)",
+    subText = cmdInfo.name.openDir,
+    bundleID = "com.apple.ActivityMonitor",
+    image = utils.image.fromSystemApp("Utilities/Activity Monitor.app")
+  },
+  {
     text = "user application",
     subText = cmdInfo.name.openDir,
     cmdName = cmdInfo.name.openDir,
