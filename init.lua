@@ -218,6 +218,13 @@ local fuzzelList = {
     image = imageFromPath("google-sheet.icns")
   },
   {
+    text = "g-calendar",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://calendar.google.com/calendar/" },
+    image = imageFromPath("calendar.icns"),
+  },
+  {
     text = "g-earth",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
