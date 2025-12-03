@@ -98,6 +98,13 @@ local fuzzelList = {
     image = imageFromPath("lmstudio.icns")
   },
   {
+    text = "ComfyUI",
+    subText = "launchOrFocus",
+    path = "/Applications/ComfyUI.app",
+    -- image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/UI/Comfy_Logo.icns")
+    image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/icon.icns")
+  },
+  {
     text = "Calendar",
     subText = "launchOrFocus",
     path = "/System/Applications/Calendar.app/",
