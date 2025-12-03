@@ -105,6 +105,13 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/icon.icns")
   },
   {
+    text = "huggingface",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://huggingface.co/" },
+    image = imageFromPath("huggingface.icns")
+  },
+  {
     text = "Calendar",
     subText = "launchOrFocus",
     path = "/System/Applications/Calendar.app/",
