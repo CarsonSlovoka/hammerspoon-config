@@ -4,7 +4,7 @@ local function imgFrom(name)
   -- https://github.com/CarsonSlovoka/hammerspoon-config/tree/3ebc93f/assets/img
   local path = os.getenv("HOME") .. '/.hammerspoon/assets/img/' .. name
   if hs.fs.displayName(path) then
-    print(path)
+    -- print(path)
     return hs.image.imageFromPath(path)
   end
   return nil
