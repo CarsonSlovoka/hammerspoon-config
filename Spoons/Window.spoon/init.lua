@@ -10,7 +10,10 @@ local function imgFrom(name)
   return nil
 end
 
-function M.selectWindow()
+
+---@param opt table?
+function M.selectWindow(opt)
+  opt = opt or {}
   local list = {}
   for _, win in ipairs(hs.window.allWindows()) do
     local appName = win:application():name()
@@ -25,6 +28,8 @@ function M.selectWindow()
     if not choice then return end
     choice.win:focus()
   end)
+  chooser:searchSubText(opt.searchSubText or false) -- 使得subText可以被
+  -- Note: 當SubText定義為應用程式的名稱時，會很有用
   chooser:choices(list)
   chooser:show()
 end

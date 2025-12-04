@@ -699,7 +699,7 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "f", function()
   end
 end)
 hs.hotkey.bind({ "cmd" }, "F1", function()
-  spoon.Window.selectWindow()
+  spoon.Window.selectWindow({ searchSubText = true })
 end)
 
 
