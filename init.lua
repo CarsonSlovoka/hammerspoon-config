@@ -94,7 +94,7 @@ local fuzzelList = {
   {
     text = "LmStudio",
     subText = "launchOrFocus",
-    path = "/Applications/LM Studio.app/",
+    path = "/Applications/LM Studio.app",
     image = imageFromPath("lmstudio.icns")
   },
   {
@@ -114,7 +114,7 @@ local fuzzelList = {
   {
     text = "Calendar",
     subText = "launchOrFocus",
-    path = "/System/Applications/Calendar.app/",
+    path = "/System/Applications/Calendar.app",
     image = imageFromPath("calendar.icns")
   },
   {
@@ -152,7 +152,7 @@ local fuzzelList = {
   {
     text = "keynotes",
     subText = "launchOrFocus",
-    path = "/Applications/Keynote.app/",
+    path = "/Applications/Keynote.app",
     image = utils.image.fromApp("Keynote.app"),
   },
   {
@@ -176,19 +176,19 @@ local fuzzelList = {
   {
     text = "image playground", -- 需要開啟Apple Intelligence
     subText = "launchOrFocus",
-    path = "/System/Applications/Image Playground.app/",
+    path = "/System/Applications/Image Playground.app",
     image = utils.image.fromSystemApp("Image Playground.app")
   },
   {
     text = "passwords",
     subText = "launchOrFocus",
-    path = "/System/Applications/Passwords.app/",
+    path = "/System/Applications/Passwords.app",
     image = utils.image.fromSystemApp("Passwords.app")
   },
   {
     text = "dictionary",
     subText = "launchOrFocus",
-    path = "/System/Applications/Dictionary.app/",
+    path = "/System/Applications/Dictionary.app",
     image = utils.image.fromSystemApp("Dictionary.app")
   },
   {
