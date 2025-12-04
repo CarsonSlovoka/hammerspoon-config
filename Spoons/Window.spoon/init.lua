@@ -15,6 +15,10 @@ local function imageFromSystemApp(appName)
       hs.image.imageFromPath(string.format("/System/Applications/%s/Contents/Resources/AppIconLoc.icns", appName)) -- 本地化的icns
 end
 
+local function imageFromApp(appName)
+  return hs.image.imageFromPath(string.format("/Applications/%s/Contents/Resources/AppIcon.icns", appName)) or
+      hs.image.imageFromPath(string.format("/Applications/%s/Contents/Resources/AppIconLoc.icns", appName))
+end
 
 ---@param opt table?
 function M.selectWindow(opt)
@@ -26,12 +30,15 @@ function M.selectWindow(opt)
 
     -- bundleID 只對com.apple的項目取，這通常都是系統的工具，如果是第三方的之後的第三碼是一個id, 識別那個也不好
     -- 只抓是com.apple的bundleID, 並且不要前面的com.apple
-    local bundleIDLast = string.match(app:bundleID(), "^com%.apple%.(.+)") or ""
+    -- "^com%.apple%.(.+)" -- Warn: bundleID可能會多於三段，所以用 "^com%.apple%.([^%.]+)$" 才會取到最後一段
+    -- 例如: com.apple.iWork.Numbers => Number
+    local bundleIDLast = string.match(app:bundleID(), "^com%.apple%.([^%.]+)$") or ""
     local image
     if bundleIDLast == "" then
       image = imgFrom(string.gsub(appName, " ", "") .. ".icns")
     else
-      image = imageFromSystemApp(bundleIDLast .. ".app")
+      local appN = bundleIDLast .. ".app"
+      image = imageFromSystemApp(appN) or imageFromApp(appN)
     end
 
     table.insert(list, {
