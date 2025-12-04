@@ -73,17 +73,17 @@ local LayoutName = {
 
 local fuzzelList = {
   {
+    text = "Kitty",
+    subText = "launchOrFocus",
+    path = "/Applications/kitty.app",
+    image = imageFromPath("kitty.icns")
+  },
+  {
     text = "Firefox",
     subText = "launchOrFocus",
     path = "/Applications/Firefox.app",
     image = imageFromPath("firefox.icns"),
     -- image = hs.image.imageFromPath(utils.image.getImage("firefox.svg")), -- ❌ 不能給svg
-  },
-  {
-    text = "Kitty",
-    subText = "launchOrFocus",
-    path = "/Applications/kitty.app",
-    image = imageFromPath("kitty.icns")
   },
   {
     text = "Safari",
