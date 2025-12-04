@@ -156,6 +156,12 @@ local fuzzelList = {
     image = utils.image.fromApp("Keynote.app"),
   },
   {
+    text = "stickies",
+    subText = "launchOrFocus",                  -- 開啟之後 ⌘N 可以新增
+    path = "/System/Applications/Stickies.app", -- ⌘⌥F 可以always on top
+    image = utils.image.fromSystemApp("Stickies.app"),
+  },
+  {
     text = "textEdit",
     subText = "launchOrFocus",
     path = "/System/Applications/TextEdit.app",
