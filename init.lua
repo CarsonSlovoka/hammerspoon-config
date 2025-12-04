@@ -26,6 +26,40 @@ hs.ipc.cliInstall() -- 要安裝ipc才不會有以上錯誤 -- 當註解掉後�
 -- ln -s "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc/bin/hs" "/usr/local/bin/hs"
 -- Tip: 跳轉到ipc.lua中找到cliInstall就會曉得它做的事情 /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc.lua
 
+-- 切換到指定 App 所在的 Space 並聚焦視窗
+local function focusAppOnItsSpace(appName)
+  local app = hs.application.get(appName)
+  if not app then
+    -- hs.alert.show(appName .. " 未開啟")
+    return
+  end
+
+  local win = app:mainWindow()
+  if not win then
+    -- hs.alert.show(appName .. " 沒有可聚焦的視窗")
+    return
+  end
+
+  local curSpace = hs.spaces.activeSpaceOnScreen()
+
+  -- 找到視窗所在的 space ID
+  local targetSpace = hs.spaces.windowSpaces(win)[1]
+  if not targetSpace then
+    hs.alert.show("找不到視窗的 space")
+    return
+  end
+
+  -- 若已在同一個 Space，就不要再切換，避免多餘動畫
+  if curSpace == targetSpace then
+    win:focus()
+    return
+  else
+    hs.spaces.gotoSpace(targetSpace)
+    win:focus()
+  end
+end
+
+-- hs.application.enableSpotlightForNameSearches(true)
 
 for _, plugin in ipairs({
   "Dock",
@@ -549,6 +583,9 @@ local function completionFn(choice)
   else
     hs.application.launchOrFocus(choice.path)
   end
+
+  local appNameOrBundleID = choice.bundleID or choice.path:match("([^/]+)%.app$")
+  focusAppOnItsSpace(appNameOrBundleID)
 
   -- 加在這裡不好，不一定都是想fullscreen, 有可能用到layout
   -- -- hs.window.focusedWindow():setFullscreen(false) -- 前面的視窗如果還是全螢幕，下一個視窗無法被切換過去
