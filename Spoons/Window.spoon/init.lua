@@ -25,14 +25,14 @@ function M.selectWindow(opt)
   opt = opt or {}
   local list = {}
   for _, win in ipairs(hs.window.allWindows()) do
-    local app = win:application()
+    local app = win:application() -- 如果是`gitk --all` & 開出來的東西，得到的app會是nil
     local appName = app:name()
 
     -- bundleID 只對com.apple的項目取，這通常都是系統的工具，如果是第三方的之後的第三碼是一個id, 識別那個也不好
     -- 只抓是com.apple的bundleID, 並且不要前面的com.apple
     -- "^com%.apple%.(.+)" -- Warn: bundleID可能會多於三段，所以用 "^com%.apple%.([^%.]+)$" 才會取到最後一段
     -- 例如: com.apple.iWork.Numbers => Number
-    local bundleIDLast = string.match(app:bundleID(), "^com%.apple%.([^%.]+)$") or ""
+    local bundleIDLast = string.match(app and app:bundleID() or "", "^com%.apple%.([^%.]+)$") or ""
     local image
     if bundleIDLast == "" then
       image = imgFrom(string.gsub(appName, " ", "") .. ".icns")
