@@ -328,6 +328,16 @@ local fuzzelList = {
     image = imageFromPath("notion.icns")
   },
   {
+    text = "google ai studio",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://aistudio.google.com",
+      windowName = { "Google AI Studio" },
+    },
+    image = imageFromPath("google-ai-studio.icns"),
+  },
+  {
     text = "grok",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
