@@ -34,6 +34,7 @@
 - [hammer](https://macosicons.com/#/?icon=x3sldgkYgZ)
 - [freeform](https://macosicons.com/#/?icon=hRIsBKF1LK)
 - [google-ai-sutdio](https://macosicons.com/#/?icon=klA55JMhyu)
+- [gemini](https://macosicons.com/#/?icon=sjclm97CIP)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
