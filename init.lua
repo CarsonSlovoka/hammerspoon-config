@@ -220,6 +220,14 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Passwords.app")
   },
   {
+    text = "key chain access",
+    subText = "launchOrFocus",
+    path = "/System/Library/CoreServices/Applications/Keychain Access.app",
+    image = hs.image.imageFromPath(
+      "/System/Library/CoreServices/Applications/Keychain Access.app/Contents/Resources/AppIcon.icns"
+    ),
+  },
+  {
     text = "dictionary",
     subText = "launchOrFocus",
     path = "/System/Applications/Dictionary.app",
