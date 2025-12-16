@@ -394,8 +394,15 @@ local fuzzelList = {
     image = imageFromPath("download-folder.icns"),
   },
   {
+    text = "stats",
+    -- https://github.com/exelban/stats
+    subText = "launchOrFocus",
+    path = "/Applications/Stats.app",
+    image = utils.image.fromApp("Stats.app"),
+  },
+  {
     text = "monitor (bashtop)",
-    subText = cmdInfo.name.openDir,
+    subText = "launchOrFocus",
     bundleID = "com.apple.ActivityMonitor",
     image = utils.image.fromSystemApp("Utilities/Activity Monitor.app")
   },
