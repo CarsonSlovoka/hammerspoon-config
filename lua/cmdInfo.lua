@@ -17,12 +17,12 @@ local name = {
   splitVideo = "splitVideo",
 }
 
-local firefoxManager = {}
+local browserManager = {}
 
 ---@param windowName table|string
 ---@param browserName string
 ---@return boolean isFocus
-function firefoxManager.focusWindow(windowName, browserName)
+function browserManager.focusWindow(windowName, browserName)
   -- 定義常見的 Firefox 窗口標題模式
   local patterns = {
     ["gmail"] = "Gmail",
@@ -112,11 +112,11 @@ local cmdTable = {
       return
     end
 
-    if not firefoxManager.focusWindow(kargs.windowName, defaultHandler == firefoxID and "Firefox" or "Safari") then
+    if not browserManager.focusWindow(kargs.windowName, defaultHandler == firefoxID and "Firefox" or "Safari") then
       -- 失敗了話，就嘗試開新視窗後再試一次
       exec_func()
       hs.timer.doAfter(2, function()
-        firefoxManager.focusWindow(kargs.windowName, defaultHandler == firefoxID and "Firefox" or "Safari")
+        browserManager.focusWindow(kargs.windowName, defaultHandler == firefoxID and "Firefox" or "Safari")
       end)
     end
   end,
