@@ -209,6 +209,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Facetime.app"),
   },
   {
+    text = "iphone mirroring",
+    subText = "launchOrFocus",
+    path = "/System/Applications/iPhone Mirroring.app/", -- 鏡像輸出
+    image = utils.image.fromSystemApp("iPhone Mirroring.app"),
+  },
+  {
     text = "image playground", -- 需要開啟Apple Intelligence
     subText = "launchOrFocus",
     path = "/System/Applications/Image Playground.app",
