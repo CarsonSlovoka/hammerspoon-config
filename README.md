@@ -1,5 +1,9 @@
 [hammerspoon docs](https://www.hammerspoon.org/docs/)
 
+## config設定
+
+[lua/config.lua](lua/config.lua)
+
 
 ## 目錄結構
 

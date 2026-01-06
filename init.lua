@@ -15,6 +15,8 @@ package.path = package.path ..
 -- local test = require("test")
 local utils = require("utils.utils")
 -- test.test()
+--
+local cfg = require("config")
 
 -- https://www.hammerspoon.org/docs/hs.ipc.html#cliInstall
 -- hs -c "hs.alert.show('Hello from nvim')"
@@ -102,22 +104,25 @@ local LayoutName = {
   AskAI = "Ask AI",
   CodeAndFirefox = "Code & Firefox",
   CodeAndPreview = "Code & Preview",
-  Firefox = "Firefox",
+  Borwser = cfg.browser,
   LmStudio = "LmStudio",
 }
 
+-- fuzzelList 排序: 1(主termianl), 2(主瀏覽器), 3 (次terminal), 4(次瀏覽器), ...(之後的不客意排)
 local fuzzelList = {
   {
     text = "Kitty",
     subText = "launchOrFocus",
     path = "/Applications/kitty.app",
-    image = imageFromPath("kitty.icns")
+    image = imageFromPath("kitty.icns"),
+    order = cfg.termianl == "kitty" and 1 or 3,
   },
   {
     text = "ghostty",
     subText = "launchOrFocus",
     path = "/Applications/Ghostty.app",
     image = hs.image.imageFromPath("/Applications/Ghostty.app/Contents/Resources/Ghostty.icns"),
+    order = cfg.termianl == "Ghostty" and 1 or 3,
   },
   {
     text = "Firefox",
@@ -125,12 +130,14 @@ local fuzzelList = {
     path = "/Applications/Firefox.app",
     image = imageFromPath("firefox.icns"),
     -- image = hs.image.imageFromPath(utils.image.getImage("firefox.svg")), -- ❌ 不能給svg
+    order = cfg.browser == "Firefox" and 2 or 4,
   },
   {
     text = "Safari",
     subText = "launchOrFocus",
     path = "/Applications/Safari.app",
-    image = imageFromPath("safari.icns")
+    image = imageFromPath("safari.icns"),
+    order = cfg.browser == "Safari" and 2 or 4,
   },
   {
     text = "LmStudio",
@@ -607,6 +614,14 @@ local fuzzelList = {
   },
 }
 
+-- Sort fuzzelList by order
+table.sort(fuzzelList,
+  function(a, b)
+    local oa = a.order or math.huge
+    local ob = b.order or math.huge
+    return oa < ob -- ascending order; use > for descending
+  end)
+
 hs.window.animationDuration = 0
 
 local function completionFn(choice)
@@ -827,28 +842,28 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
 hs.grid.setGrid('8x2')
 -- Spoons/Layout.spoon/init.lua
 spoon.Layout:add(LayoutName.Code, "1", {
-  { 'kitty', '0,0 8x2' },
+  { cfg.termianl, '0,0 8x2' },
 })
 
 spoon.Layout:add(LayoutName.AskAI, nil, {
-  { 'kitty',     '0,0 4x2' },
+  { cfg.termianl, '0,0 4x2' },
   -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
-  { 'LM Studio', '4,0 4x1' },
-  { 'Firefox',   '4,1 4x1' },
+  { 'LM Studio',  '4,0 4x1' },
+  { cfg.browser,  '4,1 4x1' },
 })
 
 spoon.Layout:add(LayoutName.CodeAndFirefox, nil, {
-  { 'kitty',   '0,0 4x2' },
+  { cfg.termianl, '0,0 4x2' },
   -- { 'Firefox', '4,0 4x2', false },
-  { 'Firefox', '4,0 4x2' },
+  { cfg.browser,  '4,0 4x2' },
 })
 spoon.Layout:add(LayoutName.CodeAndPreview, "p", {
-  { 'kitty',             '0,0 4x2' },
+  { cfg.termianl,        '0,0 4x2' },
   { 'com.apple.Preview', '4,0 4x2' },
 })
 
-spoon.Layout:add(LayoutName.Firefox, "f", {
-  { 'Firefox', '0,0 8x2' },
+spoon.Layout:add(cfg.browser, "f", {
+  { cfg.browser, '0,0 8x2' },
 })
 
 spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
@@ -857,7 +872,7 @@ spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
 
 
 hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
-hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Firefox).func)
+hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Borwser).func)
 hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 
