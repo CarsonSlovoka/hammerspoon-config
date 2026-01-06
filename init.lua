@@ -114,6 +114,12 @@ local fuzzelList = {
     image = imageFromPath("kitty.icns")
   },
   {
+    text = "ghostty",
+    subText = "launchOrFocus",
+    path = "/Applications/Ghostty.app",
+    image = hs.image.imageFromPath("/Applications/Ghostty.app/Contents/Resources/Ghostty.icns"),
+  },
+  {
     text = "Firefox",
     subText = "launchOrFocus",
     path = "/Applications/Firefox.app",
