@@ -166,6 +166,12 @@ local fuzzelList = {
     image = imageFromPath("calendar.icns")
   },
   {
+    text = "free ruler", -- 尺規工具: https://apps.apple.com/tw/app/free-ruler/id1483172210?mt=12
+    subText = "launchOrFocus",
+    path = "/Applications/Free Ruler.app",
+    image = utils.image.fromApp("Free Ruler.app"),
+  },
+  {
     text = "Calculator",
     subText = "launchOrFocus",
     path = "/System/Applications/Calculator.app",
