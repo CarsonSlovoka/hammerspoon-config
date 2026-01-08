@@ -372,6 +372,16 @@ local fuzzelList = {
     image = imageFromPath("gemini.icns"),
   },
   {
+    text = "claude ai",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://claude.ai",
+      windowName = { "Claude" },
+    },
+    image = imageFromPath("claude.icns"),
+  },
+  {
     text = "google ai studio",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
