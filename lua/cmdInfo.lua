@@ -311,16 +311,25 @@ local cmdTable = {
     local result = hs.execute("defaults read com.apple.dock autohide")
     local isHidden = result:match("1") ~= nil
 
-    if isHidden then
-      -- 如果目前是隱藏，則設為顯示
-      hs.execute("defaults write com.apple.dock autohide -bool false")
-    else
-      -- 如果目前是顯示，則設為隱藏
-      hs.execute("defaults write com.apple.dock autohide -bool true")
-    end
+    -- if isHidden then
+    --   -- 如果目前是隱藏，則設為顯示
+    --   hs.execute("defaults write com.apple.dock autohide -bool false")
+    -- else
+    --   -- 如果目前是顯示，則設為隱藏
+    --   hs.execute("defaults write com.apple.dock autohide -bool true")
+    -- end
+    -- -- 重啟 Dock 使設置生效
+    -- hs.execute("killall Dock") -- Warn: 重啟會有點慢
 
-    -- 重啟 Dock 使設置生效
-    hs.execute("killall Dock")
+    -- 使用 AppleScript 直接切換，無需重啟 Dock
+    local script = [[
+        tell application "System Events"
+            tell dock preferences
+                set autohide to not autohide
+            end tell
+        end tell
+    ]]
+    hs.osascript.applescript(script)
 
     -- 顯示通知
     local status = isHidden and "false" or "true"
