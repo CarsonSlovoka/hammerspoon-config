@@ -254,6 +254,13 @@ local fuzzelList = {
     ),
   },
   {
+    text = "show apps",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Apps.app",
+    -- Note: 如果將它從Dock中移除, 可以直接打開 `/System/Applications/` 找到該圖示後，直接將它拉到Dock上就可以再次出現在Dock上
+    image = utils.image.fromSystemApp("Apps.app")
+  },
+  {
     text = "passwords",
     subText = "launchOrFocus",
     path = "/System/Applications/Passwords.app",
