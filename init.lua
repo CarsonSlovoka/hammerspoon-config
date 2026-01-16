@@ -571,6 +571,7 @@ local fuzzelList = {
     text = "toggle dock",
     subText = "Switch whether to automatically hide the Dock",
     cmdName = cmdInfo.name.toggleDock,
+    image = imageFromPath("dock.icns")
   },
   {
     text = "photos",
