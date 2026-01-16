@@ -153,6 +153,12 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/icon.icns")
   },
   {
+    text = "teamviewer",
+    subText = "launchOrFocus",
+    path = "/Applications/TeamViewer.app/",
+    image = utils.image.fromApp("TeamViewer.app"),
+  },
+  {
     text = "huggingface",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
