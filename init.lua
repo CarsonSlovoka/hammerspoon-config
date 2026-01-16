@@ -246,6 +246,14 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Image Playground.app")
   },
   {
+    text = "settings",
+    subText = "launchOrFocus",
+    path = "/System/Applications/System Settings.app",
+    image = hs.image.imageFromPath(
+      "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns"
+    ),
+  },
+  {
     text = "passwords",
     subText = "launchOrFocus",
     path = "/System/Applications/Passwords.app",
