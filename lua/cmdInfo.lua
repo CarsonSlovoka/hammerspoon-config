@@ -15,6 +15,7 @@ local name = {
   whichKey = "whichKey",
   preview = "preview",
   splitVideo = "splitVideo",
+  toggleDock = "toggleDock",
 }
 
 local browserManager = {}
@@ -306,6 +307,25 @@ local cmdTable = {
       }
     )
   end,
+  [name.toggleDock] = function()
+    local result = hs.execute("defaults read com.apple.dock autohide")
+    local isHidden = result:match("1") ~= nil
+
+    if isHidden then
+      -- 如果目前是隱藏，則設為顯示
+      hs.execute("defaults write com.apple.dock autohide -bool false")
+    else
+      -- 如果目前是顯示，則設為隱藏
+      hs.execute("defaults write com.apple.dock autohide -bool true")
+    end
+
+    -- 重啟 Dock 使設置生效
+    hs.execute("killall Dock")
+
+    -- 顯示通知
+    local status = isHidden and "false" or "true"
+    hs.alert.show("Dock autohide: " .. status, 3)
+  end
 }
 
 return {

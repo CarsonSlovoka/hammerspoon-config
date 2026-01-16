@@ -568,6 +568,11 @@ local fuzzelList = {
     }
   },
   {
+    text = "toggle dock",
+    subText = "Switch whether to automatically hide the Dock",
+    cmdName = cmdInfo.name.toggleDock,
+  },
+  {
     text = "photos",
     subText = "launchOrFocus",
     path = "/System/Applications/Photos.app",
