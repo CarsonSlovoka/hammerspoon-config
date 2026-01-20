@@ -275,6 +275,12 @@ local fuzzelList = {
     ),
   },
   {
+    text = "phone",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Phone.app",
+    image = utils.image.fromSystemApp("Phone.app")
+  },
+  {
     text = "dictionary",
     subText = "launchOrFocus",
     path = "/System/Applications/Dictionary.app",
