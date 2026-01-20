@@ -254,6 +254,15 @@ local fuzzelList = {
     ),
   },
   {
+    text = "finder",
+    subText = "launchOrFocus",
+    path = "/System/Library/CoreServices/Finder.app",
+    image = hs.image.imageFromPath(
+      "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns"
+    ),
+    order = 10, -- 使得就算透過搜尋，也可以在find icon之前
+  },
+  {
     text = "show apps",
     subText = "launchOrFocus",
     path = "/System/Applications/Apps.app",
