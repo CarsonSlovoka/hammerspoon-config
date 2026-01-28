@@ -678,6 +678,27 @@ local fuzzelList = {
   },
 }
 
+-- 🟧 加入所有 ~/Applications 中的app, 這些是shortcuts使用加入到Dock之後就會自動生成的項目
+-- https://www.icloud.com/shortcuts/bed9c5f9ac064609bd688d691f4f32ae
+local appFolder = os.getenv("HOME") .. "/Applications"
+local iter, dir = require("hs.fs").dir(appFolder)
+if iter then
+  for file in iter, dir do
+    if file:sub(1, 1) ~= "." then -- 跳過隱藏檔
+      local fullPath = appFolder .. "/" .. file
+
+      -- 只處理 .app 結尾的資料夾
+      if file:match("%.app$") and require("hs.fs").attributes(fullPath, "mode") == "directory" then
+        table.insert(fuzzelList, {
+          text    = file:gsub("%.app$", ""), -- 去掉 .app 後綴
+          subText = "launchOrFocus",
+          path    = fullPath,
+          image   = hs.image.imageFromPath(fullPath .. "/Contents/Resources/ShortcutIcon.icns"),
+        })
+      end
+    end
+  end
+end
 -- Sort fuzzelList by order
 table.sort(fuzzelList,
   function(a, b)
