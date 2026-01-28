@@ -670,12 +670,14 @@ local fuzzelList = {
     -- osascript -e 'display notification "my message" with title "My Notification" subtitle "for test" sound name "Frog"'
     image = utils.image.fromDockApp("trashempty.png")
   },
-  {
-    -- Tip: 將reload放在最後一個，如此一開始直接往上找就可以找到此項目
-    text = "hammerspoon reload",
-    -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數
-    cmdName = cmdInfo.name.hammerspoonReload,
-  },
+}
+
+local last_item = {
+  -- Tip: 將reload放在最後一個，如此一開始直接往上找就可以找到此項目
+  text = "hammerspoon reload",
+  -- cmd = function() hs.reload() end -- ❌ cannot be converted into a proper NSObject, 因此沒辦法直接用function, 只能額外用table去找對應要執行的函數
+  cmdName = cmdInfo.name.hammerspoonReload,
+  order = math.huge,
 }
 
 -- 🟧 加入所有 ~/Applications 中的app, 這些是shortcuts使用加入到Dock之後就會自動生成的項目
@@ -699,6 +701,10 @@ if iter then
     end
   end
 end
+
+table.insert(fuzzelList, last_item)
+
+
 -- Sort fuzzelList by order
 table.sort(fuzzelList,
   function(a, b)
