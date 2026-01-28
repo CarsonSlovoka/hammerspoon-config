@@ -589,6 +589,12 @@ local fuzzelList = {
     image = imageFromPath("dock.icns")
   },
   {
+    text = "shortcuts",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Shortcuts.app",
+    image = utils.image.fromSystemApp("Shortcuts.app")
+  },
+  {
     text = "photos",
     subText = "launchOrFocus",
     path = "/System/Applications/Photos.app",
