@@ -81,7 +81,8 @@ end
 
 spoon.LeftRightHotkey:start()
 spoon.Frame:setup(
-  { "cmd" }, "r",
+-- 這個其實不會比 hs.grid.show 要好用
+  { "cmd", "shift" }, "r",
   {
     resize_step = 100,
     move_step = 200
@@ -849,6 +850,10 @@ end)
 hs.hotkey.bind({ "cmd" }, "j", function()
   focus("South")
 end)
+hs.hotkey.bind({ "cmd" }, "r", function()
+  -- 善用快截鍵
+  hs.grid.show()
+end)
 
 
 --
@@ -930,7 +935,9 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
   end
 )
 
-hs.grid.setGrid('8x2')
+
+-- hs.grid.setGrid('10x5') -- 如果弄到第5列, 需要考慮f1, ..., f10 會按的有點不方便
+hs.grid.setGrid('10x4') -- Tip: 鍵位其實就是鍵盤
 -- Spoons/Layout.spoon/init.lua
 spoon.Layout:add(LayoutName.Code, "1", {
   { cfg.termianl, '0,0 8x2' },
