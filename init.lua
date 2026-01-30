@@ -940,32 +940,32 @@ spoon.LeftRightHotkey:bind({ "rCtrl" }, "f", -- Tip: 在mac上有很多應用程
 hs.grid.setGrid('10x4') -- Tip: 鍵位其實就是鍵盤
 -- Spoons/Layout.spoon/init.lua
 spoon.Layout:add(LayoutName.Code, "1", {
-  { cfg.termianl, '0,0 8x2' },
+  { cfg.termianl, '0,0 10x4' },
 })
 
 spoon.Layout:add(LayoutName.AskAI, nil, {
-  { cfg.termianl, '0,0 4x2' },
-  -- { 'LM Studio', '4,0 4x2' }, -- 也可以考慮用成4x2，這樣聚焦時會自動展開
-  { 'LM Studio',  '4,0 4x1' },
-  { cfg.browser,  '4,1 4x1' },
+  { cfg.termianl, '0,0 5x4' },
+  -- { 'LM Studio', '5,0 5x4' }, -- 也可以考慮用成5x4，這樣聚焦時會自動展開
+  { 'LM Studio',  '5,0 5x1' },
+  { cfg.browser,  '5,1 5x1' },
 })
 
 spoon.Layout:add(LayoutName.CodeAndFirefox, nil, {
-  { cfg.termianl, '0,0 4x2' },
-  -- { 'Firefox', '4,0 4x2', false },
-  { cfg.browser,  '4,0 4x2' },
+  { cfg.termianl, '0,0 5x4' },
+  -- { 'Firefox', '5,0 5x4', false },
+  { cfg.browser,  '5,0 5x4' },
 })
 spoon.Layout:add(LayoutName.CodeAndPreview, "p", {
-  { cfg.termianl,        '0,0 4x2' },
-  { 'com.apple.Preview', '4,0 4x2' },
+  { cfg.termianl,        '0,0 5x4' },
+  { 'com.apple.Preview', '5,0 5x4' },
 })
 
 spoon.Layout:add(cfg.browser, "f", {
-  { cfg.browser, '0,0 8x2' },
+  { cfg.browser, '0,0 10x4' },
 })
 
 spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
-  { 'ai.elementlabs.lmstudio', '0,0 8x2' },
+  { 'ai.elementlabs.lmstudio', '0,0 10x4' },
 })
 
 
