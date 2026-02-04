@@ -626,6 +626,11 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Tips.app")
   },
   {
+    text = "image capture",
+    subText = "Capture iPhone photos, image capture, scanner, etc.",
+    path = "/System/Applications/Image Capture.app", -- 影像截取
+    image = utils.image.fromSystemApp("Image Capture.app")
+  },
     text = "open trash",
     subText = cmdInfo.name.tellFinder,
     cmdName = cmdInfo.name.tellFinder,
