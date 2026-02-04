@@ -22,6 +22,11 @@ function M.fromSystemApp(appName)
       hs.image.imageFromPath(string.format("/System/Applications/%s/Contents/Resources/AppIconLoc.icns", appName)) -- 本地化的icns
 end
 
+function M.fromSystemUtilities(appName)
+  return hs.image.imageFromPath(string.format("/System/Applications/Utilities/%s/Contents/Resources/AppIcon.icns",
+    appName))
+end
+
 ---@param name string png, @2x.png, icns, ...
 ---@return Image|nil
 function M.fromDockApp(name)

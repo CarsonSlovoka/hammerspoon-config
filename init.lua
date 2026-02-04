@@ -631,6 +631,13 @@ local fuzzelList = {
     path = "/System/Applications/Image Capture.app", -- 影像截取
     image = utils.image.fromSystemApp("Image Capture.app")
   },
+  {
+    text = "disk utility",
+    subText = "format USB. disk splitting. disk information",
+    path = "/System/Applications/Utilities/Disk Utility.app",
+    image = utils.image.fromSystemUtilities("Disk Utility.app")
+  },
+  {
     text = "open trash",
     subText = cmdInfo.name.tellFinder,
     cmdName = cmdInfo.name.tellFinder,
