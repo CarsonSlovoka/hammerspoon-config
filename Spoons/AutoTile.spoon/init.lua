@@ -2,24 +2,28 @@ local M = {
   layouts = {
     {
       text = "📑 Main & Stack (7:3)",
+      key = "1",
       value = {
         { x = 0,   y = 0,   w = 0.7, h = 1 },
         { x = 0.7, y = 0,   w = 0.3, h = 0.5 },
         { x = 0.7, y = 0.5, w = 0.3, h = 0.5 }
-      }
+      },
     },
     {
       text = "🌓 Half halves (left and right)",
+      key = "2",
       value = { hs.layout.left50, hs.layout.right50 }
     },
     {
       text = "🏛️ Three-column layout (1:1:1)",
+      key = "3",
       value = {
         { x = 0, y = 0, w = 0.33, h = 1 }, { x = 0.33, y = 0, w = 0.34, h = 1 }, { x = 0.67, y = 0, w = 0.33, h = 1 }
       }
     },
     {
       text = "💠 Four squares (2x2)",
+      key = "4",
       value = {
         { x = 0, y = 0,   w = 0.5, h = 0.5 }, { x = 0.5, y = 0, w = 0.5, h = 0.5 },
         { x = 0, y = 0.5, w = 0.5, h = 0.5 }, { x = 0.5, y = 0.5, w = 0.5, h = 0.5 }
@@ -27,14 +31,17 @@ local M = {
     },
     {
       text = "📏 Golden Ratio (L)",
+      key = "l",
       value = { { x = 0, y = 0, w = 0.618, h = 1 }, { x = 0.618, y = 0, w = 0.382, h = 1 } }
     },
     {
       text = "🎯 Focus Mode",
+      key = "f",
       value = { { x = 0.15, y = 0, w = 0.7, h = 1 } } -- 左右各留 15% 空白
     },
     {
       text = "🚥 Horizontal 3",
+      key = "h",
       value = { { x = 0, y = 0, w = 1, h = 1 / 3 }, { x = 0, y = 1 / 3, w = 1, h = 1 / 3 }, { x = 0, y = 2 / 3, w = 1, h = 1 / 3 } }
     }
   }
@@ -98,8 +105,8 @@ function M.bind(mods, key)
     for i, item in ipairs(M.layouts) do
       -- %-12s 左對齊
       -- %12s 右對齊
-      msg = msg .. string.format("\n%-20d %s",
-        i,
+      msg = msg .. string.format("\n%-20s %s",
+        item.key,
         item.text
       )
     end
@@ -114,8 +121,9 @@ function M.bind(mods, key)
   local the_mods = {}
   local empty_msg = nil
   -- 動態綁定數字鍵 1, 2, 3...
-  for i, _ in ipairs(M.layouts) do
-    local k = tostring(i)
+  for i, l in ipairs(M.layouts) do
+    -- local k = tostring(i)
+    local k = l.key
     mKey:bind(the_mods, k,
       empty_msg,
       function()
