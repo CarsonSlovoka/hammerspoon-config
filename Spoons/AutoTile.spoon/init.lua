@@ -20,8 +20,7 @@ local M = {
   }
 }
 
---- 這個可行，但是要自己實作對應的layout函數, 不太方便
-local function test(mods, key)
+function M.bind(mods, key)
   local function tileTwoWindows()
     local windows = hs.window.filter.new():getWindows() -- 獲取當前空間的所有視窗
     if #windows >= 2 then
@@ -36,7 +35,26 @@ local function test(mods, key)
       win2:setFrame({ x = screen.x + screen.w / 2, y = screen.y, w = screen.w / 2, h = screen.h })
     end
   end
-  hs.hotkey.bind({ "cmd" }, "z", tileTwoWindows)
+
+  -- 通用的排列函數 (如此就不需要實作像 tileTwoWindows 的函數)
+  local function applyLayout(layoutIndex)
+    local layout = M.layouts[layoutIndex]
+    if not layout then
+      return
+    end
+
+    -- 獲取當前空間的可見視窗排除隱藏視窗與桌面
+    local windows = hs.window.filter.new():setAppFilter('Finder', { allowRoles = 'AXUnknown' }):getWindows()
+    local frames = layout.value
+
+    -- 根據 layout 定義的數量來排列視窗
+    for i = 1, math.min(#windows, #frames) do
+      local win = windows[i]
+      local frameIndex = frames[i] -- hs.layout.left50
+
+      win:move(frameIndex, nil, true)
+    end
+  end
 
   local mKey = hs.hotkey.modal.new(mods, key)
   function mKey:entered()
@@ -59,17 +77,19 @@ local function test(mods, key)
 
   local the_mods = {}
   local empty_msg = nil
-  mKey:bind(
-    the_mods,
-    "1", -- key
-    nil, -- msg
-    function()
-      tileTwoWindows()
-      mKey:exit()
-    end
-  )
+  -- 動態綁定數字鍵 1, 2, 3...
+  for i, _ in ipairs(M.layouts) do
+    local k = tostring(i)
+    mKey:bind(the_mods, k,
+      empty_msg,
+      function()
+        applyLayout(i)
+        mKey:exit()
+      end)
+  end
 end
--- test({ "cmd" }, "z")
+
+-- M.bind({ "cmd" }, "z")
 
 local function applyLayout(layoutRects)
   local allWindows = hs.window.filter.new():getWindows()
