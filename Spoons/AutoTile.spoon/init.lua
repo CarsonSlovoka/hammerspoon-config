@@ -44,15 +44,31 @@ function M.bind(mods, key)
     end
 
     -- 獲取當前空間的可見視窗排除隱藏視窗與桌面
-    local windows = hs.window.filter.new():setAppFilter('Finder', { allowRoles = 'AXUnknown' }):getWindows()
+    -- local windows = hs.window.filter.new():setAppFilter('Finder', { allowRoles = 'AXUnknown' }):getWindows()
+    -- 使用 orderedWindows 取代 window.filter 這會根據 Z-order（最近使用）排序，且執行速度極快
+    local windows = hs.window.orderedWindows()
     local frames = layout.value
+    local count = 0
+
+    -- 獲取當前螢幕，避免在迴圈內重複呼叫
+    local focusedScreen = hs.screen.mainScreen()
 
     -- 根據 layout 定義的數量來排列視窗
-    for i = 1, math.min(#windows, #frames) do
-      local win = windows[i]
-      local frameIndex = frames[i] -- hs.layout.left50
+    for _, win in ipairs(windows) do
+      -- 只處理目前螢幕上的標準視窗（排除 MenuBar, Dashboard 等）
+      if win:screen() == focusedScreen and win:isStandard() then
+        count = count + 1
+        local frameRect = frames[count]
 
-      win:move(frameIndex, nil, true)
+        if frameRect then
+          win:move(frameRect, focusedScreen, true)
+        end
+
+        -- 填滿 layout 所需數量就停止
+        if count >= #frames then 
+          break
+        end
+      end
     end
   end
 
