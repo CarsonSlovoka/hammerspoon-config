@@ -1,21 +1,41 @@
 local M = {
   layouts = {
     {
-      text = "Half halves (left and right)",
+      text = "📑 Main & Stack (7:3)",
+      value = {
+        { x = 0,   y = 0,   w = 0.7, h = 1 },
+        { x = 0.7, y = 0,   w = 0.3, h = 0.5 },
+        { x = 0.7, y = 0.5, w = 0.3, h = 0.5 }
+      }
+    },
+    {
+      text = "🌓 Half halves (left and right)",
       value = { hs.layout.left50, hs.layout.right50 }
     },
     {
-      text = "Three-column layout (1:1:1)",
+      text = "🏛️ Three-column layout (1:1:1)",
       value = {
         { x = 0, y = 0, w = 0.33, h = 1 }, { x = 0.33, y = 0, w = 0.34, h = 1 }, { x = 0.67, y = 0, w = 0.33, h = 1 }
       }
     },
     {
-      text = "Four squares (2x2)",
+      text = "💠 Four squares (2x2)",
       value = {
         { x = 0, y = 0,   w = 0.5, h = 0.5 }, { x = 0.5, y = 0, w = 0.5, h = 0.5 },
         { x = 0, y = 0.5, w = 0.5, h = 0.5 }, { x = 0.5, y = 0.5, w = 0.5, h = 0.5 }
       }
+    },
+    {
+      text = "📏 Golden Ratio (L)",
+      value = { { x = 0, y = 0, w = 0.618, h = 1 }, { x = 0.618, y = 0, w = 0.382, h = 1 } }
+    },
+    {
+      text = "🎯 Focus Mode",
+      value = { { x = 0.15, y = 0, w = 0.7, h = 1 } } -- 左右各留 15% 空白
+    },
+    {
+      text = "🚥 Horizontal 3",
+      value = { { x = 0, y = 0, w = 1, h = 1 / 3 }, { x = 0, y = 1 / 3, w = 1, h = 1 / 3 }, { x = 0, y = 2 / 3, w = 1, h = 1 / 3 } }
     }
   }
 }
@@ -65,7 +85,7 @@ function M.bind(mods, key)
         end
 
         -- 填滿 layout 所需數量就停止
-        if count >= #frames then 
+        if count >= #frames then
           break
         end
       end
