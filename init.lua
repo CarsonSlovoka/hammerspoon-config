@@ -66,6 +66,7 @@ end
 for _, plugin in ipairs({
   "Dock",
   "AClock",
+  "AutoTile",
   "Crontab",
   "LeftRightHotkey",
   "Frame",
