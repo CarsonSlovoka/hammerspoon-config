@@ -989,5 +989,7 @@ hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
+-- spoon.AutoTile.bindApplyLayout({ "cmd" }, "z")
+
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")

@@ -114,17 +114,22 @@ local function applyLayout(layoutRects)
 end
 
 
-hs.hotkey.bind({ "cmd" }, "z", function()
-  local layoutChooser = hs.chooser.new(function(choice)
-    if choice then
-      applyLayout(choice.value)
+function M.bindApplyLayout(mods, key)
+  hs.hotkey.bind(mods, key,
+    function()
+      local layoutChooser = hs.chooser.new(
+        function(choice)
+          if choice then
+            applyLayout(choice.value)
+          end
+        end
+      )
+
+      layoutChooser:placeholderText("Choose layout:")
+      layoutChooser:choices(M.layouts)
+      layoutChooser:show()
     end
-  end)
-
-  layoutChooser:placeholderText("Choose layout:")
-  layoutChooser:choices(M.layouts)
-  layoutChooser:show()
-end)
-
+  )
+end
 
 return M
