@@ -400,6 +400,16 @@ local fuzzelList = {
     image = imageFromPath("notion.icns")
   },
   {
+    text = "notebooklm",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://notebooklm.google.com",
+      windowName = { "NotebookLM" },
+    },
+    image = imageFromPath("notebookLM.icns"),
+  },
+  {
     text = "gemini",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,

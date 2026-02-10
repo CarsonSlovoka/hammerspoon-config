@@ -37,6 +37,7 @@
 - [gemini](https://macosicons.com/#/?icon=sjclm97CIP)
 - [claude](https://macosicons.com/#/?icon=bQPQfXDUHF)
 - [dock](https://macosicons.com/#/?icon=5eTkUjNGdT)
+- [notebookLM](https://macosicons.com/#/?icon=p89zpkOIOW)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景
