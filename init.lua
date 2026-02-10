@@ -997,6 +997,47 @@ hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Borwser).func)
 hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 
+hs.hotkey.bind({ "cmd", "shift" }, "m", -- `Move Tab to New Window` 也可用App快速鍵來設定. Note: 快速鍵有的網頁會不行，例如: discord的一些熱鍵會有相衝
+  function()
+    local ok, result = hs.osascript.applescript([[
+  -- Note: 用這種方法，
+  tell application "Safari"
+    if (count of windows) = 0 then return
+
+    set currentWin to front window
+
+    if (count of tabs of currentWin) <= 1 then return  -- 只有一個分頁就不做事
+
+    set curTab to current tab of currentWin
+    set tabURL to URL of curTab
+    set tabTitle to name of curTab
+
+    -- 關閉原本的分頁(做到像Move的感覺)
+    close curTab
+
+    -- 建立新視窗並在新視窗開啟該網址
+    tell (make new document with properties {URL:tabURL})
+      set name to tabTitle
+    end tell
+
+  end tell
+
+  -- 這也行，但是是基於用menu點擊的方式，語言要是英語才可行
+  -- tell application "System Events"
+  --   tell process "Safari"
+  --     set frontmost to true
+  --    click menu item "Move Tab to New Window" of menu "Window" of menu bar 1
+  --   end tell
+  -- end tell
+ ]])
+
+    if ok and not ok then
+      hs.alert.show("Run error:" .. tostring(result))
+    end
+  end
+)
+
+
 spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
 
