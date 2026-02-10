@@ -133,7 +133,7 @@ function M.bind(mods, key)
   end
 end
 
--- M.bind({ "cmd" }, "z")
+-- M.bind({ "cmd" }, "d")
 
 local function applyLayout(layoutRects)
   local allWindows = hs.window.filter.new():getWindows()

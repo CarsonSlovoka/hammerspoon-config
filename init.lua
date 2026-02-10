@@ -989,8 +989,9 @@ hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
 
--- spoon.AutoTile.bindApplyLayout({ "cmd" }, "z")
-spoon.AutoTile.bind({ "cmd" }, "z")
+
+-- spoon.AutoTile.bindApplyLayout({ "cmd" }, "d")
+spoon.AutoTile.bind({ "cmd" }, "d") -- 在windows是按下ctrl+z, 不過mac的cmd+z預設是undo, 不建議綁定它
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
