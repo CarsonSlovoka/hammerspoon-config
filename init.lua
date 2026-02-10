@@ -694,6 +694,16 @@ local last_item = {
   order = math.huge,
 }
 
+
+-- 加入自定義的fuzzel清單
+if pcall(require, "fuzzel") then
+  -- lua/fuzzel.lua
+  -- 內容可以寫: `git show -p 6d3d75ef:init.lua | bat -l lua -P -r 100 -r 114 -r 374:380 -r 687`
+  for _, item in ipairs(require("fuzzel")) do
+    table.insert(fuzzelList, item)
+  end
+end
+
 -- 🟧 加入所有 ~/Applications 中的app, 這些是shortcuts使用加入到Dock之後就會自動生成的項目
 -- https://www.icloud.com/shortcuts/bed9c5f9ac064609bd688d691f4f32ae
 local appFolder = os.getenv("HOME") .. "/Applications"
