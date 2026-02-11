@@ -43,7 +43,12 @@ local M = {
       text = "🚥 Horizontal 3",
       key = "h",
       value = { { x = 0, y = 0, w = 1, h = 1 / 3 }, { x = 0, y = 1 / 3, w = 1, h = 1 / 3 }, { x = 0, y = 2 / 3, w = 1, h = 1 / 3 } }
-    }
+    },
+    {
+      text  = "🌐 All Windows Grid",
+      key   = "g",
+      value = "grid_all" -- 特殊標記，函數中新增此流程的處理
+    },
   }
 }
 
@@ -70,15 +75,32 @@ function M.bind(mods, key)
       return
     end
 
+    -- 獲取當前螢幕，避免在迴圈內重複呼叫
+    local focusedScreen = hs.screen.mainScreen()
+
     -- 獲取當前空間的可見視窗排除隱藏視窗與桌面
     -- local windows = hs.window.filter.new():setAppFilter('Finder', { allowRoles = 'AXUnknown' }):getWindows()
     -- 使用 orderedWindows 取代 window.filter 這會根據 Z-order（最近使用）排序，且執行速度極快
     local windows = hs.window.orderedWindows()
+    if layout.value == "grid_all" then
+      local ws = {}
+      for _, win in ipairs(windows) do
+        if win:screen() == focusedScreen and win:isStandard() then
+          table.insert(ws, win)
+        end
+      end
+      local rect = hs.geometry(focusedScreen:frame()) -- 全螢幕範圍
+      -- 或留一點邊距： rect = rect:scale(0.98, 0.98):translate(10, 10)
+
+      -- 越小的 aspectRatio 越傾向橫向長條
+      -- 1.0 ≈ 正方形傾向， 0.4 ≈ 偏寬扁平
+      -- hs.window.tiling.tileWindows(windows, rect, 0.618) -- 黃金比例風格
+      hs.window.tiling.tileWindows(ws, rect, 1.0) -- 將提供的windows盡可能的鋪滿整個畫面
+      return
+    end
+
     local frames = layout.value
     local count = 0
-
-    -- 獲取當前螢幕，避免在迴圈內重複呼叫
-    local focusedScreen = hs.screen.mainScreen()
 
     -- 根據 layout 定義的數量來排列視窗
     for _, win in ipairs(windows) do
