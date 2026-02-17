@@ -595,6 +595,19 @@ local fuzzelList = {
     }
   },
   {
+    text = "set volume",
+    subText = "ex: set volume 25",
+    cmdName = cmdInfo.name.setVolume,
+    kargs = {
+      self = true,
+      askNumber = {
+        default = nil,
+        title = "input number",
+        body = "🔈 set volume (%)",
+      }
+    }
+  },
+  {
     text = "toggle dock",
     subText = "Switch whether to automatically hide the Dock",
     cmdName = cmdInfo.name.toggleDock,
@@ -749,11 +762,29 @@ table.sort(fuzzelList,
 
 hs.window.animationDuration = 0
 
+local chooser = {}
+
 local function completionFn(choice)
   if not choice then return end
   if choice.cmdName then
     local cmdFunc = cmdInfo.cmdTable[choice.cmdName]
+    choice.kargs = choice.kargs or {} -- 確保一定有這個參數
     if cmdFunc then
+      if choice.kargs.self then
+        -- 將chooser本身也傳入，使得可以用query
+        choice.kargs.self = chooser.fuzzel
+      end
+      if choice.kargs.askNumber then
+        local ask = choice.kargs.askNumber
+        -- https://www.hammerspoon.org/docs/hs.dialog.html#textPrompt
+        -- secureField 為 true 時會當成密碼的方式(輸入看不到會用*代替)
+        -- hs.application.frontmostApplication():activate(true) -- 強制 Hammerspoon 成為前台 => 這個也沒用textPrompt的dialog可能還是要手動選
+        -- hs.timer.doAfter(1, function() hs.focus(); end) -- 效果也不好
+        local selectBtn, val = hs.dialog.textPrompt(ask.title, ask.body, ask.default or "", "OK", "Cancel", false) -- Tip: 可以用tab來切換, 就能輸入了
+        if selectBtn == "OK" then
+          choice.kargs.number = tonumber(val)
+        end
+      end
       cmdFunc(choice.kargs)
     end
     return
@@ -788,11 +819,11 @@ end
 
 
 
-local fuzzelChooser = hs.chooser.new(completionFn)
-fuzzelChooser:choices(fuzzelList)
+chooser.fuzzel = hs.chooser.new(completionFn)
+chooser.fuzzel:choices(fuzzelList)
 
 hs.hotkey.bind({ "cmd" }, ";", function()
-  fuzzelChooser:show()
+  chooser.fuzzel:show()
 end)
 
 

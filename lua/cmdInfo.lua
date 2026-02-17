@@ -16,9 +16,20 @@ local name = {
   preview = "preview",
   splitVideo = "splitVideo",
   toggleDock = "toggleDock",
+  setVolume = "setVolume",
 }
 
 local browserManager = {}
+
+
+local function split_by_space(str)
+  local results = {}
+  -- "%S+" matches one or more non-whitespace characters
+  for word in string.gmatch(str, "%S+") do
+    table.insert(results, word)
+  end
+  return results
+end
 
 ---@param windowName table|string
 ---@param browserName string
@@ -334,6 +345,22 @@ local cmdTable = {
     -- 顯示通知
     local status = isHidden and "false" or "true"
     hs.alert.show("Dock autohide: " .. status, 3)
+  end,
+  [name.setVolume] = function(kargs)
+    local chooser = kargs.self
+    -- https://www.hammerspoon.org/docs/hs.chooser.html#query
+    -- local input = chooser:query() -- Note: query 可以設定或者查詢當前chooser所輸入的內容
+    -- -- hs.alert.show(input)
+    -- local arr = split_by_space(input)
+    -- local vol = tonumber(arr[#arr]) -- 以最後一個內容當成輸入的參數
+    -- hs.alert.show(arr[#arr])
+    local vol = kargs.number
+    if vol and vol >= 0 and vol <= 100 then
+      hs.audiodevice.defaultOutputDevice():setVolume(vol)
+      hs.alert.show("Custom volume:" .. vol .. "%")
+    else
+      hs.alert.show("Invalid input, please enter the number from 0-100.")
+    end
   end
 }
 
