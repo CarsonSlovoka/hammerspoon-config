@@ -598,17 +598,19 @@ local fuzzelList = {
     text = "set volume",
     subText = "ex: set volume 25",
     cmdName = cmdInfo.name.setVolume,
-    kargs = {
-      self = true,
-      asks = {
-        {
-          default = nil,
-          title = "input number",
-          body = "🔈 set volume (%)",
-          -- value = nil, -- 之後需要輸入
-        }
-      }
-    }
+    -- kargs = {
+    --   self = true,
+    --   asks = {
+    --     -- Note: 如果訊息想要自定義，就要寫在實作中，如果不需要特別的標明，可以在此設定，就能在實作中直接得到參數
+    --     {
+    --       default = nil,
+    --       -- defaultFunc = function() end, -- 不能使用function
+    --       title = "input number",
+    --       body = "🔈 set volume (%)",
+    --       -- value = nil, -- 之後需要輸入
+    --     }
+    --   }
+    -- }
   },
   {
     text = "toggle dock",

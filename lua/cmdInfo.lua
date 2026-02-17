@@ -354,7 +354,20 @@ local cmdTable = {
     -- local arr = split_by_space(input)
     -- local vol = tonumber(arr[#arr]) -- 以最後一個內容當成輸入的參數
     -- hs.alert.show(arr[#arr])
-    local vol = tonumber(kargs.asks[1].value)
+
+    local defaultOutputDevice = hs.audiodevice.defaultOutputDevice()
+    local default = nil
+    if defaultOutputDevice then
+      default = defaultOutputDevice:outputVolume()
+    end
+    local selectBtn, val = hs.dialog.textPrompt("input number",
+      string.format("🔈 set volume (%s%%)", tostring(default) or ""),
+      "", -- default
+      "OK", "Cancel",
+      false
+    ) -- Tip: 可以用tab來切換, 就能輸入了
+    local vol = selectBtn == "OK" and tonumber(val) or nil
+    -- local vol = tonumber(kargs.asks[1].value)
     if vol and vol >= 0 and vol <= 100 then
       hs.audiodevice.defaultOutputDevice():setVolume(vol)
       hs.alert.show("Custom volume:" .. vol .. "%")
