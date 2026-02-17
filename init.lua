@@ -600,10 +600,13 @@ local fuzzelList = {
     cmdName = cmdInfo.name.setVolume,
     kargs = {
       self = true,
-      askNumber = {
-        default = nil,
-        title = "input number",
-        body = "🔈 set volume (%)",
+      asks = {
+        {
+          default = nil,
+          title = "input number",
+          body = "🔈 set volume (%)",
+          -- value = nil, -- 之後需要輸入
+        }
       }
     }
   },
@@ -774,15 +777,15 @@ local function completionFn(choice)
         -- 將chooser本身也傳入，使得可以用query
         choice.kargs.self = chooser.fuzzel
       end
-      if choice.kargs.askNumber then
-        local ask = choice.kargs.askNumber
-        -- https://www.hammerspoon.org/docs/hs.dialog.html#textPrompt
-        -- secureField 為 true 時會當成密碼的方式(輸入看不到會用*代替)
-        -- hs.application.frontmostApplication():activate(true) -- 強制 Hammerspoon 成為前台 => 這個也沒用textPrompt的dialog可能還是要手動選
-        -- hs.timer.doAfter(1, function() hs.focus(); end) -- 效果也不好
-        local selectBtn, val = hs.dialog.textPrompt(ask.title, ask.body, ask.default or "", "OK", "Cancel", false) -- Tip: 可以用tab來切換, 就能輸入了
-        if selectBtn == "OK" then
-          choice.kargs.number = tonumber(val)
+      if choice.kargs.asks then
+        for i in ipairs(choice.kargs.asks) do
+          local ask = choice.kargs.asks[i]
+          -- https://www.hammerspoon.org/docs/hs.dialog.html#textPrompt
+          -- secureField 為 true 時會當成密碼的方式(輸入看不到會用*代替)
+          -- hs.application.frontmostApplication():activate(true) -- 強制 Hammerspoon 成為前台 => 這個也沒用textPrompt的dialog可能還是要手動選
+          -- hs.timer.doAfter(1, function() hs.focus(); end) -- 效果也不好
+          local selectBtn, val = hs.dialog.textPrompt(ask.title, ask.body, ask.default or "", "OK", "Cancel", false) -- Tip: 可以用tab來切換, 就能輸入了
+          choice.kargs.asks[i].value = selectBtn == "OK" and val or nil
         end
       end
       cmdFunc(choice.kargs)
