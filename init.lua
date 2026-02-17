@@ -787,10 +787,12 @@ local function completionFn(choice)
 end
 
 
+
+local fuzzelChooser = hs.chooser.new(completionFn)
+fuzzelChooser:choices(fuzzelList)
+
 hs.hotkey.bind({ "cmd" }, ";", function()
-  local chooser = hs.chooser.new(completionFn)
-  chooser:choices(fuzzelList)
-  chooser:show()
+  fuzzelChooser:show()
 end)
 
 
