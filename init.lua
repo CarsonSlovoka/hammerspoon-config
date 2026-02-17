@@ -676,6 +676,13 @@ local fuzzelList = {
     -- image = utils.image.fromDockApp("trashfull2@2x.png")
   },
   {
+    text = "hammerspoon docs",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://www.hammerspoon.org/docs" },
+    image = imageFromPath("hammer.icns")
+  },
+  {
     text = "empty trash",
     subText = cmdInfo.name.runAppleScript,
     cmdName = cmdInfo.name.runAppleScript,
