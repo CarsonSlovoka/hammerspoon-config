@@ -641,6 +641,13 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Photos.app")
   },
   {
+    text = "DaVinci resolve",
+    subText = "launchOrFocus",
+    path = "/Applications/DaVinci Resolve.app",
+    -- https://apps.apple.com/tw/app/davinci-resolve/id571213070?mt=12
+    image = hs.image.imageFromPath("/Applications/DaVinci Resolve.app/Contents/Resources/Resolve.icns")
+  },
+  {
     text = "font book",
     subText = "launchOrFocus",
     path = "/System/Applications/Font Book.app",
