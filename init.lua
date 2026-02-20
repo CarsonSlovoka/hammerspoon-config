@@ -304,6 +304,16 @@ local fuzzelList = {
     image = imageFromPath("hammer.icns")
   },
   {
+    text = "gitlab",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://gitlab.com/",
+      windowName = "GitLab",
+    },
+    image = imageFromPath("gitlab.icns")
+  },
+  {
     text = "github",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,

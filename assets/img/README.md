@@ -20,6 +20,7 @@
 - [calculator](https://macosicons.com/#/?icon=JdrgercRpq)
 - [download-folder](https://macosicons.com/#/?icon=rfI5pVAFTB)
 - [discord](https://macosicons.com/#/?icon=ExKVJjQHK6)
+- [gitlab](https://macosicons.com/#/?icon=q7aQipWzu4)
 - [github](https://macosicons.com/#/?icon=CFPA2eHxxP)
 - [notion](https://macosicons.com/#/?icon=uToySGMoFX)
 - [grid](https://macosicons.com/#/?icon=CIJrGAtVsf)
