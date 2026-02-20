@@ -272,6 +272,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Apps.app")
   },
   {
+    text = "App Store",
+    subText = "launchOrFocus",
+    path = "/System/Applications/App Store.app",
+    image = utils.image.fromSystemApp("App Store.app")
+  },
+  {
     text = "passwords",
     subText = "launchOrFocus",
     path = "/System/Applications/Passwords.app",
