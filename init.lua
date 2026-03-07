@@ -236,6 +236,14 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Facetime.app"),
   },
   {
+    text = "photo booth",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Photo Booth.app/", -- 快速自拍或錄製短片
+    -- image = utils.image.fromSystemApp("Photo Booth.app"), -- Note: 它們裡面沒有icns的檔案
+    -- cat "/System/Applications/Photo Booth.app/Contents/Info.plist" | grep CFBundleIdentifier
+    image = hs.image.imageFromAppBundle("com.apple.PhotoBooth") -- 此數值從 CFBundleIdentifier 而來 -- `cat "/System/Applications/Photo Booth.app/Contents/Info.plist" | grep -A 1 CFBundleIdentifier`
+  },
+  {
     text = "iphone mirroring",
     subText = "launchOrFocus",
     path = "/System/Applications/iPhone Mirroring.app/", -- 鏡像輸出
