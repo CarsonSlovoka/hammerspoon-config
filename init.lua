@@ -417,6 +417,13 @@ local fuzzelList = {
     image = imageFromPath("g-photo.icns")
   },
   {
+    text = "crates",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://crates.io" },
+    image = imageFromPath("cargo.icns")
+  },
+  {
     text = "notion",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
