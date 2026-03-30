@@ -526,6 +526,13 @@ local fuzzelList = {
     image = utils.image.fromApp("Stats.app"),
   },
   {
+    text = "glyphs",
+    -- https://glyphsapp.com/
+    subText = "launchOrFocus",
+    path = "/Applications/Glyphs 3.app",
+    image = utils.image.fromApp("Glyphs 3.app"),
+  },
+  {
     text = "monitor (bashtop)",
     subText = "launchOrFocus",
     bundleID = "com.apple.ActivityMonitor",
