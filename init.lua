@@ -502,6 +502,16 @@ local fuzzelList = {
   --   image = hs.image.imageFromName("NSComputer"),
   -- },
   {
+    text = "youtube",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = {
+      url = "https://www.youtube.com/",
+      windowName = { "YouTube" },
+    },
+    image = imageFromPath("youtube.icns")
+  },
+  {
     text = "~/Downloads",
     subText = cmdInfo.name.openDir,
     cmdName = cmdInfo.name.openDir,
