@@ -40,6 +40,7 @@
 - [dock](https://macosicons.com/#/?icon=5eTkUjNGdT)
 - [notebookLM](https://macosicons.com/#/?icon=p89zpkOIOW)
 - [youtube](https://macosicons.com/?icon=K0xIPUPaZE)
+- [brew](https://macosicons.com/?icon=eH3mXxqIpk)
 
 > [!NOTE]
 > 這邊載的圖片，通常都還會有背景

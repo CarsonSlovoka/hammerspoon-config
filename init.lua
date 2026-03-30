@@ -424,6 +424,13 @@ local fuzzelList = {
     image = imageFromPath("cargo.icns")
   },
   {
+    text = "homebrew",
+    subText = cmdInfo.name.openBrowser,
+    cmdName = cmdInfo.name.openBrowser,
+    kargs = { url = "https://brew.sh/" },
+    image = imageFromPath("brew.icns")
+  },
+  {
     text = "notion",
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
