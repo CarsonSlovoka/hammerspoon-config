@@ -546,10 +546,17 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Utilities/Activity Monitor.app")
   },
   {
+    text = "personal application",
+    subText = cmdInfo.name.openDir,
+    cmdName = cmdInfo.name.openDir,
+    kargs = { path = "~/Applications/" }, -- 個人
+    image = imageFromPath("application-folder.icns"),
+  },
+  {
     text = "user application",
     subText = cmdInfo.name.openDir,
     cmdName = cmdInfo.name.openDir,
-    kargs = { path = "/Applications/" },
+    kargs = { path = "/Applications/" }, -- 電腦的所有人
     image = imageFromPath("application-folder.icns"),
   },
   {
