@@ -1107,7 +1107,7 @@ spoon.Layout:add(LayoutName.CodeAndPreview, "p", {
   { 'com.apple.Preview', '5,0 5x4' },
 })
 
-spoon.Layout:add(cfg.browser, "f", {
+spoon.Layout:add(LayoutName.Borwser, "f", {
   { cfg.browser, '0,0 10x4' },
 })
 
