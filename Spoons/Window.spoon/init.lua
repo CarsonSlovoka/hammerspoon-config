@@ -1,4 +1,12 @@
 local M = {}
+local chooser = hs.chooser.new(function(choice)
+  if not choice then
+    return
+  end
+  choice.win:unminimize() -- 先解除最小化（如果有的話）
+  choice.win:raise()      -- 提到最前面（很重要）
+  choice.win:focus()      -- Important: 如果只有這個，當視窗已經隱藏的時候，會沒有辦法再打開
+end)
 
 local function imgFrom(name)
   -- https://github.com/CarsonSlovoka/hammerspoon-config/tree/3ebc93f/assets/img
@@ -49,15 +57,6 @@ function M.selectWindow(opt)
       image = image
     })
   end
-  local chooser = hs.chooser.new(function(choice)
-    if not choice then
-      return
-    end
-    choice.win:unminimize() -- 先解除最小化（如果有的話）
-    choice.win:raise()      -- 提到最前面（很重要）
-    choice.win:focus()      -- Important: 如果只有這個，當視窗已經隱藏的時候，會沒有辦法再打開
-  end)
-
 
   chooser:searchSubText(opt.searchSubText or false) -- 使得subText可以被
   -- Note: 當SubText定義為應用程式的名稱時，會很有用
