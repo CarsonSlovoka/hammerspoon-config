@@ -1,5 +1,19 @@
 [hammerspoon docs](https://www.hammerspoon.org/docs/)
 
+## 安裝 (Install)
+
+```sh
+git clone https://github.com/CarsonSlovoka/hammerspoon-config ~/.hammerspoon/
+cd ~/.hammerspoon/
+git submodule update --init --recursive # 取得官方的各插件
+
+# 與官方插件建立連結
+ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/AClock.spoon ~/.hammerspoon/Spoons/AClock.spoon
+ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/LeftRightHotkey.spoon ~/.hammerspoon/Spoons/LeftRightHotkey.spoon
+
+mkdir -v ~/Applications/  # 將shortcuts的捷徑釘選到Dock上會出現的目錄. 如果都沒有釘選就不會有這個目錄, 為了避免新電腦報錯，手動新增
+```
+
 ## config設定
 
 [lua/config.lua](lua/config.lua)
