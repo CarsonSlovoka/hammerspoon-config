@@ -127,6 +127,13 @@ local fuzzelList = {
     order = cfg.termianl == "Ghostty" and 1 or 3,
   },
   {
+    text = "Terminal", -- 終端機 → 設定 → Profiles → 選擇你目前正在使用的設定檔 (通常是「預設」或「Basic) → 切換到右邊的 「Shell」 標籤 → When the shell exits 這個選項，改成: Close the window
+    subText = "launchOrFocus",
+    path = "/System/Applications/Utilities/Terminal.app",
+    image = hs.image.imageFromPath("/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns"),
+    order = 20,
+  },
+  {
     text = "Firefox",
     subText = "launchOrFocus",
     path = "/Applications/Firefox.app",
