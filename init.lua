@@ -848,6 +848,15 @@ table.sort(fuzzelList,
     return oa < ob -- ascending order; use > for descending
   end)
 
+for i, item in ipairs(fuzzelList) do
+  if item.subText == "launchOrFocus" and item.path then
+    local exist = hs.fs.displayName(item.path) ~= nil
+    if not exist then
+      table.remove(fuzzelList, i)
+    end
+  end
+end
+
 hs.window.animationDuration = 0
 
 local chooser = {}
