@@ -43,6 +43,10 @@ function M.selectWindow(opt)
   for _, win in ipairs(hs.window.allWindows()) do
     local app = win:application() -- 如果是`gitk --all` & 開出來的東西，得到的app會是nil
     local appName = app:name()
+    if win:title() == "" then
+      -- hammerspoon 相關的背景程序都會是如此
+      goto continue
+    end
 
     -- bundleID 只對com.apple的項目取，這通常都是系統的工具，如果是第三方的之後的第三碼是一個id, 識別那個也不好
     -- 只抓是com.apple的bundleID, 並且不要前面的com.apple
@@ -70,6 +74,7 @@ function M.selectWindow(opt)
       -- subText = appName .. " " .. app:bundleID(),
       image = image
     })
+    ::continue::
   end
 
   chooser:searchSubText(opt.searchSubText or false) -- 使得subText可以被
