@@ -322,7 +322,7 @@ local fuzzelList = {
     text = "Hammerspoon",
     subText = "launchOrFocus",
     path = "/Applications/Hammerspoon.app",
-    image = imageFromPath("hammer.icns")
+    image = utils.image.fromApp("Hammerspoon.app"),
   },
   {
     text = "gitlab",
@@ -756,7 +756,7 @@ local fuzzelList = {
     subText = cmdInfo.name.openBrowser,
     cmdName = cmdInfo.name.openBrowser,
     kargs = { url = "https://www.hammerspoon.org/docs" },
-    image = imageFromPath("hammer.icns")
+    image = utils.image.fromApp("Hammerspoon.app"),
   },
   {
     text = "empty trash",

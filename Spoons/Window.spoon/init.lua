@@ -55,7 +55,7 @@ function M.selectWindow(opt)
     local bundleIDLast = string.match(app and app:bundleID() or "", "^com%.apple%.([^%.]+)$") or ""
     local image
     if bundleIDLast == "" then
-      image = imgFrom(string.gsub(appName, " ", "") .. ".icns")
+      image = imgFrom(string.gsub(appName, " ", "") .. ".icns") or imageFromApp(appName .. ".app")
       if not image and appName == "Ghostty" then
         image = hs.image.imageFromPath("/Applications/Ghostty.app/Contents/Resources/Ghostty.icns")
       end
