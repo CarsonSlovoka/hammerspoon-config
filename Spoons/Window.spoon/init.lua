@@ -52,9 +52,15 @@ function M.selectWindow(opt)
     local image
     if bundleIDLast == "" then
       image = imgFrom(string.gsub(appName, " ", "") .. ".icns")
+      if not image and appName == "Ghostty" then
+        image = hs.image.imageFromPath("/Applications/Ghostty.app/Contents/Resources/Ghostty.icns")
+      end
     else
       local appN = bundleIDLast .. ".app"
       image = imageFromSystemApp(appN) or imageFromApp(appN)
+      if not image and bundleIDLast == "Terminal" then
+        image = hs.image.imageFromPath("/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns")
+      end
     end
 
     table.insert(list, {
