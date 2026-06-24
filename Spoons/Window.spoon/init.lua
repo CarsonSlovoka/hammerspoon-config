@@ -1,4 +1,12 @@
-local M = {}
+local M = {
+  -- Keep a history of focused windows
+  windowHistory = {
+    enable = false,
+    items = {},
+    size = 10
+  },
+}
+
 local chooser = hs.chooser.new(function(choice)
   if not choice then
     return
@@ -62,6 +70,50 @@ function M.selectWindow(opt)
   -- Note: 當SubText定義為應用程式的名稱時，會很有用
   chooser:choices(list)
   chooser:show()
+end
+
+-- Subscribe to window focus changes
+function M:subscribeToWindowFocursed()
+  if self.windowHistory.enable then
+    return
+  end
+
+  hs.window.filter.default:subscribe(hs.window.filter.windowFocused, function(win, appName)
+    if not win then
+      return
+    end
+
+    -- 從頭插入, 從尾開始刪
+    -- Insert the newly focused window at the front
+    table.insert(M.windowHistory.items, 1, win)
+
+    -- Keep our history list trimmed to a reasonable size
+    if #M.windowHistory.items > M.windowHistory.size then
+      -- Remove the last element
+      table.remove(M.windowHistory.items)
+    end
+  end)
+
+  self.windowHistory.enable = true
+end
+
+function M:getLastWindow()
+  if not self.windowHistory.enable then
+    hs.alert.show("Please run: `spoon.Window:subscribeToWindowFocursed()` first")
+    return nil
+  end
+
+  if #self.windowHistory.items >= 2 then
+    local lastWin = self.windowHistory.items[2]
+    if lastWin and lastWin:isStandard() then
+      -- lastWin:focus()
+      -- hs.alert.show("get last window")
+      return lastWin
+    end
+  else
+    -- hs.alert.show("No previous window in history")
+    return nil
+  end
 end
 
 return M

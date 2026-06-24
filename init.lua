@@ -1067,6 +1067,15 @@ hs.hotkey.bind({ "cmd" }, "F1", function()
   spoon.Window.selectWindow({ searchSubText = true })
 end)
 
+-- 預設的cmd+tab就能辦到相同的效果. Tip: 要短按
+-- spoon.Window:subscribeToWindowFocursed()
+-- hs.hotkey.bind({ "cmd" }, "F7", function()
+--   local win = spoon.Window:getLastWindow()
+--   if win then
+--     win:focus()
+--   end
+-- end)
+
 
 spoon.LeftRightHotkey:bind({ "lcmd" }, "f", function()
   -- 以下沒用
