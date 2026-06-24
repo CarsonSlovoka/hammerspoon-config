@@ -62,8 +62,10 @@ function M.selectWindow(opt)
     else
       local appN = bundleIDLast .. ".app"
       image = imageFromSystemApp(appN) or imageFromApp(appN)
-      if not image and bundleIDLast == "Terminal" then
-        image = hs.image.imageFromPath("/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns")
+      if not image then
+        if bundleIDLast == "Terminal" then
+          image = hs.image.imageFromPath("/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns")
+        end
       end
     end
 
