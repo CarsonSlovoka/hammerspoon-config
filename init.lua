@@ -928,8 +928,16 @@ end)
 local function focus(direction)
   -- https://www.hammerspoon.org/docs/hs.window.html#focusWindowEast
   local win = hs.window.focusedWindow()
+
+  if not win then
+    win = hs.window.orderedWindows()[1] -- 抓最上層可見視窗
+  end
+
   if win then
-    win["focusWindow" .. direction](win)
+    local method = "focusWindow" .. direction
+    if win[method] then
+      win[method](win)
+    end
   end
 end
 
