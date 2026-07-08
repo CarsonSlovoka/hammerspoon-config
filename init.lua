@@ -80,6 +80,21 @@ for _, plugin in ipairs({
   hs.loadSpoon(plugin)
 end
 
+-- init plugin
+-- https://github.com/Hammerspoon/Spoons/blob/5c20bcecc380acff5f0f5df7a718c5679aaaf62a/Source/AClock.spoon/init.lua#L42-L50
+spoon.AClock.textColor = { hex = "#ebec40" } -- #1891C3
+-- spoon.AClock.textSize = 135
+spoon.AClock.width = 320 * 2.5
+spoon.AClock.height = 230 * 2
+-- spoon.AClock.format = "%Y-%m-%d (%A) %H:%M:%S" -- %A Wednesday %a Wed  -- https://github.com/Hammerspoon/Spoons/blob/5c20bcecc380acff5f0f5df7a718c5679aaaf62a/Source/AClock.spoon/init.lua#L99-L101
+spoon.AClock.format = "%y-%m-%d (%w) %H:%M" -- Caution: 如果canvas的大小不夠，就不會顯示完整
+spoon.AClock.showDuration = 8
+-- 提供的 hotkeyMods 與 hotkey 設定了還是沒用，不如自己bind
+-- spoon.AClock.hotkeyMods = { "cmd" }
+-- spoon.AClock.hotkey = 'ESCAPE'
+hs.hotkey.bind({ "cmd" }, "ESCAPE", function() spoon.AClock:toggleShow() end) -- 出來之後再按一次Escape可以直接關閉, 不用等到秒數結束
+spoon.AClock:init()                                                           -- Note: 選單列，可以設定永遠隱藏, 滑鼠移過去可以再顯示, 此時如果為了只看時間, 就能用AClock來輔助, 不需要移動滑鼠
+
 spoon.LeftRightHotkey:start()
 spoon.Frame:setup(
 -- 這個其實不會比 hs.grid.show 要好用
@@ -160,6 +175,13 @@ local fuzzelList = {
     path = "/Applications/ComfyUI.app",
     -- image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/UI/Comfy_Logo.icns")
     image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/icon.icns")
+  },
+  {
+    text = "show time",
+    subText = "show time (include second)",
+    cmdName = cmdInfo.name.showTime,
+    image = utils.image.fromSystemApp("Clock.app"),
+    order = 11,
   },
   {
     text = "teamviewer",

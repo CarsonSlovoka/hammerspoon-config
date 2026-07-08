@@ -17,6 +17,7 @@ local name = {
   splitVideo = "splitVideo",
   toggleDock = "toggleDock",
   setVolume = "setVolume",
+  showTime = "showTime",
 }
 
 local browserManager = {}
@@ -374,7 +375,12 @@ local cmdTable = {
     else
       hs.alert.show("Invalid input, please enter the number from 0-100.")
     end
-  end
+  end,
+  [name.showTime] = function()
+    -- 預設會顯示 4 秒，然後自動隱藏
+    -- spoon.AClock.format = "%y-%m-%d (%w) %H:%M:%S" -- init 後再調整也是法用
+    spoon.AClock:toggleShow()
+  end,
 }
 
 return {
