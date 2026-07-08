@@ -8,8 +8,9 @@ cd ~/.hammerspoon/
 git submodule update --init --recursive # 取得官方的各插件
 
 # 與官方插件建立連結
-ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/AClock.spoon ~/.hammerspoon/Spoons/AClock.spoon
-ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/LeftRightHotkey.spoon ~/.hammerspoon/Spoons/LeftRightHotkey.spoon
+ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/AClock.spoon                       ~/.hammerspoon/Spoons/AClock.spoon
+ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/LeftRightHotkey.spoon              ~/.hammerspoon/Spoons/LeftRightHotkey.spoon
+# ln -siv ~/.hammerspoon/Hammerspoon/Spoons/Source/BrewInfo.spoon                   ~/.hammerspoon/Spoons/BrewInfo.spoon   # 感受不太到此插件有什麼特色
 
 mkdir -v ~/Applications/  # 將shortcuts的捷徑釘選到Dock上會出現的目錄. 如果都沒有釘選就不會有這個目錄, 為了避免新電腦報錯，手動新增
 ```
