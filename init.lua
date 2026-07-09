@@ -568,11 +568,18 @@ local fuzzelList = {
     image = utils.image.fromApp("Stats.app"),
   },
   {
-    text = "glyphs",
+    text = "glyphs 3",
     -- https://glyphsapp.com/
     subText = "launchOrFocus",
     path = "/Applications/Glyphs 3.app",
     image = utils.image.fromApp("Glyphs 3.app"),
+  },
+  {
+    text = "glyphs 4",
+    -- https://glyphsapp.com/
+    subText = "launchOrFocus",
+    path = "/Applications/Glyphs 4.app",
+    image = utils.image.fromApp("Glyphs 4.app"),
   },
   {
     text = "monitor (bashtop)",
