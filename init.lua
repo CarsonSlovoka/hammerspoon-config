@@ -265,6 +265,12 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Facetime.app"),
   },
   {
+    text = "messages",
+    subText = "launchOrFocus",
+    path = "/System/Applications/Messages.app/",
+    image = utils.image.fromSystemApp("Messages.app"),
+  },
+  {
     text = "photo booth",
     subText = "launchOrFocus",
     path = "/System/Applications/Photo Booth.app/", -- 快速自拍或錄製短片
