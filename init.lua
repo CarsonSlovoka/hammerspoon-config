@@ -177,6 +177,13 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/Applications/ComfyUI.app/Contents/Resources/icon.icns")
   },
   {
+    text = "UTM",
+    subText = "launchOrFocus",
+    path = "/Applications/UTM.app/",
+    -- image = hs.image.imageFromPath("/Applications/UTM.app/Contents/Resources/icon.icns") -- `fd . -e icns -HI /Applications/UTM.app` 裡面都沒有icns的圖標
+    image = imageFromPath("UTM.icns")
+  },
+  {
     text = "show time",
     subText = "show time (include second)",
     cmdName = cmdInfo.name.showTime,
