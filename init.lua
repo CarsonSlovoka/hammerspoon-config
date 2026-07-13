@@ -236,16 +236,28 @@ local fuzzelList = {
     image = utils.image.fromSystemApp("Freeform.app"),
   },
   {
-    text = "numbers",
+    text = "numbers (old version)",
     subText = "launchOrFocus",
     path = "/Applications/Numbers.app",
     image = utils.image.fromApp("Numbers.app"),
   },
   {
-    text = "pages",
+    text = "numbers",
+    subText = "launchOrFocus",
+    path = "/Applications/Numbers Creator Studio.app",
+    image = utils.image.fromApp("Numbers Creator Studio.app"),
+  },
+  {
+    text = "pages (old version)",
     subText = "launchOrFocus",
     path = "/Applications/Pages.app",
     image = utils.image.fromApp("Pages.app"),
+  },
+  {
+    text = "pages",
+    subText = "launchOrFocus",
+    path = "/Applications/Pages Creator Studio.app",
+    image = utils.image.fromApp("Pages Creator Studio.app"),
   },
   {
     text = "keynotes",
