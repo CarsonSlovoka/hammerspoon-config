@@ -36,6 +36,11 @@ local function imageFromApp(appName)
       hs.image.imageFromPath(string.format("/Applications/%s/Contents/Resources/AppIconLoc.icns", appName))
 end
 
+local special_img_map = {
+  Ghostty = "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+  Emacs = "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
+}
+
 ---@param opt table?
 function M.selectWindow(opt)
   opt = opt or {}
@@ -56,8 +61,11 @@ function M.selectWindow(opt)
     local image
     if bundleIDLast == "" then
       image = imgFrom(string.gsub(appName, " ", "") .. ".icns") or imageFromApp(appName .. ".app")
-      if not image and appName == "Ghostty" then
-        image = hs.image.imageFromPath("/Applications/Ghostty.app/Contents/Resources/Ghostty.icns")
+      if not image then
+        local image_path = special_img_map[appName]
+        if image_path then
+          image = hs.image.imageFromPath(image_path)
+        end
       end
     else
       local appN = bundleIDLast .. ".app"
