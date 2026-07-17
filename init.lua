@@ -149,6 +149,13 @@ local fuzzelList = {
     order = 20,
   },
   {
+    text = "emacs",
+    subText = "launchOrFocus",
+    path = "/Applications/Emacs.app", -- brew install emacs-app
+    image = hs.image.imageFromPath("/Applications/Emacs.app/Contents/Resources/Emacs.icns"),
+    order = 20,
+  },
+  {
     text = "Firefox",
     subText = "launchOrFocus",
     path = "/Applications/Firefox.app",
