@@ -42,6 +42,7 @@ local special_img_map = {
 }
 
 local bundle_id_img_map = {
+  finder = "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
   Terminal = "/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns",
   iMovieApp = "/Applications/iMovie.app/Contents/Resources/iMovie.icns",
 }
