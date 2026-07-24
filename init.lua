@@ -237,6 +237,12 @@ local fuzzelList = {
     image = imageFromPath("note.icns")
   },
   {
+    text = "iMovie",
+    subText = "launchOrFocus",
+    path = "/Applications/iMovie.app/",
+    image = hs.image.imageFromPath("/Applications/iMovie.app/Contents/Resources/iMovie.icns")
+  },
+  {
     text = "freeform",
     subText = "launchOrFocus",
     path = "/System/Applications/Freeform.app", -- 無邊記, 拿來當成小畫家放圖好用

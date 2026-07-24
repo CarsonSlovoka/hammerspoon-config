@@ -41,6 +41,11 @@ local special_img_map = {
   Emacs = "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
 }
 
+local bundle_id_img_map = {
+  Terminal = "/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns",
+  iMovieApp = "/Applications/iMovie.app/Contents/Resources/iMovie.icns",
+}
+
 ---@param opt table?
 function M.selectWindow(opt)
   opt = opt or {}
@@ -71,8 +76,9 @@ function M.selectWindow(opt)
       local appN = bundleIDLast .. ".app"
       image = imageFromSystemApp(appN) or imageFromApp(appN)
       if not image then
-        if bundleIDLast == "Terminal" then
-          image = hs.image.imageFromPath("/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns")
+        local img_path = bundle_id_img_map[bundleIDLast]
+        if img_path then
+          image = hs.image.imageFromPath(img_path)
         end
       end
     end
