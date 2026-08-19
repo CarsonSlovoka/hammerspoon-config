@@ -1220,6 +1220,23 @@ hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
 hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Borwser).func)
 hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
+hs.hotkey.bind({ "cmd" }, "m", function()
+  -- Note: 這個預設熱鍵可能都有，但是有的應用程式，例如: ghostty, 它你在config中設定了: `macos-titlebar-style = hidden` 那麼原來的cmd+m就會沒用，所以要額外寫
+  local win = hs.window.focusedWindow()
+
+  -- Note: minimize 與 hide 的差異: 假設開了3個safari視窗，如果是hide會全部的safari視窗都縮起來, 而minimize能針對單獨的去使用
+  if win then
+    win:minimize()
+    hs.alert.show("minimize", 0.3)
+  else
+    local app = hs.application.frontmostApplication()
+    if app then
+      app:hide()
+      hs.alert.show("hide", 0.3)
+    end
+  end
+end)
+
 
 hs.hotkey.bind({ "cmd", "shift" }, "m", -- `Move Tab to New Window` 也可用App快速鍵來設定. Note: 快速鍵有的網頁會不行，例如: discord的一些熱鍵會有相衝
   function()
