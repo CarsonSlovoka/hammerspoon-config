@@ -792,6 +792,12 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/Applications/Flameshot.app/Contents/Resources/flameshot.icns")
   },
   {
+    text = "keycastr",
+    subText = "launchOrFocus",
+    path = "/Applications/KeyCastr.app",
+    image = hs.image.imageFromPath("/Applications/KeyCastr.app/Contents/Resources/KeyCastr.icns")
+  },
+  {
     text = "tips",
     subText = "launchOrFocus",
     path = "/System/Applications/Tips.app",
