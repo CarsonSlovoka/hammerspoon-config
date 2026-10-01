@@ -171,6 +171,12 @@ local fuzzelList = {
     order = cfg.browser == "Safari" and 2 or 4,
   },
   {
+    text = "tor browser",
+    subText = "launchOrFocus",
+    path = "/Applications/Tor Browser.app",
+    image = hs.image.imageFromPath("/Applications/Tor Browser.app/Contents/Resources/firefox.icns"),
+  },
+  {
     text = "LmStudio",
     subText = "launchOrFocus",
     path = "/Applications/LM Studio.app",
