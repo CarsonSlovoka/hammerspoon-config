@@ -28,6 +28,13 @@ hs.ipc.cliInstall() -- 要安裝ipc才不會有以上錯誤 -- 當註解掉後�
 -- ln -s "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc/bin/hs" "/usr/local/bin/hs"
 -- Tip: 跳轉到ipc.lua中找到cliInstall就會曉得它做的事情 /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc.lua
 
+
+local has_nvim_hs = pcall(require, "nvim_hs") -- setup  https://github.com/CarsonSlovoka/nvim_hs
+if has_nvim_hs then
+  print("[nvim_hs] framework loaded – actions: " .. table.concat(require("nvim_hs").registry.list(), ", "))
+end
+
+
 -- 切換到指定 App 所在的 Space 並聚焦視窗
 local function focusAppOnItsSpace(appName)
   local app = hs.application.get(appName)
@@ -1230,7 +1237,7 @@ spoon.Layout:add(LayoutName.LmStudio, "a", { -- a as AI
 
 hs.hotkey.bind({ "cmd" }, "1", spoon.Layout:get(LayoutName.Code).func)
 hs.hotkey.bind({ "cmd" }, "2", spoon.Layout:get(LayoutName.Borwser).func)
-hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
+-- hs.hotkey.bind({ "cmd" }, "3", spoon.Layout:get(LayoutName.LmStudio).func)
 
 hs.hotkey.bind({ "cmd" }, "m", function()
   -- Note: 這個預設熱鍵可能都有，但是有的應用程式，例如: ghostty, 它你在config中設定了: `macos-titlebar-style = hidden` 那麼原來的cmd+m就會沒用，所以要額外寫
@@ -1290,9 +1297,9 @@ hs.hotkey.bind({ "cmd", "shift" }, "m", -- `Move Tab to New Window` 也可用App
   end
 )
 
-
-spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
-
+if not has_nvim_hs then
+  spoon.Layout:bind({ "cmd" }, "F2") -- cmd + F3 沒辦法用，可能被系統佔掉
+end
 
 -- spoon.AutoTile.bindApplyLayout({ "cmd" }, "d")
 spoon.AutoTile.bind({ "cmd" }, "d") -- 在windows是按下ctrl+z, 不過mac的cmd+z預設是undo, 不建議綁定它

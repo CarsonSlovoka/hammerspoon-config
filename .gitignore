@@ -9,3 +9,6 @@ assets/img/grok.icns
 .aider*
 
 lua/fuzzel.lua
+
+# https://github.com/CarsonSlovoka/nvim_hs
+nvim_hs
