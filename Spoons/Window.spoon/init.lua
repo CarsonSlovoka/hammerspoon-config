@@ -40,7 +40,8 @@ local special_img_map = {
   -- 可以從套件的 info.plist 找即可: `rg bundleName -i --vimgrep -C 2 -g '*.plist'`
   Ghostty = "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
   Emacs = "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
-  ["Tor Browser"] = "/Applications/Tor Browser.app/Contents/Resources/firefox.icns"
+  ["Tor Browser"] = "/Applications/Tor Browser.app/Contents/Resources/firefox.icns",
+  ["OBS Studio"] = "/Applications/OBS.app/Contents/Resources/AppIcon.icns",
 }
 
 local bundle_id_img_map = {

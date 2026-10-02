@@ -256,6 +256,12 @@ local fuzzelList = {
     image = hs.image.imageFromPath("/Applications/iMovie.app/Contents/Resources/iMovie.icns")
   },
   {
+    text = "obs",
+    subText = "launchOrFocus",
+    path = "/Applications/OBS.app/",
+    image = utils.image.fromApp("OBS.app"),
+  },
+  {
     text = "freeform",
     subText = "launchOrFocus",
     path = "/System/Applications/Freeform.app", -- 無邊記, 拿來當成小畫家放圖好用
