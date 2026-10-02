@@ -37,8 +37,10 @@ local function imageFromApp(appName)
 end
 
 local special_img_map = {
+  -- 可以從套件的 info.plist 找即可: `rg bundleName -i --vimgrep -C 2 -g '*.plist'`
   Ghostty = "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
   Emacs = "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
+  ["Tor Browser"] = "/Applications/Tor Browser.app/Contents/Resources/firefox.icns"
 }
 
 local bundle_id_img_map = {
@@ -66,6 +68,7 @@ function M.selectWindow(opt)
     local bundleIDLast = string.match(app and app:bundleID() or "", "^com%.apple%.([^%.]+)$") or ""
     local image
     if bundleIDLast == "" then
+      -- print("🌳" .. appName)
       image = imgFrom(string.gsub(appName, " ", "") .. ".icns") or imageFromApp(appName .. ".app")
       if not image then
         local image_path = special_img_map[appName]
@@ -77,6 +80,7 @@ function M.selectWindow(opt)
       local appN = bundleIDLast .. ".app"
       image = imageFromSystemApp(appN) or imageFromApp(appN)
       if not image then
+        -- print("🐞" .. bundleIDLast)
         local img_path = bundle_id_img_map[bundleIDLast]
         if img_path then
           image = hs.image.imageFromPath(img_path)
