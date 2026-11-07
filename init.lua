@@ -262,6 +262,12 @@ local fuzzelList = {
     image = utils.image.fromApp("OBS.app"),
   },
   {
+    text = "voice memos", -- 語音備忘錄
+    subText = "launchOrFocus",
+    path = "/System/Applications/VoiceMemos.app",
+    image = hs.image.imageFromPath("/System/Applications/VoiceMemos.app/Contents/Resources/VoiceMemosApp.icns")
+  },
+  {
     text = "freeform",
     subText = "launchOrFocus",
     path = "/System/Applications/Freeform.app", -- 無邊記, 拿來當成小畫家放圖好用
