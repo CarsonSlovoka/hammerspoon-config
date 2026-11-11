@@ -82,6 +82,7 @@ for _, plugin in ipairs({
   "Window",
   "HomeEnd",
   "Fd",
+  "KeyDelay"
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
@@ -118,6 +119,8 @@ spoon.Frame:setup(
 -- hs.hotkey.bind({ "alt" }, "R", function()
 --   hs.reload()
 -- end)
+
+spoon.KeyDelay.setup()
 
 local cmdInfo = require("cmdInfo")
 
