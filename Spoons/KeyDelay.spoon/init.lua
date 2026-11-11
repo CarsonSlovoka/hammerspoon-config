@@ -6,7 +6,7 @@
 
 local M = {}
 
-local initialDelay = 0.08
+local initialDelay = 0.03
 local repeatRate = 0.01
 
 local targetKeys = {
@@ -70,6 +70,24 @@ function M.stop()
   for keyCode in pairs(timers) do
     stopTimers(keyCode)
   end
+end
+
+-- 查詢連發功能是否啟用
+function M.isEnabled()
+  return M.tap ~= nil and M.tap:isEnabled()
+end
+
+-- 切換連發功能
+function M.toggle()
+  if M.isEnabled() then
+    M.stop()
+    hs.alert.show("keyrepeat stop")
+  else
+    M.setup()
+    hs.alert.show("keyrepeat on")
+  end
+
+  return M.isEnabled()
 end
 
 function M.setup()

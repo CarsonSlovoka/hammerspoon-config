@@ -120,7 +120,6 @@ spoon.Frame:setup(
 --   hs.reload()
 -- end)
 
-spoon.KeyDelay.setup()
 
 local cmdInfo = require("cmdInfo")
 
@@ -1318,6 +1317,11 @@ end
 
 -- spoon.AutoTile.bindApplyLayout({ "cmd" }, "d")
 spoon.AutoTile.bind({ "cmd" }, "d") -- 在windows是按下ctrl+z, 不過mac的cmd+z預設是undo, 不建議綁定它
+
+-- spoon.KeyDelay.setup()
+hs.hotkey.bind({ "cmd" }, "\\", function()
+  spoon.KeyDelay.toggle()
+end)
 
 -- /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/alert.lua
 hs.alert.show("config loaded")
