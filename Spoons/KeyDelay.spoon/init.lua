@@ -90,6 +90,20 @@ function M.toggle()
   return M.isEnabled()
 end
 
+function M.enable(verbose)
+  M.setup()
+  if verbose then
+    hs.alert.show("keyrepeat on")
+  end
+end
+
+function M.disable(verbose)
+  M.stop()
+  if verbose then
+    hs.alert.show("keyrepeat stop")
+  end
+end
+
 function M.setup()
   -- 避免重複建立監聽器
   M.stop()
