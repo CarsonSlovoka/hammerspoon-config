@@ -29,11 +29,6 @@ hs.ipc.cliInstall() -- 要安裝ipc才不會有以上錯誤 -- 當註解掉後�
 -- Tip: 跳轉到ipc.lua中找到cliInstall就會曉得它做的事情 /Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc.lua
 
 
-local has_nvim_hs = pcall(require, "nvim_hs") -- setup  https://github.com/CarsonSlovoka/nvim_hs
-if has_nvim_hs then
-  print("[nvim_hs] framework loaded – actions: " .. table.concat(require("nvim_hs").registry.list(), ", "))
-end
-
 
 -- 切換到指定 App 所在的 Space 並聚焦視窗
 local function focusAppOnItsSpace(appName)
@@ -86,6 +81,12 @@ for _, plugin in ipairs({
 }) do
   -- Spoons/<plugin>.spoon
   hs.loadSpoon(plugin)
+end
+
+-- ❗ nvim_hs 中如果有用到spoon, 例如執行: `spoon.KeyDelay ~= nil` 此時會先需要loadSpoon才會讓spoon有定義，不然無法使用spoon.XXX
+local has_nvim_hs = pcall(require, "nvim_hs") -- setup  https://github.com/CarsonSlovoka/nvim_hs
+if has_nvim_hs then
+  print("[nvim_hs] framework loaded – actions: " .. table.concat(require("nvim_hs").registry.list(), ", "))
 end
 
 -- init plugin
